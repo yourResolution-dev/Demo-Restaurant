@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Alex+Brush&display=swap');
+
+/* Scope root variables for The Olive Table Demo */
+.tot-restaurant-root {
+  --tot-forest-950: #050d0a;
+  --tot-forest-900: #081510;
+  --tot-forest-850: #0b1c15;
+  --tot-forest-800: #10261d;
+  --tot-forest-700: #163428;
+  --tot-forest-600: #1d4334;
+  --tot-forest-500: #295744;
+  
+  --tot-gold-100: #fbf5e6;
+  --tot-gold-200: #f4e5bf;
+  --tot-gold-300: #ebd08d;
+  --tot-gold-400: #dfb85c;
+  --tot-gold-500: #cfa138;
+  --tot-gold-600: #ad8125;
+  --tot-gold-700: #88621a;
+
+  --tot-cream-50: #fbf9f5;
+  --tot-cream-100: #f7f3ea;
+  --tot-cream-200: #efe7d7;
+  --tot-cream-300: #e2d6bf;
+
+  --tot-charcoal-900: #141c18;
+  --tot-charcoal-700: #2c3a32;
+  --tot-charcoal-500: #58685e;
+
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: #141c18;
+  background-color: var(--tot-cream-50);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography styles */
+.tot-font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.tot-font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.tot-font-script {
+  font-family: 'Alex Brush', 'Cormorant Garamond', cursive, Georgia, serif;
+}
+
+.tot-font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Gold Gradient Text */
+.tot-gold-gradient-text {
+  background: linear-gradient(135deg, #fbf5e6 0%, #dfb85c 45%, #cfa138 85%, #88621a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tot-gold-gradient-dark {
+  background: linear-gradient(135deg, #dfb85c 0%, #cfa138 50%, #ad8125 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism for dark green cards */
+.tot-glass-panel {
+  background: rgba(11, 28, 21, 0.76);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(223, 184, 92, 0.24);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+}
+
+.tot-glass-card {
+  background: rgba(16, 38, 29, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(223, 184, 92, 0.22);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.45);
+}
+
+/* Elegant gold button */
+.tot-btn-gold {
+  background: linear-gradient(135deg, #e4be68 0%, #cfa138 55%, #b38426 100%);
+  color: #081510;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(207, 161, 56, 0.28);
+  border: 1px solid rgba(251, 245, 230, 0.3);
+}
+
+.tot-btn-gold:hover {
+  background: linear-gradient(135deg, #ebd08d 0%, #dfb85c 55%, #cfa138 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(207, 161, 56, 0.42);
+}
+
+.tot-btn-gold:active {
+  transform: translateY(0);
+}
+
+.tot-btn-outline {
+  border: 1px solid rgba(223, 184, 92, 0.55);
+  color: #f7f3ea;
+  background: rgba(11, 28, 21, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tot-btn-outline:hover {
+  border-color: #dfb85c;
+  background: rgba(223, 184, 92, 0.18);
+  color: #dfb85c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(223, 184, 92, 0.2);
+}
+
+/* Keyframe animations */
+@keyframes totPulseGold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(223, 184, 92, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(223, 184, 92, 0);
+  }
+}
+
+.tot-animate-pulse-gold {
+  animation: totPulseGold 3s infinite ease-in-out;
+}
+
+@keyframes totFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tot-fade-in-up {
+  animation: totFadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Decorative Gold Section Divider */
+.tot-section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px auto 16px;
+}
+
+.tot-section-divider::before,
+.tot-section-divider::after {
+  content: '';
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, #cfa138);
+}
+
+.tot-section-divider::after {
+  background: linear-gradient(90deg, #cfa138, transparent);
+}
+
+.tot-section-divider-diamond {
+  width: 6px;
+  height: 6px;
+  background-color: #cfa138;
+  transform: rotate(45deg);
+}
+
+/* Custom Scrollbars */
+.tot-custom-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.tot-custom-scroll::-webkit-scrollbar-track {
+  background: rgba(16, 38, 29, 0.15);
+  border-radius: 9999px;
+}
+.tot-custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(207, 161, 56, 0.45);
+  border-radius: 9999px;
+}
+.tot-custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(207, 161, 56, 0.75);
+}
+
+/* Input luxury focus ring */
+.tot-input-focus:focus {
+  outline: none;
+  border-color: #cfa138;
+  box-shadow: 0 0 0 3px rgba(207, 161, 56, 0.22);
+}
