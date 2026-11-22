@@ -100,9 +100,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
 
           {/* Col 2: Navigation Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs uppercase tracking-widest text-gold-400 font-bold">
+            <h2 className="text-xs uppercase tracking-widest text-gold-400 font-bold">
               Navigation
-            </h4>
+            </h2>
             <ul className="space-y-2 text-xs sm:text-sm text-sand-200/80 font-light">
               <li>
                 <button
@@ -165,9 +165,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
 
           {/* Col 3: Hours & Dining (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs uppercase tracking-widest text-gold-400 font-bold">
+            <h2 className="text-xs uppercase tracking-widest text-gold-400 font-bold">
               Hours & Service
-            </h4>
+            </h2>
             <div className="space-y-2.5 text-xs sm:text-sm text-mist-400">
               <div>
                 <span className="text-cream-100 font-medium block">Lunch Service</span>
@@ -189,9 +189,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
 
           {/* Col 4: Newsletter / Guest Register (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs uppercase tracking-widest text-gold-400 font-bold">
+            <h2 className="text-xs uppercase tracking-widest text-gold-400 font-bold">
               Guest Register
-            </h4>
+            </h2>
             <p className="text-xs text-mist-400 leading-relaxed">
               Subscribe for private invitations to seasonal tasting menus, white truffle arrivals,
               and cellar uncorkings.

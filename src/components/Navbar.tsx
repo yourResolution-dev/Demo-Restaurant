@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag, PhoneCall, Calendar } from 'lucide-react';
 import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
+import { scrollToSection } from '@/lib/lazy-section';
 
 interface NavbarProps {
   tastingCount: number;
@@ -52,12 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -85;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    scrollToSection(id, -85);
   };
 
   const navLinks = [

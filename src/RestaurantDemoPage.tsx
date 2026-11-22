@@ -1,5 +1,6 @@
 import React, { lazy, useState, useMemo, useEffect } from 'react';
 import { LoadOnFirstUse } from '@/lib/load-on-first-use';
+import { LazySection, registerSectionLoader, scrollToSection } from '@/lib/lazy-section';
 import './styles/restaurant.css';
 import { MENU_ITEMS } from '@/config';
 import { loadTasting, saveTasting } from '@/lib/tasting-storage';
@@ -8,27 +9,47 @@ import { MenuItem, SelectedItem, ReservationConfirmation } from './types/restaur
 import { ResolutionDemoBanner } from './components/ResolutionDemoBanner';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { StorySection } from './components/StorySection';
-import { MenuSection } from './components/MenuSection';
 const DishDetailModal = lazy(() =>
   import('./components/DishDetailModal').then((m) => ({ default: m.DishDetailModal }))
 );
 const TastingDrawer = lazy(() =>
   import('./components/TastingDrawer').then((m) => ({ default: m.TastingDrawer }))
 );
-import { ChefSection } from './components/ChefSection';
-import { GallerySection } from './components/GallerySection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { ReservationSection } from './components/ReservationSection';
 const ReservationSuccessModal = lazy(() =>
   import('./components/ReservationSuccessModal').then((m) => ({
     default: m.ReservationSuccessModal,
   }))
 );
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { BackToTop } from './components/BackToTop';
+
+// Below-the-fold sections load on demand. The same import functions let navigation
+// clicks download everything before scrolling.
+const sectionImports = {
+  about: () => import('./components/StorySection'),
+  menu: () => import('./components/MenuSection'),
+  chef: () => import('./components/ChefSection'),
+  gallery: () => import('./components/GallerySection'),
+  reviews: () => import('./components/TestimonialsSection'),
+  reservation: () => import('./components/ReservationSection'),
+  contact: () => import('./components/ContactSection'),
+};
+const StorySection = lazy(() => sectionImports.about().then((m) => ({ default: m.StorySection })));
+const MenuSection = lazy(() => sectionImports.menu().then((m) => ({ default: m.MenuSection })));
+const ChefSection = lazy(() => sectionImports.chef().then((m) => ({ default: m.ChefSection })));
+const GallerySection = lazy(() =>
+  sectionImports.gallery().then((m) => ({ default: m.GallerySection }))
+);
+const TestimonialsSection = lazy(() =>
+  sectionImports.reviews().then((m) => ({ default: m.TestimonialsSection }))
+);
+const ReservationSection = lazy(() =>
+  sectionImports.reservation().then((m) => ({ default: m.ReservationSection }))
+);
+const ContactSection = lazy(() =>
+  sectionImports.contact().then((m) => ({ default: m.ContactSection }))
+);
 const InquiryModal = lazy(() =>
   import('./components/InquiryModal').then((m) => ({ default: m.InquiryModal }))
 );
@@ -97,14 +118,14 @@ export const RestaurantDemoPage: React.FC = () => {
     setTastingItems([]);
   };
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
+  // Navigation needs every lazy section mounted so targets stay put while scrolling.
+  const [mountAllSections, setMountAllSections] = useState(false);
+  useEffect(() => {
+    registerSectionLoader(async () => {
+      setMountAllSections(true);
+      await Promise.all(Object.values(sectionImports).map((load) => load()));
+    });
+  }, []);
 
   const handleProceedToBooking = () => {
     setIsTastingDrawerOpen(false);
@@ -139,33 +160,71 @@ export const RestaurantDemoPage: React.FC = () => {
         />
 
         {/* 4. Restaurant Story / About Section with Overlapping 10-Yr Badge */}
-        <StorySection />
+        <LazySection id="about" placeholderClass="min-h-[1250px]" force={mountAllSections}>
+          <StorySection />
+        </LazySection>
 
         {/* 5. Signature Menu Section with Category Filters and Dish Cards */}
-        <MenuSection
-          onSelectDish={(dish) => setSelectedDish(dish)}
-          onAddToTasting={handleToggleTasting}
-          selectedDishIds={selectedDishIds}
-          onOpenTastingDrawer={() => setIsTastingDrawerOpen(true)}
-        />
+        <LazySection
+          id="menu"
+          placeholderClass="min-h-[6050px] md:min-h-[3500px]"
+          force={mountAllSections}
+        >
+          <MenuSection
+            onSelectDish={(dish) => setSelectedDish(dish)}
+            onAddToTasting={handleToggleTasting}
+            selectedDishIds={selectedDishIds}
+            onOpenTastingDrawer={() => setIsTastingDrawerOpen(true)}
+          />
+        </LazySection>
 
         {/* 6. Executive Chef Profile with Biography and Signature Quote */}
-        <ChefSection />
+        <LazySection
+          id="chef"
+          placeholderClass="min-h-[1450px] md:min-h-[1400px]"
+          force={mountAllSections}
+        >
+          <ChefSection />
+        </LazySection>
 
         {/* 7. Interactive Restaurant and Food Gallery with Lightbox */}
-        <GallerySection />
+        <LazySection
+          id="gallery"
+          placeholderClass="min-h-[2550px] md:min-h-[2000px]"
+          force={mountAllSections}
+        >
+          <GallerySection />
+        </LazySection>
 
         {/* 8. Verified Diner Testimonials Carousel */}
-        <TestimonialsSection />
+        <LazySection
+          id="reviews"
+          placeholderClass="min-h-[1000px] md:min-h-[800px]"
+          force={mountAllSections}
+        >
+          <TestimonialsSection />
+        </LazySection>
 
         {/* 9. Interactive Table Reservation Form with Validation & Simulated Confirmation */}
-        <ReservationSection
-          onSuccess={(confirmation) => setReservationConfirmation(confirmation)}
-          hasTastingMenuSelected={tastingItems.length > 0}
-        />
+        <LazySection
+          id="reservation"
+          placeholderClass="min-h-[1650px] md:min-h-[1420px]"
+          force={mountAllSections}
+        >
+          <ReservationSection
+            onSuccess={(confirmation) => setReservationConfirmation(confirmation)}
+            hasTastingMenuSelected={tastingItems.length > 0}
+          />
+        </LazySection>
 
         {/* 10. Contact, Hours, Valet & Location Section */}
-        <ContactSection />
+        <LazySection
+          id="contact"
+          placeholderClass="min-h-[1750px] md:min-h-[1350px]"
+          force={mountAllSections}
+        >
+          <ContactSection />
+        </LazySection>
       </main>
 
       {/* 11. Premium Forest Green & Gold Footer */}
