@@ -7,7 +7,9 @@ import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outDir = path.join(root, 'public', 'images');
-const sources = JSON.parse(await readFile(path.join(root, 'scripts', 'image-sources.json'), 'utf8'));
+const sources = JSON.parse(
+  await readFile(path.join(root, 'scripts', 'image-sources.json'), 'utf8')
+);
 
 const jobs = [
   ...sources.photos.flatMap((id) => [480, 960, 1600].map((w) => ({ id, w }))),
@@ -47,7 +49,9 @@ for (const id of sources.og ?? []) {
   } catch {
     // not downloaded yet
   }
-  const res = await fetch(`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&h=630&q=80&fm=jpg`);
+  const res = await fetch(
+    `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&h=630&q=80&fm=jpg`
+  );
   if (!res.ok) {
     console.error(`FAIL ${res.status} og image ${id}`);
     failed++;
@@ -58,5 +62,7 @@ for (const id of sources.og ?? []) {
   bytes += buf.length;
 }
 
-console.log(`done: ${jobs.length - failed}/${jobs.length} files, ${(bytes / 1024 / 1024).toFixed(1)} MB downloaded`);
+console.log(
+  `done: ${jobs.length - failed}/${jobs.length} files, ${(bytes / 1024 / 1024).toFixed(1)} MB downloaded`
+);
 if (failed) process.exit(1);

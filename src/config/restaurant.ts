@@ -43,7 +43,8 @@ export const CHEF_INFO = {
   shortName: 'Chef Marco',
   title: 'Executive Chef & Culinary Director',
   accolades: '2 Michelin Star Heritage • 22 Years Gastronomic Mastery',
-  quote: 'Cooking is not merely chemistry; it is poetry served on porcelain. Every plate at The Olive Table is an intimate invitation to pause, breathe, and cherish life’s sublime moments.',
+  quote:
+    'Cooking is not merely chemistry; it is poetry served on porcelain. Every plate at The Olive Table is an intimate invitation to pause, breathe, and cherish life’s sublime moments.',
   bio: 'Born in the hills outside Florence and trained across the culinary capitals of Lyon, San Sebastián, and Milan, Chef Marco Valenti has spent over two decades redefining Mediterranean gastronomy. Since founding The Olive Table in 2014, Chef Marco has championed estate cold-pressed olive oils, zero-waste kitchen philosophies, and heirloom grain revivals.',
   image: '/images/photo-1577219491135-ce391730fb2c-960.webp',
   signatureDish: 'House-Extruded 30-Yolk Black Truffle Tagliolini',

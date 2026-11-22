@@ -35,12 +35,14 @@ export const TestimonialsSection: React.FC = () => {
   const current = TESTIMONIALS[currentIndex];
 
   return (
-    <section id="reviews" className="py-16 sm:py-20 lg:py-28 bg-forest-900 text-cream-100 relative overflow-hidden">
+    <section
+      id="reviews"
+      className="py-16 sm:py-20 lg:py-28 bg-forest-900 text-cream-100 relative overflow-hidden"
+    >
       {/* Background radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(207,161,56,0.07)_0%,transparent_70%)]" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="tot-font-display italic text-gold-400 text-xl sm:text-2xl font-normal block mb-1">
@@ -50,7 +52,7 @@ export const TestimonialsSection: React.FC = () => {
             Voices of Our Guests
           </h2>
           <div className="w-20 h-0.5 bg-gold-400 mx-auto mb-4" />
-          
+
           <div className="flex items-center justify-center gap-1.5 text-gold-400 mt-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-4 h-4 fill-gold-400 text-gold-400" />
@@ -70,7 +72,9 @@ export const TestimonialsSection: React.FC = () => {
           {/* Main Testimonial Card */}
           <div
             className={`p-6 sm:p-10 lg:p-12 rounded-3xl bg-forest-800/85 border border-gold-400/30 backdrop-blur-md shadow-2xl relative transition-all duration-300 ${
-              fadeState === 'fade-in' ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2'
+              fadeState === 'fade-in'
+                ? 'opacity-100 transform translate-y-0'
+                : 'opacity-0 transform translate-y-2'
             }`}
           >
             <Quote className="w-12 h-12 text-gold-400/15 absolute top-5 right-6 sm:top-6 sm:right-8 pointer-events-none" />
@@ -79,7 +83,8 @@ export const TestimonialsSection: React.FC = () => {
               {/* Diner Avatar */}
               <div className="relative flex-shrink-0">
                 <ResponsiveImage
- sizes="96px" widths={[160, 320]}
+                  sizes="96px"
+                  widths={[160, 320]}
                   src={current.avatar}
                   alt={current.name}
                   className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-2 border-gold-400 shadow-lg"
@@ -155,7 +160,8 @@ export const TestimonialsSection: React.FC = () => {
                   aria-label={`View review by ${t.name}`}
                 >
                   <ResponsiveImage
- sizes="24px" widths={[160, 320]}
+                    sizes="24px"
+                    widths={[160, 320]}
                     src={t.avatar}
                     alt={t.name}
                     className="w-6 h-6 rounded-full object-cover"
@@ -178,7 +184,6 @@ export const TestimonialsSection: React.FC = () => {
             </button>
           </div>
         </div>
-
       </div>
     </section>
   );

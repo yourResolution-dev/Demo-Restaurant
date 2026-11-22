@@ -2,7 +2,13 @@ import React, { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GalleryItem } from '../types/restaurant.types';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
 
@@ -55,7 +61,12 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
               </div>
 
               <DialogClose asChild>
-                <Button variant="secondary" size="icon" className="h-10 w-10 text-cream-100" aria-label="Close lightbox">
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="h-10 w-10 text-cream-100"
+                  aria-label="Close lightbox"
+                >
                   <X className="h-5 w-5" />
                 </Button>
               </DialogClose>
@@ -82,7 +93,7 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <ResponsiveImage
- sizes="(min-width:1024px) 64rem, 100vw"
+                sizes="(min-width:1024px) 64rem, 100vw"
                 src={currentItem.imageUrl}
                 alt={currentItem.title}
                 className="max-h-[68vh] w-auto max-w-full rounded-2xl border border-gold-400/30 object-contain shadow-2xl"
@@ -125,7 +136,11 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
                   )}
                 >
                   <ResponsiveImage
- sizes="48px" src={item.imageUrl} alt="" className="h-full w-full object-cover" />
+                    sizes="48px"
+                    src={item.imageUrl}
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
                 </button>
               ))}
             </div>

@@ -1,11 +1,11 @@
 export type DietaryTag = 'Vegetarian' | 'Chef Special' | 'Gluten Free' | 'Signature' | 'Seafood';
 
-export type MenuCategory = 
-  | 'All' 
-  | 'Best Appetizers' 
-  | 'Mains & Specialties' 
-  | 'Woodfire & Pasta' 
-  | 'Decadent Desserts' 
+export type MenuCategory =
+  | 'All'
+  | 'Best Appetizers'
+  | 'Mains & Specialties'
+  | 'Woodfire & Pasta'
+  | 'Decadent Desserts'
   | 'Artisanal Cocktails & Wines';
 
 export interface MenuItem {
@@ -56,8 +56,9 @@ export interface ReservationFormData {
   date: string;
   timeSlot: string;
   guests: number;
-  seatingArea: 'Main Dining Room' | 'Garden Terrace' | 'Chef\'s Counter' | 'Private Wine Cellar';
-  occasion: 'Casual Dining' | 'Birthday Celebration' | 'Anniversary' | 'Business Dinner' | 'Romantic Date';
+  seatingArea: 'Main Dining Room' | 'Garden Terrace' | "Chef's Counter" | 'Private Wine Cellar';
+  occasion:
+    'Casual Dining' | 'Birthday Celebration' | 'Anniversary' | 'Business Dinner' | 'Romantic Date';
   specialRequests: string;
   tastingMenuSelected?: boolean;
 }

@@ -9,13 +9,10 @@ const SheetTrigger = SheetPrimitive.Trigger;
 const SheetClose = SheetPrimitive.Close;
 
 /** Right-hand slide-over built on Radix Dialog (focus trap, Escape, aria). */
-const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Content>, React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>>(({
-  className,
-  children,
-  onOpenAutoFocus,
-  onCloseAutoFocus,
-  ...props
-}, ref) => {
+const SheetContent = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>
+>(({ className, children, onOpenAutoFocus, onCloseAutoFocus, ...props }, ref) => {
   const focus = useReturnFocus();
   return (
     <SheetPrimitive.Portal>
@@ -24,7 +21,7 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
         className="fixed inset-0 z-50 bg-forest-900/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"
       />
       <SheetPrimitive.Content
-      ref={ref}
+        ref={ref}
         data-slot="sheet-content"
         className={cn(
           'fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-md flex-col border-l border-gold-400/40 bg-cream-50 shadow-2xl outline-none duration-300 data-[state=open]:animate-in data-[state=open]:slide-in-from-right data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right',
@@ -47,7 +44,10 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
 });
 SheetContent.displayName = 'SheetContent';
 
-const SheetTitle = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Title>, React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>>(({ className, ...props }, ref) => {
+const SheetTitle = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
+>(({ className, ...props }, ref) => {
   return (
     <SheetPrimitive.Title
       ref={ref}
@@ -59,10 +59,10 @@ const SheetTitle = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Title
 });
 SheetTitle.displayName = 'SheetTitle';
 
-const SheetDescription = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Description>, React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>>(({
-  className,
-  ...props
-}, ref) => {
+const SheetDescription = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
+>(({ className, ...props }, ref) => {
   return (
     <SheetPrimitive.Description
       ref={ref}

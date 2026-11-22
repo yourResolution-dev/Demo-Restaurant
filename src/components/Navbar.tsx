@@ -23,7 +23,16 @@ export const Navbar: React.FC<NavbarProps> = ({
       setIsScrolled(window.scrollY > 30);
 
       // Section scroll spy
-      const sections = ['home', 'about', 'menu', 'chef', 'gallery', 'reviews', 'reservation', 'contact'];
+      const sections = [
+        'home',
+        'about',
+        'menu',
+        'chef',
+        'gallery',
+        'reviews',
+        'reservation',
+        'contact',
+      ];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -111,9 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
                   className={`px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium transition-all cursor-pointer relative ${
-                    isActive
-                      ? 'text-gold-400 font-semibold'
-                      : 'text-sand-200 hover:text-gold-400'
+                    isActive ? 'text-gold-400 font-semibold' : 'text-sand-200 hover:text-gold-400'
                   }`}
                 >
                   {link.label}
@@ -163,7 +170,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-label="Toggle Navigation Menu"
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              ) : (
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+              )}
             </button>
           </div>
         </div>

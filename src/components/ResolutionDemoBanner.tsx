@@ -43,7 +43,9 @@ export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOp
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             <span className="font-semibold text-gold-400">ReSolution Showcase:</span>
-            <span className="hidden md:inline">{RESTAURANT_INFO.brandName} Luxury Mediterranean Dining</span>
+            <span className="hidden md:inline">
+              {RESTAURANT_INFO.brandName} Luxury Mediterranean Dining
+            </span>
           </span>
         </div>
 

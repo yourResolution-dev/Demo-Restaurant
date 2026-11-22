@@ -24,7 +24,7 @@ export const FloatingWhatsApp: React.FC = () => {
         title="Chat on WhatsApp"
       >
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
-        
+
         {/* Subtle status pulse indicator */}
         <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-gold-400 border-2 border-forest-900 animate-pulse" />
       </button>

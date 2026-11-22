@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Star, ArrowRight, Calendar, ChevronDown, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import {
+  Star,
+  ArrowRight,
+  Calendar,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play,
+} from 'lucide-react';
 import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
@@ -22,21 +31,24 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
     {
       title: 'A Taste Worth Remembering.',
       kicker: 'Savor the Moment',
-      subtitle: 'Where culinary mastery unfolds with every bite. Experience an exquisite symphony of taste, tradition, and timeless atmosphere.',
+      subtitle:
+        'Where culinary mastery unfolds with every bite. Experience an exquisite symphony of taste, tradition, and timeless atmosphere.',
       badge: 'MICHELIN RECOMMENDED 2026',
       image: '/images/photo-1550966871-3ed3cdb5ed0c-1600.webp',
     },
     {
       title: 'Artisanal Mediterranean Terroir.',
       kicker: 'Heritage & Craft',
-      subtitle: 'Cold-pressed estate olive oils, line-caught sustainable seafood, and heirloom produce orchestrated into poetic fine dining.',
+      subtitle:
+        'Cold-pressed estate olive oils, line-caught sustainable seafood, and heirloom produce orchestrated into poetic fine dining.',
       badge: 'ESTATE GROWN & CHEF CRAFTED',
       image: '/images/photo-1517248135467-4c7edcad34c4-1600.webp',
     },
     {
       title: 'Intimate Candlelit Elegance.',
       kicker: 'Atmosphere & Moments',
-      subtitle: 'A sanctuary of slow dining where each course is paired with curated vintage wines under ambient amber glow.',
+      subtitle:
+        'A sanctuary of slow dining where each course is paired with curated vintage wines under ambient amber glow.',
       badge: 'PRIVATE SALON & WINE CELLAR',
       image: '/images/photo-1543007630-9710e4a00a20-1600.webp',
     },
@@ -77,7 +89,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
             }`}
           >
             <ResponsiveImage
- sizes="100vw" priority={idx === 0}
+              sizes="100vw"
+              priority={idx === 0}
               src={slide.image}
               alt={slide.title}
               className="w-full h-full object-cover object-center filter brightness-[0.34] contrast-[1.1] transform scale-105"
@@ -111,9 +124,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
           {current.title.includes('Remembering.') ? (
             <>
               A Taste Worth{' '}
-              <span className="tot-gold-gradient-text italic font-normal">
-                Remembering.
-              </span>
+              <span className="tot-gold-gradient-text italic font-normal">Remembering.</span>
             </>
           ) : (
             current.title
@@ -135,7 +146,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
             <ArrowRight className="w-4 h-4" />
           </Button>
 
-          <Button variant="outline"
+          <Button
+            variant="outline"
             onClick={onBookTable}
             className="w-full sm:w-auto px-7 py-3 text-xs sm:text-sm flex items-center justify-center gap-2"
           >

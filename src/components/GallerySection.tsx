@@ -8,13 +8,7 @@ export const GallerySection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = [
-    'All',
-    'Interior & Ambiance',
-    'Plated Dishes',
-    'Cocktails & Wine',
-    'Terrace',
-  ];
+  const categories = ['All', 'Interior & Ambiance', 'Plated Dishes', 'Cocktails & Wine', 'Terrace'];
 
   const filteredItems = useMemo(() => {
     if (selectedCategory === 'All') return GALLERY_ITEMS;
@@ -22,9 +16,11 @@ export const GallerySection: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <section id="gallery" className="py-16 sm:py-20 lg:py-28 bg-cream-50 text-charcoal-900 relative">
+    <section
+      id="gallery"
+      className="py-16 sm:py-20 lg:py-28 bg-cream-50 text-charcoal-900 relative"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Heading matching screenshot: "Our Gallery" */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
@@ -35,7 +31,9 @@ export const GallerySection: React.FC = () => {
           </h2>
           <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
           <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            A glimpse into the sensory atmosphere of {RESTAURANT_INFO.brandName}. Where centuries-old architectural charm, vintage cellars, open woodfire, and culinary art converge.
+            A glimpse into the sensory atmosphere of {RESTAURANT_INFO.brandName}. Where
+            centuries-old architectural charm, vintage cellars, open woodfire, and culinary art
+            converge.
           </p>
         </div>
 
@@ -76,13 +74,11 @@ export const GallerySection: React.FC = () => {
                   }
                 }}
                 className={`relative rounded-2xl overflow-hidden shadow-md group cursor-pointer border border-gold-400/25 hover:border-gold-400 transition-all duration-300 ${
-                  isFeatured
-                    ? 'sm:col-span-2 h-64 sm:h-72 lg:h-80'
-                    : 'h-64 sm:h-72 lg:h-80'
+                  isFeatured ? 'sm:col-span-2 h-64 sm:h-72 lg:h-80' : 'h-64 sm:h-72 lg:h-80'
                 }`}
               >
                 <ResponsiveImage
- sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                  sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   src={item.imageUrl}
                   alt={item.title}
                   className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
@@ -116,7 +112,6 @@ export const GallerySection: React.FC = () => {
             );
           })}
         </div>
-
       </div>
 
       {/* Lightbox Modal */}

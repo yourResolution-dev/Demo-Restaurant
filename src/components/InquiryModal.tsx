@@ -35,8 +35,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
   };
 
   const update =
-    (key: keyof typeof form) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm({ ...form, [key]: e.target.value });
 
   const labelClass = 'normal-case tracking-normal mb-1';
@@ -54,7 +53,8 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
           </span>
           <DialogTitle className="text-cream-100">Want a Website Like This?</DialogTitle>
           <DialogDescription className="mx-auto mt-1 max-w-sm font-light">
-            Get a high-converting, bespoke digital flagship designed specifically for your culinary establishment or luxury brand.
+            Get a high-converting, bespoke digital flagship designed specifically for your culinary
+            establishment or luxury brand.
           </DialogDescription>
         </div>
 
@@ -67,7 +67,8 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
               </div>
               <h4 className="font-serif text-xl font-bold text-forest-900">Inquiry Received!</h4>
               <p className="mx-auto max-w-sm text-xs leading-relaxed text-charcoal-500">
-                Thank you, <strong className="text-forest-900">{form.name}</strong>. The ReSolution team will connect with you on WhatsApp / Phone within 2 hours.
+                Thank you, <strong className="text-forest-900">{form.name}</strong>. The ReSolution
+                team will connect with you on WhatsApp / Phone within 2 hours.
               </p>
               <Button variant="whatsapp" onClick={handleWhatsApp}>
                 <MessageSquare className="h-4 w-4" />
@@ -79,12 +80,31 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <Field id="inquiry-name" label="Your Name *" labelClassName={labelClass}>
                   {(c) => (
-                    <Input {...c} type="text" required placeholder="e.g. Ranajit Gupta" value={form.name} onChange={update('name')} className="bg-white px-3.5 text-xs" />
+                    <Input
+                      {...c}
+                      type="text"
+                      required
+                      placeholder="e.g. Ranajit Gupta"
+                      value={form.name}
+                      onChange={update('name')}
+                      className="bg-white px-3.5 text-xs"
+                    />
                   )}
                 </Field>
-                <Field id="inquiry-business" label="Business / Brand Name" labelClassName={labelClass}>
+                <Field
+                  id="inquiry-business"
+                  label="Business / Brand Name"
+                  labelClassName={labelClass}
+                >
                   {(c) => (
-                    <Input {...c} type="text" placeholder="e.g. Olive Bistro" value={form.businessName} onChange={update('businessName')} className="bg-white px-3.5 text-xs" />
+                    <Input
+                      {...c}
+                      type="text"
+                      placeholder="e.g. Olive Bistro"
+                      value={form.businessName}
+                      onChange={update('businessName')}
+                      className="bg-white px-3.5 text-xs"
+                    />
                   )}
                 </Field>
               </div>
@@ -92,19 +112,45 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <Field id="inquiry-phone" label="Phone / WhatsApp *" labelClassName={labelClass}>
                   {(c) => (
-                    <Input {...c} type="tel" required placeholder="e.g. +91 93320 12109" value={form.phone} onChange={update('phone')} className="bg-white px-3.5 text-xs" />
+                    <Input
+                      {...c}
+                      type="tel"
+                      required
+                      placeholder="e.g. +91 93320 12109"
+                      value={form.phone}
+                      onChange={update('phone')}
+                      className="bg-white px-3.5 text-xs"
+                    />
                   )}
                 </Field>
                 <Field id="inquiry-email" label="Email" labelClassName={labelClass}>
                   {(c) => (
-                    <Input {...c} type="email" placeholder="e.g. hello@mybrand.com" value={form.email} onChange={update('email')} className="bg-white px-3.5 text-xs" />
+                    <Input
+                      {...c}
+                      type="email"
+                      placeholder="e.g. hello@mybrand.com"
+                      value={form.email}
+                      onChange={update('email')}
+                      className="bg-white px-3.5 text-xs"
+                    />
                   )}
                 </Field>
               </div>
 
-              <Field id="inquiry-notes" label="Tell us about your project" labelClassName={labelClass}>
+              <Field
+                id="inquiry-notes"
+                label="Tell us about your project"
+                labelClassName={labelClass}
+              >
                 {(c) => (
-                  <Textarea {...c} rows={2} placeholder="Website redesign, online table reservations, tasting menu showcase..." value={form.notes} onChange={update('notes')} className="bg-white px-3.5 text-xs" />
+                  <Textarea
+                    {...c}
+                    rows={2}
+                    placeholder="Website redesign, online table reservations, tasting menu showcase..."
+                    value={form.notes}
+                    onChange={update('notes')}
+                    className="bg-white px-3.5 text-xs"
+                  />
                 )}
               </Field>
 
@@ -113,7 +159,11 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
                   <Send className="h-3.5 w-3.5" />
                   <span>Request Proposal</span>
                 </Button>
-                <Button variant="secondary" onClick={handleWhatsApp} className="w-full px-5 py-3 sm:w-auto">
+                <Button
+                  variant="secondary"
+                  onClick={handleWhatsApp}
+                  className="w-full px-5 py-3 sm:w-auto"
+                >
                   <MessageSquare className="h-3.5 w-3.5" />
                   <span>WhatsApp Us</span>
                 </Button>

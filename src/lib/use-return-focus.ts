@@ -10,7 +10,8 @@ export function useReturnFocus() {
 
   return {
     onOpenAutoFocus: () => {
-      previous.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      previous.current =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
     },
     onCloseAutoFocus: (event: Event) => {
       const el = previous.current;

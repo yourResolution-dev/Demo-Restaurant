@@ -4,7 +4,13 @@ import { ReservationFormData, ReservationConfirmation } from '../types/restauran
 import { Button } from '@/components/ui/button';
 import { Field } from '@/components/ui/field';
 import { Input, Textarea } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { RESTAURANT_INFO, CHEF_INFO } from '@/config';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
 
@@ -110,9 +116,11 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
   };
 
   return (
-    <section id="reservation" className="py-16 sm:py-20 lg:py-28 bg-cream-50 text-charcoal-900 relative">
+    <section
+      id="reservation"
+      className="py-16 sm:py-20 lg:py-28 bg-cream-50 text-charcoal-900 relative"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Heading matching screenshot */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
@@ -123,23 +131,23 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
           </h2>
           <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
           <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            Reserve your table for an evening of sensory indulgence. We recommend booking at least 24 hours in advance for prime weekend dinner slots.
+            Reserve your table for an evening of sensory indulgence. We recommend booking at least
+            24 hours in advance for prime weekend dinner slots.
           </p>
         </div>
 
         {/* 2-Column Desktop / Stacked Mobile Layout matching reference screenshot */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-          
           {/* Left Column: Form Card (7 cols) */}
           <div className="lg:col-span-7 bg-card rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-gold-400/30 flex flex-col justify-between">
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" noValidate>
-
               {/* Optional Tasting Menu Indicator */}
               {hasTastingMenuSelected && (
                 <div className="p-3 rounded-xl bg-forest-800/10 border border-gold-400/40 flex items-center gap-2.5 text-xs text-forest-900">
                   <Utensils className="w-4 h-4 text-gold-700 flex-shrink-0" />
                   <span>
-                    <strong>Tasting Flight Linked:</strong> Your selected courses will be forwarded to {CHEF_INFO.shortName}'s kitchen.
+                    <strong>Tasting Flight Linked:</strong> Your selected courses will be forwarded
+                    to {CHEF_INFO.shortName}'s kitchen.
                   </span>
                 </div>
               )}
@@ -249,17 +257,28 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                     <Select
                       value={formData.seatingArea}
                       onValueChange={(v) =>
-                        setFormData({ ...formData, seatingArea: v as ReservationFormData['seatingArea'] })
+                        setFormData({
+                          ...formData,
+                          seatingArea: v as ReservationFormData['seatingArea'],
+                        })
                       }
                     >
                       <SelectTrigger {...c}>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Main Dining Room">Main Dining Room (Chandelier Hall)</SelectItem>
-                        <SelectItem value="Garden Terrace">Garden Terrace (Alfresco Olive Trees)</SelectItem>
-                        <SelectItem value="Chef's Counter">Chef's Counter (Live Open Kitchen)</SelectItem>
-                        <SelectItem value="Private Wine Cellar">Private Wine Cellar (Exclusive VIP)</SelectItem>
+                        <SelectItem value="Main Dining Room">
+                          Main Dining Room (Chandelier Hall)
+                        </SelectItem>
+                        <SelectItem value="Garden Terrace">
+                          Garden Terrace (Alfresco Olive Trees)
+                        </SelectItem>
+                        <SelectItem value="Chef's Counter">
+                          Chef's Counter (Live Open Kitchen)
+                        </SelectItem>
+                        <SelectItem value="Private Wine Cellar">
+                          Private Wine Cellar (Exclusive VIP)
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   )}
@@ -278,9 +297,13 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Romantic Date">Romantic Date / Couple</SelectItem>
-                        <SelectItem value="Anniversary">Wedding / Relationship Anniversary</SelectItem>
+                        <SelectItem value="Anniversary">
+                          Wedding / Relationship Anniversary
+                        </SelectItem>
                         <SelectItem value="Birthday Celebration">Birthday Celebration</SelectItem>
-                        <SelectItem value="Business Dinner">Executive / Corporate Meeting</SelectItem>
+                        <SelectItem value="Business Dinner">
+                          Executive / Corporate Meeting
+                        </SelectItem>
                         <SelectItem value="Casual Dining">Casual Fine Dining</SelectItem>
                       </SelectContent>
                     </Select>
@@ -304,7 +327,9 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
               {/* Instant Simulation Notice */}
               <div className="flex items-center gap-2 text-xs text-charcoal-500 pt-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span>Instant simulated table allocation pass with reference code. No payment required.</span>
+                <span>
+                  Instant simulated table allocation pass with reference code. No payment required.
+                </span>
               </div>
 
               {/* Submit Button */}
@@ -326,14 +351,13 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                   </>
                 )}
               </Button>
-
             </form>
           </div>
 
           {/* Right Column: Tall Candlelit Ambiance Photo (5 cols) matching screenshot */}
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-2xl min-h-[420px] lg:min-h-full border border-gold-400/35 flex flex-col justify-end">
             <ResponsiveImage
- sizes="(min-width:1024px) 40vw, 100vw"
+              sizes="(min-width:1024px) 40vw, 100vw"
               src="/images/photo-1550966871-3ed3cdb5ed0c-960.webp"
               alt={`${RESTAURANT_INFO.brandName} Candlelit Dining`}
               className="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 hover:scale-105 transition-transform duration-700"
@@ -350,7 +374,8 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                 Looking for Exclusive Private Salons?
               </h3>
               <p className="text-xs text-sand-200/90 font-light leading-relaxed mb-3">
-                For celebrations larger than 12 guests or bespoke wine cellar tastings, our Maître D' is at your service.
+                For celebrations larger than 12 guests or bespoke wine cellar tastings, our Maître
+                D' is at your service.
               </p>
               <a
                 href={`tel:${RESTAURANT_INFO.phone.replace(/[^+\d]/g, '')}`}
@@ -360,9 +385,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
               </a>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

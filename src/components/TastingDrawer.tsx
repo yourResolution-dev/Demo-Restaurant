@@ -2,7 +2,13 @@ import React from 'react';
 import { Trash2, Plus, Minus, Calendar, ShoppingBag, ArrowRight, X } from 'lucide-react';
 import { SelectedItem } from '../types/restaurant.types';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+} from '@/components/ui/sheet';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 interface TastingDrawerProps {
@@ -57,9 +63,12 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-gold-400/30 bg-cream-150 text-gold-700">
                 <ShoppingBag className="h-8 w-8" />
               </div>
-              <h4 className="mb-2 font-serif text-lg font-bold text-forest-900">No Dishes Selected Yet</h4>
+              <h4 className="mb-2 font-serif text-lg font-bold text-forest-900">
+                No Dishes Selected Yet
+              </h4>
               <p className="mb-6 text-xs leading-relaxed text-charcoal-500">
-                Browse our signature menu and click "Add to Tasting" to curate your personalized dining flight.
+                Browse our signature menu and click "Add to Tasting" to curate your personalized
+                dining flight.
               </p>
               <Button onClick={onClose} className="shadow-md">
                 Explore Signature Menu
@@ -84,15 +93,19 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
                   className="group flex items-center gap-3 rounded-2xl border border-gold-400/25 bg-white p-3 shadow-sm"
                 >
                   <ResponsiveImage
- sizes="64px"
+                    sizes="64px"
                     src={item.image}
                     alt={item.name}
                     className="h-15 w-15 flex-shrink-0 rounded-xl object-cover sm:h-16 sm:w-16"
                   />
 
                   <div className="min-w-0 flex-1">
-                    <h4 className="truncate font-serif text-sm font-bold text-forest-900">{item.name}</h4>
-                    <span className="mb-0.5 block truncate text-[11px] text-charcoal-500">{item.category}</span>
+                    <h4 className="truncate font-serif text-sm font-bold text-forest-900">
+                      {item.name}
+                    </h4>
+                    <span className="mb-0.5 block truncate text-[11px] text-charcoal-500">
+                      {item.category}
+                    </span>
                     <span className="text-xs font-bold text-gold-700">
                       ₹{(item.price * quantity).toLocaleString('en-IN')}
                     </span>
@@ -148,14 +161,20 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
               </div>
               <div className="flex items-baseline justify-between border-t border-gold-400/20 pt-2 text-sm font-bold text-forest-900">
                 <span>Estimated Total (INR):</span>
-                <span className="font-serif text-xl text-gold-700">₹{totalEstimate.toLocaleString('en-IN')}</span>
+                <span className="font-serif text-xl text-gold-700">
+                  ₹{totalEstimate.toLocaleString('en-IN')}
+                </span>
               </div>
               <p className="text-[11px] italic text-charcoal-500/80">
                 *Taxes & service added at table. This flight links directly to your reservation.
               </p>
             </div>
 
-            <Button onClick={onProceedToBooking} size="lg" className="w-full py-3.5 text-xs shadow-lg sm:text-sm">
+            <Button
+              onClick={onProceedToBooking}
+              size="lg"
+              className="w-full py-3.5 text-xs shadow-lg sm:text-sm"
+            >
               <Calendar className="h-4 w-4" />
               <span>Reserve Table with this Tasting Flight</span>
               <ArrowRight className="h-3.5 w-3.5" />

@@ -7,14 +7,25 @@ const controlClasses =
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentPropsWithoutRef<'input'>>(
   ({ className, type, ...props }, ref) => (
-    <input ref={ref} type={type} data-slot="input" className={cn(controlClasses, className)} {...props} />
+    <input
+      ref={ref}
+      type={type}
+      data-slot="input"
+      className={cn(controlClasses, className)}
+      {...props}
+    />
   )
 );
 Input.displayName = 'Input';
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentPropsWithoutRef<'textarea'>>(
   ({ className, ...props }, ref) => (
-    <textarea ref={ref} data-slot="textarea" className={cn(controlClasses, 'resize-none', className)} {...props} />
+    <textarea
+      ref={ref}
+      data-slot="textarea"
+      className={cn(controlClasses, 'resize-none', className)}
+      {...props}
+    />
   )
 );
 Textarea.displayName = 'Textarea';

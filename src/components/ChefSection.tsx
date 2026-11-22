@@ -5,12 +5,14 @@ import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 export const ChefSection: React.FC = () => {
   return (
-    <section id="chef" className="py-16 sm:py-20 lg:py-28 bg-forest-900 text-cream-100 relative overflow-hidden">
+    <section
+      id="chef"
+      className="py-16 sm:py-20 lg:py-28 bg-forest-900 text-cream-100 relative overflow-hidden"
+    >
       {/* Background radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(207,161,56,0.09)_0%,transparent_65%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="tot-font-display italic text-gold-400 text-xl sm:text-2xl font-normal block mb-1">
@@ -23,18 +25,16 @@ export const ChefSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
           {/* Chef Image Column (5 cols) */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              
               {/* Gold Border Decorative Frame */}
               <div className="absolute -inset-3 sm:-inset-4 rounded-3xl border border-gold-400/35 transform -rotate-1 hidden sm:block pointer-events-none" />
 
               {/* Portrait Card */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-gold-400/40 bg-forest-800">
                 <ResponsiveImage
- sizes="(min-width:1024px) 40vw, 100vw"
+                  sizes="(min-width:1024px) 40vw, 100vw"
                   src={CHEF_INFO.image}
                   alt={CHEF_INFO.name}
                   className="w-full h-[360px] sm:h-[450px] lg:h-[500px] object-cover object-top hover:scale-105 transition-transform duration-700 filter brightness-95"
@@ -55,13 +55,11 @@ export const ChefSection: React.FC = () => {
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
 
           {/* Chef Bio & Signature Quote Column (7 cols) */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-            
             {/* Signature Quote in Large Serif Italic */}
             <div className="relative p-6 sm:p-8 rounded-2xl bg-forest-800/80 border border-gold-400/30 backdrop-blur-md shadow-xl">
               <Quote className="w-10 h-10 text-gold-400/20 absolute top-4 right-4 pointer-events-none" />
@@ -80,7 +78,10 @@ export const ChefSection: React.FC = () => {
             <div className="space-y-3.5 text-sm sm:text-base text-sand-200/90 font-light leading-relaxed">
               <p>{CHEF_INFO.bio}</p>
               <p>
-                Under {CHEF_INFO.shortName}'s vision, every dinner at {RESTAURANT_INFO.brandName} is designed as an intimate theatrical experience: from the tableside aroma of charred wild rosemary to the crisp crackle of handmade sea salt on melt-in-your-mouth seafood.
+                Under {CHEF_INFO.shortName}'s vision, every dinner at {RESTAURANT_INFO.brandName} is
+                designed as an intimate theatrical experience: from the tableside aroma of charred
+                wild rosemary to the crisp crackle of handmade sea salt on melt-in-your-mouth
+                seafood.
               </p>
             </div>
 
@@ -106,9 +107,7 @@ export const ChefSection: React.FC = () => {
                 ))}
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     </section>

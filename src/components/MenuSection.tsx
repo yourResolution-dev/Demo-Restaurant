@@ -34,7 +34,11 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
   ];
 
   const dietaryFilters: ('All' | DietaryTag)[] = [
-    'All', 'Vegetarian', 'Chef Special', 'Gluten Free', 'Seafood',
+    'All',
+    'Vegetarian',
+    'Chef Special',
+    'Gluten Free',
+    'Seafood',
   ];
 
   const filteredItems = useMemo(() => {
@@ -54,11 +58,11 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
   }, [activeCategory, selectedTag, searchQuery]);
 
   const tagColors: Record<string, string> = {
-    'Vegetarian': 'bg-emerald-100 text-emerald-800 border-emerald-300',
+    Vegetarian: 'bg-emerald-100 text-emerald-800 border-emerald-300',
     'Chef Special': 'bg-gold-400/25 text-gold-700 border-gold-400/40',
     'Gluten Free': 'bg-blue-100 text-blue-800 border-blue-300',
-    'Signature': 'bg-forest-800 text-gold-400 border-gold-400/50',
-    'Seafood': 'bg-sky-100 text-sky-800 border-sky-300',
+    Signature: 'bg-forest-800 text-gold-400 border-gold-400/50',
+    Seafood: 'bg-sky-100 text-sky-800 border-sky-300',
   };
 
   const handleClearFilters = () => {
@@ -70,7 +74,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
   return (
     <section id="menu" className="py-16 sm:py-20 lg:py-28 bg-cream-100 text-charcoal-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Section Heading matching reference mockup */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
@@ -81,7 +84,8 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
           </h2>
           <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
           <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            Curated by Executive {CHEF_INFO.name}. Explore cold-pressed estate olive oils, fresh extruded pastas, and wood-fired delicacies.
+            Curated by Executive {CHEF_INFO.name}. Explore cold-pressed estate olive oils, fresh
+            extruded pastas, and wood-fired delicacies.
           </p>
         </div>
 
@@ -152,9 +156,20 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
         {/* Results Counter / Filter status */}
         <div className="flex items-center justify-between mb-6 text-xs text-charcoal-500 px-1">
           <span>
-            Showing <strong className="text-forest-900">{filteredItems.length}</strong> {filteredItems.length === 1 ? 'dish' : 'dishes'}
-            {activeCategory !== 'All' && <span> in <span className="font-semibold text-forest-900">{activeCategory}</span></span>}
-            {selectedTag !== 'All' && <span> • Filtered by <span className="font-semibold text-gold-700">{selectedTag}</span></span>}
+            Showing <strong className="text-forest-900">{filteredItems.length}</strong>{' '}
+            {filteredItems.length === 1 ? 'dish' : 'dishes'}
+            {activeCategory !== 'All' && (
+              <span>
+                {' '}
+                in <span className="font-semibold text-forest-900">{activeCategory}</span>
+              </span>
+            )}
+            {selectedTag !== 'All' && (
+              <span>
+                {' '}
+                • Filtered by <span className="font-semibold text-gold-700">{selectedTag}</span>
+              </span>
+            )}
           </span>
           {(activeCategory !== 'All' || selectedTag !== 'All' || searchQuery) && (
             <button
@@ -170,12 +185,13 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
         {filteredItems.length === 0 ? (
           <div className="text-center py-16 px-4 bg-white rounded-3xl border border-dashed border-gold-400/40 max-w-lg mx-auto">
             <ChefHat className="w-12 h-12 text-gold-400/60 mx-auto mb-3" />
-            <h3 className="tot-font-serif text-xl font-bold text-forest-900 mb-2">No dishes match your selection</h3>
-            <p className="text-xs text-charcoal-500 mb-5">Try relaxing your dietary filter or search for a different ingredient.</p>
-            <Button
-              onClick={handleClearFilters}
-              className="px-5 py-2.5 text-xs shadow-md"
-            >
+            <h3 className="tot-font-serif text-xl font-bold text-forest-900 mb-2">
+              No dishes match your selection
+            </h3>
+            <p className="text-xs text-charcoal-500 mb-5">
+              Try relaxing your dietary filter or search for a different ingredient.
+            </p>
+            <Button onClick={handleClearFilters} className="px-5 py-2.5 text-xs shadow-md">
               Show All Dishes
             </Button>
           </div>
@@ -195,7 +211,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                     onClick={() => onSelectDish(dish)}
                   >
                     <ResponsiveImage
- sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                      sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                       src={dish.image}
                       alt={dish.name}
                       className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500"
@@ -294,7 +310,8 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
               </div>
               <div>
                 <div className="font-semibold text-sm sm:text-base text-cream-100">
-                  {selectedDishIds.size} {selectedDishIds.size === 1 ? 'dish' : 'dishes'} in your Tasting Flight
+                  {selectedDishIds.size} {selectedDishIds.size === 1 ? 'dish' : 'dishes'} in your
+                  Tasting Flight
                 </div>
                 <div className="text-xs text-mist-400">
                   Attach this custom flight directly to your table reservation for seamless service.

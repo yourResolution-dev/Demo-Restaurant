@@ -20,5 +20,10 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts", "scripts/seo-plugin.ts", "src/config/restaurant.ts", "src/config/seo.ts"]
+  "include": [
+    "vite.config.ts",
+    "scripts/seo-plugin.ts",
+    "src/config/restaurant.ts",
+    "src/config/seo.ts"
+  ]
 }

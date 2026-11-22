@@ -36,7 +36,8 @@ export const RestaurantDemoPage: React.FC = () => {
   const [isTastingDrawerOpen, setIsTastingDrawerOpen] = useState(false);
 
   // Reservation confirmation state
-  const [reservationConfirmation, setReservationConfirmation] = useState<ReservationConfirmation | null>(null);
+  const [reservationConfirmation, setReservationConfirmation] =
+    useState<ReservationConfirmation | null>(null);
 
   // ReSolution Agency inquiry modal state
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
@@ -63,16 +64,17 @@ export const RestaurantDemoPage: React.FC = () => {
   };
 
   const handleUpdateQuantity = (dishId: string, delta: number) => {
-    setTastingItems((prev) =>
-      prev
-        .map((i) => {
-          if (i.item.id === dishId) {
-            const newQty = i.quantity + delta;
-            return newQty > 0 ? { ...i, quantity: newQty } : null;
-          }
-          return i;
-        })
-        .filter(Boolean) as SelectedItem[]
+    setTastingItems(
+      (prev) =>
+        prev
+          .map((i) => {
+            if (i.item.id === dishId) {
+              const newQty = i.quantity + delta;
+              return newQty > 0 ? { ...i, quantity: newQty } : null;
+            }
+            return i;
+          })
+          .filter(Boolean) as SelectedItem[]
     );
   };
 
@@ -156,10 +158,7 @@ export const RestaurantDemoPage: React.FC = () => {
       </main>
 
       {/* 11. Premium Forest Green & Gold Footer */}
-      <Footer
-        onNavigate={scrollToSection}
-        onOpenInquiry={() => setIsInquiryModalOpen(true)}
-      />
+      <Footer onNavigate={scrollToSection} onOpenInquiry={() => setIsInquiryModalOpen(true)} />
 
       {/* 12. Floating Controls */}
       <FloatingWhatsApp />
@@ -188,10 +187,7 @@ export const RestaurantDemoPage: React.FC = () => {
         onClose={() => setReservationConfirmation(null)}
       />
 
-      <InquiryModal
-        isOpen={isInquiryModalOpen}
-        onClose={() => setIsInquiryModalOpen(false)}
-      />
+      <InquiryModal isOpen={isInquiryModalOpen} onClose={() => setIsInquiryModalOpen(false)} />
     </div>
   );
 };

@@ -13,7 +13,10 @@ function formatDate(iso: string): string {
 }
 
 /** The booking details as a plain-text WhatsApp message. */
-export function buildBookingMessage(booking: ReservationConfirmation, restaurantName: string): string {
+export function buildBookingMessage(
+  booking: ReservationConfirmation,
+  restaurantName: string
+): string {
   const lines = [
     `Hello ${restaurantName}! I just made a reservation online.`,
     '',

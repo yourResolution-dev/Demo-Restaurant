@@ -32,10 +32,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
       <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-gold-400/60 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-gold-400/15">
-          
           {/* Col 1: Brand Info (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
@@ -64,7 +62,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
             </div>
 
             <p className="text-xs sm:text-sm text-mist-400 leading-relaxed font-light">
-              Where culinary mastery unfolds with every bite. Experience an authentic celebration of Mediterranean terroir, estate cold-pressed olive oils, and candlelit ambiance.
+              Where culinary mastery unfolds with every bite. Experience an authentic celebration of
+              Mediterranean terroir, estate cold-pressed olive oils, and candlelit ambiance.
             </p>
 
             {/* Social icons */}
@@ -194,7 +193,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               Guest Register
             </h4>
             <p className="text-xs text-mist-400 leading-relaxed">
-              Subscribe for private invitations to seasonal tasting menus, white truffle arrivals, and cellar uncorkings.
+              Subscribe for private invitations to seasonal tasting menus, white truffle arrivals,
+              and cellar uncorkings.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-2" noValidate>
@@ -224,9 +224,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               </div>
 
               {error && (
-                <div className="text-[11px] text-red-400">
-                  Please enter a valid email address.
-                </div>
+                <div className="text-[11px] text-red-400">Please enter a valid email address.</div>
               )}
 
               {subscribed && (
@@ -237,7 +235,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               )}
             </form>
           </div>
-
         </div>
 
         {/* Bottom Banner: ReSolution Agency Showcase Attribution */}
@@ -270,7 +267,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
             </button>
           </div>
         </div>
-
       </div>
     </footer>
   );

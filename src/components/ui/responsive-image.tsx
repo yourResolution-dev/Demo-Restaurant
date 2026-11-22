@@ -2,7 +2,10 @@ import * as React from 'react';
 
 const DEFAULT_WIDTHS = [480, 960, 1600];
 
-interface ResponsiveImageProps extends Omit<React.ComponentPropsWithoutRef<'img'>, 'srcSet' | 'loading'> {
+interface ResponsiveImageProps extends Omit<
+  React.ComponentPropsWithoutRef<'img'>,
+  'srcSet' | 'loading'
+> {
   /** Path to any one size of a local image, e.g. `/images/photo-123-960.webp`. */
   src: string;
   /** Tells the browser how wide the image renders so it can pick a file. */
