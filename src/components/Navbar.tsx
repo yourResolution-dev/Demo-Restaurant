@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag, PhoneCall, Calendar } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { Button } from '@/components/ui/button';
 
 interface NavbarProps {
   tastingCount: number;
@@ -64,8 +65,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header
       className={`transition-all duration-300 w-full ${
         isScrolled
-          ? 'bg-[#081510]/95 backdrop-blur-md border-b border-[#dfb85c]/25 py-2.5 shadow-lg'
-          : 'bg-[#081510] border-b border-[#dfb85c]/15 py-3 sm:py-3.5'
+          ? 'bg-forest-900/95 backdrop-blur-md border-b border-gold-400/25 py-2.5 shadow-lg'
+          : 'bg-forest-900 border-b border-gold-400/15 py-3 sm:py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,10 +78,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="The Olive Table - Back to Home"
           >
             {/* Olive Leaf Stylized Icon */}
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#dfb85c]/60 flex items-center justify-center bg-[#10261d] group-hover:border-[#dfb85c] transition-all shadow-[0_0_15px_rgba(223,184,92,0.15)] flex-shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gold-400/60 flex items-center justify-center bg-forest-800 group-hover:border-gold-400 transition-all shadow-[0_0_15px_rgba(223,184,92,0.15)] flex-shrink-0">
               <svg
                 viewBox="0 0 24 24"
-                className="w-4 h-4 sm:w-5 sm:h-5 text-[#dfb85c] transition-transform duration-300 group-hover:scale-110"
+                className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 transition-transform duration-300 group-hover:scale-110"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.8"
@@ -92,10 +93,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               </svg>
             </div>
             <div className="min-w-0">
-              <span className="tot-font-serif text-base sm:text-lg lg:text-xl font-bold tracking-wider text-[#f7f3ea] block group-hover:text-[#dfb85c] transition-colors leading-tight truncate">
+              <span className="tot-font-serif text-base sm:text-lg lg:text-xl font-bold tracking-wider text-cream-100 block group-hover:text-gold-400 transition-colors leading-tight truncate">
                 THE OLIVE TABLE
               </span>
-              <span className="text-[9px] sm:text-[10px] tracking-[0.22em] text-[#dfb85c] uppercase font-light block">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.22em] text-gold-400 uppercase font-light block">
                 Est. 2014 • Fine Dining
               </span>
             </div>
@@ -111,13 +112,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => scrollTo(link.id)}
                   className={`px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium transition-all cursor-pointer relative ${
                     isActive
-                      ? 'text-[#dfb85c] font-semibold'
-                      : 'text-[#eadecc] hover:text-[#dfb85c]'
+                      ? 'text-gold-400 font-semibold'
+                      : 'text-sand-200 hover:text-gold-400'
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#dfb85c] rounded-full shadow-[0_0_8px_#dfb85c]" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-gold-400 rounded-full shadow-[0_0_8px_#dfb85c]" />
                   )}
                 </button>
               );
@@ -130,35 +131,35 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenTastingDrawer}
               aria-label={`View tasting selections (${tastingCount} items)`}
-              className="relative p-2 sm:px-3 sm:py-1.5 rounded-full bg-[#10261d] border border-[#dfb85c]/35 text-[#eadecc] hover:text-[#dfb85c] hover:border-[#dfb85c] transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2"
+              className="relative p-2 sm:px-3 sm:py-1.5 rounded-full bg-forest-800 border border-gold-400/35 text-sand-200 hover:text-gold-400 hover:border-gold-400 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2"
               title="View Tasting Selections"
             >
-              <ShoppingBag className="w-4 h-4 text-[#dfb85c]" />
+              <ShoppingBag className="w-4 h-4 text-gold-400" />
               <span className="hidden sm:inline text-xs font-medium">Tasting List</span>
               {tastingCount > 0 ? (
-                <span className="w-5 h-5 rounded-full bg-[#dfb85c] text-[#081510] font-bold text-[11px] flex items-center justify-center animate-bounce">
+                <span className="w-5 h-5 rounded-full bg-gold-400 text-forest-900 font-bold text-[11px] flex items-center justify-center animate-bounce">
                   {tastingCount}
                 </span>
               ) : (
-                <span className="hidden md:inline-block text-[10px] text-[#a0b0a6] bg-[#081510] px-1.5 py-0.2 rounded-full">
+                <span className="hidden md:inline-block text-[10px] text-mist-400 bg-forest-900 px-1.5 py-0.2 rounded-full">
                   0
                 </span>
               )}
             </button>
 
             {/* Book A Table Primary CTA */}
-            <button
+            <Button
               onClick={onBookTableClick}
-              className="hidden sm:inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 rounded-full tot-btn-gold text-xs sm:text-sm font-semibold cursor-pointer shadow-md"
+              className="hidden sm:inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 text-xs sm:text-sm shadow-md"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book a Table</span>
-            </button>
+            </Button>
 
             {/* Mobile Menu Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-[#eadecc] hover:text-[#dfb85c] hover:bg-[#10261d] transition-colors cursor-pointer"
+              className="lg:hidden p-2 rounded-lg text-sand-200 hover:text-gold-400 hover:bg-forest-800 transition-colors cursor-pointer"
               aria-label="Toggle Navigation Menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -170,7 +171,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#081510]/98 border-b border-[#dfb85c]/30 px-5 py-5 transition-all duration-300">
+        <div className="lg:hidden bg-forest-900/98 border-b border-gold-400/30 px-5 py-5 transition-all duration-300">
           <nav className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <button
@@ -178,31 +179,31 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => scrollTo(link.id)}
                 className={`text-left py-2 px-3 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                   activeSection === link.id
-                    ? 'bg-[#10261d] text-[#dfb85c] font-semibold border-l-2 border-[#dfb85c]'
-                    : 'text-[#eadecc] hover:text-[#dfb85c]'
+                    ? 'bg-forest-800 text-gold-400 font-semibold border-l-2 border-gold-400'
+                    : 'text-sand-200 hover:text-gold-400'
                 }`}
               >
                 {link.label}
               </button>
             ))}
 
-            <div className="pt-3 mt-1 border-t border-[#dfb85c]/20 flex flex-col gap-2.5">
-              <button
+            <div className="pt-3 mt-1 border-t border-gold-400/20 flex flex-col gap-2.5">
+              <Button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onBookTableClick();
                 }}
-                className="w-full py-2.5 rounded-full tot-btn-gold text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full py-2.5 text-sm flex items-center justify-center gap-2 shadow-md"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Book a Table</span>
-              </button>
+              </Button>
 
-              <div className="flex items-center justify-between text-xs text-[#a0b0a6] pt-1">
+              <div className="flex items-center justify-between text-xs text-mist-400 pt-1">
                 <span>{RESTAURANT_INFO.hours.dinner}</span>
                 <a
                   href={`tel:${RESTAURANT_INFO.phone}`}
-                  className="flex items-center gap-1 text-[#dfb85c]"
+                  className="flex items-center gap-1 text-gold-400"
                 >
                   <PhoneCall className="w-3 h-3" />
                   <span>{RESTAURANT_INFO.phoneDisplay}</span>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Star, ArrowRight, Calendar, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RESTAURANT_INFO, FALLBACK_AMBIANCE_IMAGE } from '../data/restaurantData';
+import { Button } from '@/components/ui/button';
 
 interface HeroProps {
   onExploreMenu: () => void;
@@ -58,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
       id="home"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#081510] text-[#f7f3ea]"
+      className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-forest-900 text-cream-100"
     >
       {/* Background Slides with Crossfade */}
       <div className="absolute inset-0 z-0">
@@ -81,29 +82,29 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
           </div>
         ))}
         {/* Dark Emerald Vignette & Radial Glow */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#081510] via-[#081510]/60 to-[#081510]/80" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-forest-900 via-forest-900/60 to-forest-900/80" />
         <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(207,161,56,0.14)_0%,transparent_75%)]" />
       </div>
 
       <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center flex flex-col items-center">
         {/* Top Gold Michelin Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#10261d]/90 border border-[#dfb85c]/40 text-[#dfb85c] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-3 sm:mb-5 shadow-[0_0_20px_rgba(223,184,92,0.15)] backdrop-blur-md">
-          <div className="flex items-center gap-0.5 text-[#dfb85c]">
+        <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-forest-800/90 border border-gold-400/40 text-gold-400 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-3 sm:mb-5 shadow-[0_0_20px_rgba(223,184,92,0.15)] backdrop-blur-md">
+          <div className="flex items-center gap-0.5 text-gold-400">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-3 h-3 fill-[#dfb85c] text-[#dfb85c]" />
+              <Star key={i} className="w-3 h-3 fill-gold-400 text-gold-400" />
             ))}
           </div>
-          <span className="text-[#a0b0a6]">•</span>
+          <span className="text-mist-400">•</span>
           <span>{current.badge}</span>
         </div>
 
         {/* Script Kicker */}
-        <span className="tot-font-display italic text-[#dfb85c] text-xl sm:text-2xl lg:text-3xl font-normal mb-1.5 block tracking-wide">
+        <span className="tot-font-display italic text-gold-400 text-xl sm:text-2xl lg:text-3xl font-normal mb-1.5 block tracking-wide">
           {current.kicker}
         </span>
 
         {/* Headline */}
-        <h1 className="tot-font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#f7f3ea] mb-4 sm:mb-5 leading-[1.15] max-w-4xl">
+        <h1 className="tot-font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-cream-100 mb-4 sm:mb-5 leading-[1.15] max-w-4xl">
           {current.title.includes('Remembering.') ? (
             <>
               A Taste Worth{' '}
@@ -117,27 +118,27 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
         </h1>
 
         {/* Description */}
-        <p className="tot-font-sans text-xs sm:text-base md:text-lg text-[#eadecc]/90 max-w-2xl mx-auto mb-7 sm:mb-9 leading-relaxed font-light">
+        <p className="tot-font-sans text-xs sm:text-base md:text-lg text-sand-200/90 max-w-2xl mx-auto mb-7 sm:mb-9 leading-relaxed font-light">
           {current.subtitle}
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-12">
-          <button
+          <Button
             onClick={onExploreMenu}
-            className="w-full sm:w-auto px-7 py-3 rounded-full tot-btn-gold text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+            className="w-full sm:w-auto px-7 py-3 text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg"
           >
             <span>Explore Our Menu</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </Button>
 
-          <button
+          <Button variant="outline"
             onClick={onBookTable}
-            className="w-full sm:w-auto px-7 py-3 rounded-full tot-btn-outline text-xs sm:text-sm font-medium flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-7 py-3 text-xs sm:text-sm flex items-center justify-center gap-2"
           >
-            <Calendar className="w-4 h-4 text-[#dfb85c]" />
+            <Calendar className="w-4 h-4 text-gold-400" />
             <span>Book a Table</span>
-          </button>
+          </Button>
         </div>
 
         {/* Glassmorphic Stats Bar */}
@@ -145,15 +146,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
           {RESTAURANT_INFO.stats.map((stat, idx) => (
             <div
               key={idx}
-              className="tot-glass-panel rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#dfb85c]/60"
+              className="tot-glass-panel rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-gold-400/60"
             >
-              <div className="tot-font-serif text-2xl sm:text-3xl font-bold text-[#dfb85c] mb-0.5">
+              <div className="tot-font-serif text-2xl sm:text-3xl font-bold text-gold-400 mb-0.5">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-[#f7f3ea] mb-0.5 truncate">
+              <div className="text-xs sm:text-sm font-semibold text-cream-100 mb-0.5 truncate">
                 {stat.label}
               </div>
-              <div className="text-[10px] sm:text-[11px] text-[#a0b0a6] font-light truncate">
+              <div className="text-[10px] sm:text-[11px] text-mist-400 font-light truncate">
                 {stat.subtext}
               </div>
             </div>
@@ -165,7 +166,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
           <button
             onClick={prevSlide}
             aria-label="Previous slide"
-            className="p-1 rounded-full text-[#dfb85c]/60 hover:text-[#dfb85c] transition-colors cursor-pointer"
+            className="p-1 rounded-full text-gold-400/60 hover:text-gold-400 transition-colors cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -177,8 +178,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
                 onClick={() => setActiveSlide(i)}
                 className={`transition-all duration-300 rounded-full cursor-pointer ${
                   activeSlide === i
-                    ? 'w-7 h-2 bg-[#dfb85c] shadow-[0_0_8px_#dfb85c]'
-                    : 'w-2 h-2 bg-[#dfb85c]/30 hover:bg-[#dfb85c]/60'
+                    ? 'w-7 h-2 bg-gold-400 shadow-[0_0_8px_#dfb85c]'
+                    : 'w-2 h-2 bg-gold-400/30 hover:bg-gold-400/60'
                 }`}
                 aria-label={`Slide ${i + 1}`}
               />
@@ -188,7 +189,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
           <button
             onClick={nextSlide}
             aria-label="Next slide"
-            className="p-1 rounded-full text-[#dfb85c]/60 hover:text-[#dfb85c] transition-colors cursor-pointer"
+            className="p-1 rounded-full text-gold-400/60 hover:text-gold-400 transition-colors cursor-pointer"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -199,7 +200,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
       <button
         onClick={onExploreMenu}
         aria-label="Scroll down to restaurant story and menu"
-        className="hidden md:flex absolute bottom-3 left-1/2 -translate-x-1/2 text-[#dfb85c]/70 hover:text-[#dfb85c] transition-colors flex-col items-center gap-0.5 cursor-pointer z-20"
+        className="hidden md:flex absolute bottom-3 left-1/2 -translate-x-1/2 text-gold-400/70 hover:text-gold-400 transition-colors flex-col items-center gap-0.5 cursor-pointer z-20"
       >
         <span className="text-[9px] tracking-widest uppercase font-light">Scroll</span>
         <ChevronDown className="w-3.5 h-3.5 animate-bounce" />

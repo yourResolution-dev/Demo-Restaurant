@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { X, Sparkles, MessageSquare, CheckCircle2, Send } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, MessageSquare, CheckCircle2, Send } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { Field } from '@/components/ui/field';
+import { Input, Textarea } from '@/components/ui/input';
 
 interface InquiryModalProps {
   isOpen: boolean;
@@ -17,18 +21,6 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
   });
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.phone) return;
@@ -42,152 +34,94 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
     window.open(`https://wa.me/${RESTAURANT_INFO.whatsappNumber}?text=${text}`, '_blank');
   };
 
+  const update =
+    (key: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setForm({ ...form, [key]: e.target.value });
+
+  const labelClass = 'normal-case tracking-normal mb-1';
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#081510]/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="absolute inset-0" onClick={onClose} />
-
-      <div className="relative w-full max-w-lg bg-[#fbf9f5] rounded-3xl overflow-hidden shadow-2xl border border-[#dfb85c]/40 z-10 flex flex-col">
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent>
         {/* Header */}
-        <div className="p-6 bg-[#081510] text-[#f7f3ea] border-b border-[#dfb85c]/30 text-center relative">
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-1.5 rounded-full text-[#a0b0a6] hover:text-[#dfb85c] hover:bg-[#10261d] transition-colors cursor-pointer"
-            aria-label="Close modal"
-          >
-            <X className="w-5 h-5" />
-          </button>
-
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#dfb85c] to-[#cfa138] text-[#081510] flex items-center justify-center mx-auto mb-3 shadow-lg">
-            <Sparkles className="w-6 h-6" />
+        <div className="relative border-b border-gold-400/30 bg-forest-900 p-6 text-center text-cream-100">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gold-400 to-gold-500 text-forest-900 shadow-lg">
+            <Sparkles className="h-6 w-6" />
           </div>
-
-          <span className="text-xs uppercase tracking-widest text-[#dfb85c] font-semibold block mb-1">
+          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-gold-400">
             Built by ReSolution
           </span>
-          <h3 className="tot-font-serif text-2xl font-bold text-[#f7f3ea]">
-            Want a Website Like This?
-          </h3>
-          <p className="text-xs text-[#a0b0a6] mt-1 font-light max-w-sm mx-auto">
+          <DialogTitle className="text-cream-100">Want a Website Like This?</DialogTitle>
+          <DialogDescription className="mx-auto mt-1 max-w-sm font-light">
             Get a high-converting, bespoke digital flagship designed specifically for your culinary establishment or luxury brand.
-          </p>
+          </DialogDescription>
         </div>
 
-        {/* Form Body */}
-        <div className="p-5 sm:p-6">
+        {/* Body */}
+        <div className="overflow-y-auto p-5 sm:p-6">
           {submitted ? (
-            <div className="text-center py-8 space-y-4">
-              <div className="w-14 h-14 rounded-full bg-green-100 text-green-700 flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="space-y-4 py-8 text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700">
+                <CheckCircle2 className="h-8 w-8" />
               </div>
-              <h4 className="tot-font-serif text-xl font-bold text-[#081510]">
-                Inquiry Received!
-              </h4>
-              <p className="text-xs text-[#58685e] max-w-sm mx-auto leading-relaxed">
-                Thank you, <strong className="text-[#081510]">{form.name}</strong>. The ReSolution team will connect with you on WhatsApp / Phone within 2 hours.
+              <h4 className="font-serif text-xl font-bold text-forest-900">Inquiry Received!</h4>
+              <p className="mx-auto max-w-sm text-xs leading-relaxed text-charcoal-500">
+                Thank you, <strong className="text-forest-900">{form.name}</strong>. The ReSolution team will connect with you on WhatsApp / Phone within 2 hours.
               </p>
-              <button
-                onClick={handleWhatsApp}
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-green-600 text-white font-semibold text-xs shadow-md hover:bg-green-700 transition-colors cursor-pointer"
-              >
-                <MessageSquare className="w-4 h-4" />
+              <Button variant="whatsapp" onClick={handleWhatsApp}>
+                <MessageSquare className="h-4 w-4" />
                 <span>Instant Connect on WhatsApp</span>
-              </button>
+              </Button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3.5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-semibold text-[#081510] mb-1">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Ranajit Gupta"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#dfb85c]/40 bg-[#ffffff] text-xs text-[#081510] tot-input-focus"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-[#081510] mb-1">
-                    Business / Brand Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Olive Bistro"
-                    value={form.businessName}
-                    onChange={(e) => setForm({ ...form, businessName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#dfb85c]/40 bg-[#ffffff] text-xs text-[#081510] tot-input-focus"
-                  />
-                </div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <Field id="inquiry-name" label="Your Name *" labelClassName={labelClass}>
+                  {(c) => (
+                    <Input {...c} type="text" required placeholder="e.g. Ranajit Gupta" value={form.name} onChange={update('name')} className="bg-white px-3.5 text-xs" />
+                  )}
+                </Field>
+                <Field id="inquiry-business" label="Business / Brand Name" labelClassName={labelClass}>
+                  {(c) => (
+                    <Input {...c} type="text" placeholder="e.g. Olive Bistro" value={form.businessName} onChange={update('businessName')} className="bg-white px-3.5 text-xs" />
+                  )}
+                </Field>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-semibold text-[#081510] mb-1">
-                    Phone / WhatsApp *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="e.g. +91 93320 12109"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#dfb85c]/40 bg-[#ffffff] text-xs text-[#081510] tot-input-focus"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-[#081510] mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="e.g. hello@mybrand.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#dfb85c]/40 bg-[#ffffff] text-xs text-[#081510] tot-input-focus"
-                  />
-                </div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <Field id="inquiry-phone" label="Phone / WhatsApp *" labelClassName={labelClass}>
+                  {(c) => (
+                    <Input {...c} type="tel" required placeholder="e.g. +91 93320 12109" value={form.phone} onChange={update('phone')} className="bg-white px-3.5 text-xs" />
+                  )}
+                </Field>
+                <Field id="inquiry-email" label="Email" labelClassName={labelClass}>
+                  {(c) => (
+                    <Input {...c} type="email" placeholder="e.g. hello@mybrand.com" value={form.email} onChange={update('email')} className="bg-white px-3.5 text-xs" />
+                  )}
+                </Field>
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-[#081510] mb-1">
-                  Tell us about your project
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="Website redesign, online table reservations, tasting menu showcase..."
-                  value={form.notes}
-                  onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#dfb85c]/40 bg-[#ffffff] text-xs text-[#081510] tot-input-focus resize-none"
-                />
-              </div>
+              <Field id="inquiry-notes" label="Tell us about your project" labelClassName={labelClass}>
+                {(c) => (
+                  <Textarea {...c} rows={2} placeholder="Website redesign, online table reservations, tasting menu showcase..." value={form.notes} onChange={update('notes')} className="bg-white px-3.5 text-xs" />
+                )}
+              </Field>
 
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
-                <button
-                  type="submit"
-                  className="w-full sm:flex-1 py-3 rounded-full tot-btn-gold text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer shadow-md"
-                >
-                  <Send className="w-3.5 h-3.5" />
+              <div className="flex flex-col items-center gap-3 pt-2 sm:flex-row">
+                <Button type="submit" className="w-full py-3 shadow-md sm:flex-1">
+                  <Send className="h-3.5 w-3.5" />
                   <span>Request Proposal</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleWhatsApp}
-                  className="w-full sm:w-auto px-5 py-3 rounded-full bg-[#10261d] border border-[#dfb85c]/40 text-[#dfb85c] hover:bg-[#dfb85c] hover:text-[#081510] transition-colors text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" />
+                </Button>
+                <Button variant="secondary" onClick={handleWhatsApp} className="w-full px-5 py-3 sm:w-auto">
+                  <MessageSquare className="h-3.5 w-3.5" />
                   <span>WhatsApp Us</span>
-                </button>
+                </Button>
               </div>
             </form>
           )}
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };

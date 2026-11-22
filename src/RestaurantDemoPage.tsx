@@ -101,7 +101,7 @@ export const RestaurantDemoPage: React.FC = () => {
   };
 
   return (
-    <div className="tot-restaurant-root min-h-screen flex flex-col bg-[#fbf9f5] text-[#141c18] selection:bg-[#dfb85c] selection:text-[#081510] overflow-x-hidden w-full relative">
+    <div className="tot-restaurant-root min-h-screen flex flex-col bg-cream-50 text-charcoal-900 selection:bg-gold-400 selection:text-forest-900 overflow-x-hidden w-full relative">
       {/* Unified Sticky Header: Banner + Navbar */}
       <div className="sticky top-0 z-40 w-full shadow-md">
         <ResolutionDemoBanner onOpenInquiry={() => setIsInquiryModalOpen(true)} />

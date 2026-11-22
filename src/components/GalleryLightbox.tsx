@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GalleryItem } from '../types/restaurant.types';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
 
 interface GalleryLightboxProps {
   items: GalleryItem[];
@@ -15,121 +18,116 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
   onClose,
   onNavigate,
 }) => {
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (currentIndex === null) return;
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') {
-        onNavigate((currentIndex + 1) % items.length);
-      }
-      if (e.key === 'ArrowLeft') {
-        onNavigate((currentIndex - 1 + items.length) % items.length);
-      }
-    };
+  const isOpen = currentIndex !== null && !!items[currentIndex];
 
+  // Arrow-key navigation (Escape, focus trap and scroll lock are handled by Dialog)
+  useEffect(() => {
+    if (currentIndex === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') onNavigate((currentIndex + 1) % items.length);
+      if (e.key === 'ArrowLeft') onNavigate((currentIndex - 1 + items.length) % items.length);
+    };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, items.length, onClose, onNavigate]);
+  }, [currentIndex, items.length, onNavigate]);
 
-  if (currentIndex === null || !items[currentIndex]) return null;
-
-  const currentItem = items[currentIndex];
-
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onNavigate((currentIndex - 1 + items.length) % items.length);
-  };
-
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onNavigate((currentIndex + 1) % items.length);
-  };
+  const currentItem = currentIndex !== null ? items[currentIndex] : undefined;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#081510]/95 backdrop-blur-xl animate-in fade-in duration-200"
-      onClick={onClose}
-    >
-      {/* Top Header Bar */}
-      <div className="absolute top-0 inset-x-0 p-4 sm:p-6 flex items-center justify-between text-[#f7f3ea] z-20">
-        <div className="flex items-center gap-3">
-          <span className="tot-font-serif text-sm sm:text-base font-semibold text-[#dfb85c]">
-            {currentItem.title}
-          </span>
-          <span className="text-xs text-[#a0b0a6] hidden sm:inline">
-            ({currentIndex + 1} of {items.length})
-          </span>
-        </div>
-
-        <button
-          onClick={onClose}
-          className="w-10 h-10 rounded-full bg-[#10261d] text-[#f7f3ea] hover:text-[#dfb85c] flex items-center justify-center border border-[#dfb85c]/30 transition-colors cursor-pointer"
-          aria-label="Close Lightbox"
-        >
-          <X className="w-5 h-5" />
-        </button>
-      </div>
-
-      {/* Prev Button */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#10261d]/80 text-[#f7f3ea] hover:text-[#dfb85c] hover:bg-[#10261d] flex items-center justify-center border border-[#dfb85c]/30 transition-all z-20 cursor-pointer shadow-xl"
-        aria-label="Previous Image"
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        className="inset-0 top-0 left-0 h-full max-h-none w-full max-w-none translate-x-0 translate-y-0 items-center justify-center rounded-none border-0 bg-forest-900/95 backdrop-blur-xl"
+        onClick={onClose}
       >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
+        {currentItem && currentIndex !== null && (
+          <>
+            {/* Top Header Bar */}
+            <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between p-4 text-cream-100 sm:p-6">
+              <div className="flex items-center gap-3">
+                <DialogTitle className="text-sm font-semibold text-gold-400 sm:text-base">
+                  {currentItem.title}
+                </DialogTitle>
+                <span className="hidden text-xs text-mist-400 sm:inline">
+                  ({currentIndex + 1} of {items.length})
+                </span>
+              </div>
 
-      {/* Main Image Stage */}
-      <div
-        className="max-w-5xl max-h-[80vh] px-4 flex flex-col items-center justify-center z-10"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img
-          src={currentItem.imageUrl}
-          alt={currentItem.title}
-          className="max-h-[68vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain border border-[#dfb85c]/30"
-        />
+              <DialogClose asChild>
+                <Button variant="secondary" size="icon" className="h-10 w-10 text-cream-100" aria-label="Close lightbox">
+                  <X className="h-5 w-5" />
+                </Button>
+              </DialogClose>
+            </div>
 
-        {/* Caption */}
-        <div className="mt-4 text-center max-w-2xl">
-          <p className="text-xs sm:text-sm text-[#eadecc] font-light leading-relaxed">
-            {currentItem.caption}
-          </p>
-        </div>
-      </div>
+            {/* Prev / Next */}
+            <Button
+              variant="secondary"
+              size="icon"
+              aria-label="Previous image"
+              onClick={(e) => {
+                e.stopPropagation();
+                onNavigate((currentIndex - 1 + items.length) % items.length);
+              }}
+              className="absolute left-4 top-1/2 z-20 h-12 w-12 -translate-y-1/2 bg-forest-800/80 text-cream-100 shadow-xl sm:left-8"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </Button>
 
-      {/* Next Button */}
-      <button
-        onClick={handleNext}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#10261d]/80 text-[#f7f3ea] hover:text-[#dfb85c] hover:bg-[#10261d] flex items-center justify-center border border-[#dfb85c]/30 transition-all z-20 cursor-pointer shadow-xl"
-        aria-label="Next Image"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
+            {/* Main Image Stage */}
+            <div
+              className="z-10 mx-auto flex max-h-[80vh] max-w-5xl flex-col items-center justify-center px-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={currentItem.imageUrl}
+                alt={currentItem.title}
+                className="max-h-[68vh] w-auto max-w-full rounded-2xl border border-gold-400/30 object-contain shadow-2xl"
+              />
+              <DialogDescription className="mt-4 max-w-2xl text-center text-xs font-light leading-relaxed text-sand-200 sm:text-sm">
+                {currentItem.caption}
+              </DialogDescription>
+            </div>
 
-      {/* Bottom Thumbnail Strip */}
-      <div className="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2 px-4 overflow-x-auto z-20">
-        {items.map((item, idx) => (
-          <button
-            key={item.id}
-            onClick={(e) => {
-              e.stopPropagation();
-              onNavigate(idx);
-            }}
-            className={`w-12 h-10 rounded-lg overflow-hidden border-2 transition-all cursor-pointer flex-shrink-0 ${
-              currentIndex === idx
-                ? 'border-[#dfb85c] scale-110 shadow-lg'
-                : 'border-transparent opacity-50 hover:opacity-100'
-            }`}
-          >
-            <img
-              src={item.imageUrl}
-              alt={item.title}
-              className="w-full h-full object-cover"
-            />
-          </button>
-        ))}
-      </div>
-    </div>
+            <Button
+              variant="secondary"
+              size="icon"
+              aria-label="Next image"
+              onClick={(e) => {
+                e.stopPropagation();
+                onNavigate((currentIndex + 1) % items.length);
+              }}
+              className="absolute right-4 top-1/2 z-20 h-12 w-12 -translate-y-1/2 bg-forest-800/80 text-cream-100 shadow-xl sm:right-8"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </Button>
+
+            {/* Bottom Thumbnail Strip */}
+            <div className="absolute inset-x-0 bottom-4 z-20 flex items-center justify-center gap-2 overflow-x-auto px-4">
+              {items.map((item, idx) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-label={`Show ${item.title}`}
+                  aria-current={currentIndex === idx}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigate(idx);
+                  }}
+                  className={cn(
+                    'h-10 w-12 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all',
+                    currentIndex === idx
+                      ? 'scale-110 border-gold-400 shadow-lg'
+                      : 'border-transparent opacity-50 hover:opacity-100'
+                  )}
+                >
+                  <img src={item.imageUrl} alt="" className="h-full w-full object-cover" />
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
   );
 };

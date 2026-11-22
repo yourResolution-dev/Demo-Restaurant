@@ -26,19 +26,19 @@ export const FloatingWhatsApp: React.FC = () => {
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
         
         {/* Subtle status pulse indicator */}
-        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#dfb85c] border-2 border-[#081510] animate-pulse" />
+        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-gold-400 border-2 border-forest-900 animate-pulse" />
       </button>
 
       {/* Tooltip speech bubble */}
       {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#081510]/95 border border-[#dfb85c]/40 text-xs text-[#f7f3ea] shadow-2xl backdrop-blur-md animate-in fade-in duration-200">
+        <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-forest-900/95 border border-gold-400/40 text-xs text-cream-100 shadow-2xl backdrop-blur-md animate-in fade-in duration-200">
           <span>Inquire about a website like this on WhatsApp</span>
           <button
             onClick={(e) => {
               e.stopPropagation();
               setShowTooltip(false);
             }}
-            className="text-[#a0b0a6] hover:text-[#dfb85c] p-0.5"
+            className="text-mist-400 hover:text-gold-400 p-0.5"
             aria-label="Close tooltip"
           >
             <X className="w-3.5 h-3.5" />

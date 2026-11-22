@@ -21,19 +21,19 @@ export const GallerySection: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <section id="gallery" className="py-16 sm:py-20 lg:py-28 bg-[#fbf9f5] text-[#141c18] relative">
+    <section id="gallery" className="py-16 sm:py-20 lg:py-28 bg-cream-50 text-charcoal-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading matching screenshot: "Our Gallery" */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="tot-font-display italic text-[#cfa138] text-xl sm:text-2xl font-normal block mb-1">
+          <span className="tot-font-display italic text-gold-500 text-xl sm:text-2xl font-normal block mb-1">
             Atmosphere & Moments
           </span>
-          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#081510] tracking-tight mb-3">
+          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
             Our Gallery
           </h2>
-          <div className="w-16 h-0.5 bg-[#cfa138] mx-auto mb-3" />
-          <p className="text-xs sm:text-sm text-[#58685e] font-light leading-relaxed">
+          <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
+          <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
             A glimpse into the sensory atmosphere of The Olive Table. Where centuries-old architectural charm, vintage cellars, open woodfire, and culinary art converge.
           </p>
         </div>
@@ -46,8 +46,8 @@ export const GallerySection: React.FC = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer whitespace-nowrap border ${
                 selectedCategory === cat
-                  ? 'bg-[#10261d] text-[#dfb85c] font-semibold border-[#dfb85c]/50 shadow-md'
-                  : 'bg-[#ffffff] text-[#58685e] hover:bg-[#ede3d1] hover:text-[#081510] border-[#dfb85c]/25'
+                  ? 'bg-forest-800 text-gold-400 font-semibold border-gold-400/50 shadow-md'
+                  : 'bg-white text-charcoal-500 hover:bg-sand-300 hover:text-forest-900 border-gold-400/25'
               }`}
             >
               {cat}
@@ -65,7 +65,7 @@ export const GallerySection: React.FC = () => {
               <div
                 key={item.id}
                 onClick={() => setLightboxIndex(index)}
-                className={`relative rounded-2xl overflow-hidden shadow-md group cursor-pointer border border-[#dfb85c]/25 hover:border-[#dfb85c] transition-all duration-300 ${
+                className={`relative rounded-2xl overflow-hidden shadow-md group cursor-pointer border border-gold-400/25 hover:border-gold-400 transition-all duration-300 ${
                   isFeatured
                     ? 'sm:col-span-2 h-64 sm:h-72 lg:h-80'
                     : 'h-64 sm:h-72 lg:h-80'
@@ -78,26 +78,26 @@ export const GallerySection: React.FC = () => {
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#081510]/85 via-[#081510]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-900/85 via-forest-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
                 {/* Category Pill */}
                 <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#10261d]/85 text-[#dfb85c] backdrop-blur-sm border border-[#dfb85c]/35 shadow-sm">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-forest-800/85 text-gold-400 backdrop-blur-sm border border-gold-400/35 shadow-sm">
                     {item.category}
                   </span>
                 </div>
 
                 {/* Hover Maximize Icon */}
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#10261d]/85 text-[#dfb85c] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-[#dfb85c]/40 shadow-md">
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-forest-800/85 text-gold-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-gold-400/40 shadow-md">
                   <Maximize2 className="w-4 h-4" />
                 </div>
 
                 {/* Bottom Title & Caption */}
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="tot-font-serif text-base sm:text-lg font-bold text-[#f7f3ea] leading-snug group-hover:text-[#dfb85c] transition-colors">
+                  <h3 className="tot-font-serif text-base sm:text-lg font-bold text-cream-100 leading-snug group-hover:text-gold-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-[11px] text-[#eadecc]/85 line-clamp-1 font-light mt-0.5">
+                  <p className="text-[11px] text-sand-200/85 line-clamp-1 font-light mt-0.5">
                     {item.caption}
                   </p>
                 </div>
