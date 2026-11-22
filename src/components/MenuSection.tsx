@@ -72,7 +72,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
 
         {/* Section Heading matching reference mockup */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <span className="tot-font-display italic text-gold-500 text-xl sm:text-2xl font-normal block mb-1">
+          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
             Taste Our Delights
           </span>
           <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
@@ -108,7 +108,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
           {/* Dietary Filters */}
           <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 md:pb-0 tot-custom-scroll">
             <span className="text-charcoal-500 text-xs font-semibold flex items-center gap-1 flex-shrink-0 mr-1">
-              <Filter className="w-3.5 h-3.5 text-gold-500" /> Filter:
+              <Filter className="w-3.5 h-3.5 text-gold-700" /> Filter:
             </span>
             {dietaryFilters.map((tag) => (
               <button
@@ -130,6 +130,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal-500" />
             <input
               type="text"
+              aria-label="Search dishes"
               placeholder="Search dishes, ingredients..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -152,12 +153,12 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
           <span>
             Showing <strong className="text-forest-900">{filteredItems.length}</strong> {filteredItems.length === 1 ? 'dish' : 'dishes'}
             {activeCategory !== 'All' && <span> in <span className="font-semibold text-forest-900">{activeCategory}</span></span>}
-            {selectedTag !== 'All' && <span> • Filtered by <span className="font-semibold text-gold-500">{selectedTag}</span></span>}
+            {selectedTag !== 'All' && <span> • Filtered by <span className="font-semibold text-gold-700">{selectedTag}</span></span>}
           </span>
           {(activeCategory !== 'All' || selectedTag !== 'All' || searchQuery) && (
             <button
               onClick={handleClearFilters}
-              className="text-xs text-gold-500 hover:text-gold-700 font-semibold underline cursor-pointer"
+              className="text-xs text-gold-700 hover:text-forest-900 font-semibold underline cursor-pointer"
             >
               Reset all filters
             </button>
@@ -232,7 +233,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                     <div>
                       <h3
                         onClick={() => onSelectDish(dish)}
-                        className="tot-font-serif text-base sm:text-lg font-bold text-forest-900 hover:text-gold-500 transition-colors cursor-pointer leading-snug mb-2 line-clamp-1"
+                        className="tot-font-serif text-base sm:text-lg font-bold text-forest-900 hover:text-gold-700 transition-colors cursor-pointer leading-snug mb-2 line-clamp-1"
                       >
                         {dish.name}
                       </h3>
@@ -245,7 +246,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                     <div className="pt-3 mt-4 border-t border-gold-400/15 flex items-center justify-between gap-2">
                       <button
                         onClick={() => onSelectDish(dish)}
-                        className="text-[11px] text-gold-500 hover:text-gold-700 font-semibold inline-flex items-center gap-1 cursor-pointer transition-colors"
+                        className="text-[11px] text-gold-700 hover:text-forest-900 font-semibold inline-flex items-center gap-1 py-1 cursor-pointer transition-colors"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Tasting Notes</span>

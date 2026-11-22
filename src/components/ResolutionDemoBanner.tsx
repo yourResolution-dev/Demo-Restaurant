@@ -31,7 +31,7 @@ export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOp
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start">
           <button
             onClick={handleBack}
-            className="inline-flex items-center gap-1.5 text-gold-400 hover:text-gold-100 font-medium transition-colors group cursor-pointer text-xs"
+            className="inline-flex items-center gap-1.5 py-1 text-gold-400 hover:text-gold-100 font-medium transition-colors group cursor-pointer text-xs"
           >
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
             <span>Back to ReSolution</span>

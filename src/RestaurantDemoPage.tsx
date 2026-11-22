@@ -103,6 +103,13 @@ export const RestaurantDemoPage: React.FC = () => {
 
   return (
     <div className="tot-restaurant-root min-h-screen flex flex-col bg-cream-50 text-charcoal-900 selection:bg-gold-400 selection:text-forest-900 overflow-x-hidden w-full relative">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-gold-400 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-forest-900 focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
+
       {/* Unified Sticky Header: Banner + Navbar */}
       <div className="sticky top-0 z-40 w-full shadow-md">
         <ResolutionDemoBanner onOpenInquiry={() => setIsInquiryModalOpen(true)} />
@@ -114,7 +121,7 @@ export const RestaurantDemoPage: React.FC = () => {
       </div>
 
       {/* Main Page Body */}
-      <main className="flex-1">
+      <main id="main" tabIndex={-1} className="flex-1 outline-none">
         {/* 3. Cinematic Hero Section */}
         <Hero
           onExploreMenu={() => scrollToSection('menu')}

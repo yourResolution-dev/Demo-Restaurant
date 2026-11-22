@@ -3,6 +3,7 @@ import { Dialog as DialogPrimitive } from 'radix-ui';
 import { X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+import { useReturnFocus } from '@/lib/use-return-focus';
 
 const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
@@ -31,8 +32,11 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
   className,
   children,
   showCloseButton = true,
+  onOpenAutoFocus,
+  onCloseAutoFocus,
   ...props
 }, ref) => {
+  const focus = useReturnFocus();
   return (
     <DialogPortal>
       <DialogOverlay />
@@ -43,6 +47,14 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
           'fixed top-1/2 left-1/2 z-50 flex max-h-[92vh] w-[calc(100%-1.5rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-3xl border border-gold-400/40 bg-cream-50 shadow-2xl outline-none duration-200 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
           className
         )}
+        onOpenAutoFocus={(e) => {
+          focus.onOpenAutoFocus();
+          onOpenAutoFocus?.(e);
+        }}
+        onCloseAutoFocus={(e) => {
+          onCloseAutoFocus?.(e);
+          if (!e.defaultPrevented) focus.onCloseAutoFocus(e);
+        }}
         {...props}
       >
         {children}

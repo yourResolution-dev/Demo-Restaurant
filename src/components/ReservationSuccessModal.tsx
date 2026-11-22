@@ -37,7 +37,7 @@ export const ReservationSuccessModal: React.FC<ReservationSuccessModalProps> = (
         <div className="p-5 sm:p-6 space-y-4">
           {/* Demo Notice Banner */}
           <div className="p-3 rounded-xl bg-forest-800/10 border border-gold-400/30 text-xs text-charcoal-500 flex items-start gap-2">
-            <Sparkles className="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" />
+            <Sparkles className="w-4 h-4 text-gold-700 flex-shrink-0 mt-0.5" />
             <div>
               <strong className="text-forest-900">Demo Simulation:</strong> This is an interactive frontend booking demo. In live deployment, instant SMS & WhatsApp confirmations are sent with valet directions.
             </div>
@@ -52,7 +52,7 @@ export const ReservationSuccessModal: React.FC<ReservationSuccessModalProps> = (
 
             <div className="grid grid-cols-2 gap-3 text-xs">
               <div className="flex items-center gap-2">
-                <Calendar className="w-3.5 h-3.5 text-gold-500" />
+                <Calendar className="w-3.5 h-3.5 text-gold-700" />
                 <div>
                   <span className="text-charcoal-500 block text-[10px]">Date</span>
                   <span className="font-semibold text-forest-900">{confirmation.date}</span>
@@ -60,7 +60,7 @@ export const ReservationSuccessModal: React.FC<ReservationSuccessModalProps> = (
               </div>
 
               <div className="flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-gold-500" />
+                <Clock className="w-3.5 h-3.5 text-gold-700" />
                 <div>
                   <span className="text-charcoal-500 block text-[10px]">Time</span>
                   <span className="font-semibold text-forest-900">{confirmation.timeSlot}</span>
@@ -68,7 +68,7 @@ export const ReservationSuccessModal: React.FC<ReservationSuccessModalProps> = (
               </div>
 
               <div className="flex items-center gap-2">
-                <Users className="w-3.5 h-3.5 text-gold-500" />
+                <Users className="w-3.5 h-3.5 text-gold-700" />
                 <div>
                   <span className="text-charcoal-500 block text-[10px]">Party Size</span>
                   <span className="font-semibold text-forest-900">
@@ -78,7 +78,7 @@ export const ReservationSuccessModal: React.FC<ReservationSuccessModalProps> = (
               </div>
 
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-gold-500" />
+                <MapPin className="w-3.5 h-3.5 text-gold-700" />
                 <div>
                   <span className="text-charcoal-500 block text-[10px]">Seating Area</span>
                   <span className="font-semibold text-forest-900 truncate max-w-[120px] block">
@@ -100,7 +100,7 @@ export const ReservationSuccessModal: React.FC<ReservationSuccessModalProps> = (
           <div className="text-center text-xs text-charcoal-500 space-y-0.5">
             <div className="font-semibold text-forest-900">{RESTAURANT_INFO.name}</div>
             <div>{RESTAURANT_INFO.address}</div>
-            <div className="text-gold-500">Smart Casual Dress Code • Complimentary Valet Parking</div>
+            <div className="text-gold-700">Smart Casual Dress Code • Complimentary Valet Parking</div>
           </div>
         </div>
 

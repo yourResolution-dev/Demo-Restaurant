@@ -108,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               <li>
                 <button
                   onClick={() => onNavigate('home')}
-                  className="hover:text-gold-400 transition-colors cursor-pointer"
+                  className="inline-block py-1 hover:text-gold-400 transition-colors cursor-pointer"
                 >
                   Home
                 </button>
@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               <li>
                 <button
                   onClick={() => onNavigate('about')}
-                  className="hover:text-gold-400 transition-colors cursor-pointer"
+                  className="inline-block py-1 hover:text-gold-400 transition-colors cursor-pointer"
                 >
                   About Our Story
                 </button>
@@ -124,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               <li>
                 <button
                   onClick={() => onNavigate('menu')}
-                  className="hover:text-gold-400 transition-colors cursor-pointer"
+                  className="inline-block py-1 hover:text-gold-400 transition-colors cursor-pointer"
                 >
                   Signature Menu
                 </button>
@@ -132,7 +132,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               <li>
                 <button
                   onClick={() => onNavigate('chef')}
-                  className="hover:text-gold-400 transition-colors cursor-pointer"
+                  className="inline-block py-1 hover:text-gold-400 transition-colors cursor-pointer"
                 >
                   Executive Chef
                 </button>
@@ -140,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               <li>
                 <button
                   onClick={() => onNavigate('gallery')}
-                  className="hover:text-gold-400 transition-colors cursor-pointer"
+                  className="inline-block py-1 hover:text-gold-400 transition-colors cursor-pointer"
                 >
                   Photo Gallery
                 </button>
@@ -148,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               <li>
                 <button
                   onClick={() => onNavigate('reviews')}
-                  className="hover:text-gold-400 transition-colors cursor-pointer"
+                  className="inline-block py-1 hover:text-gold-400 transition-colors cursor-pointer"
                 >
                   Guest Reviews
                 </button>
@@ -156,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               <li>
                 <button
                   onClick={() => onNavigate('reservation')}
-                  className="text-gold-400 font-semibold hover:underline cursor-pointer"
+                  className="inline-block py-1 text-gold-400 font-semibold hover:underline cursor-pointer"
                 >
                   Book a Table
                 </button>

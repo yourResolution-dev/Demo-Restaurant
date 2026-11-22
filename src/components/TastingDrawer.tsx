@@ -54,7 +54,7 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
         <div className="flex-1 space-y-3.5 overflow-y-auto p-4 sm:p-6 tot-custom-scroll">
           {items.length === 0 ? (
             <div className="px-4 py-16 text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-gold-400/30 bg-cream-150 text-gold-500">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-gold-400/30 bg-cream-150 text-gold-700">
                 <ShoppingBag className="h-8 w-8" />
               </div>
               <h4 className="mb-2 font-serif text-lg font-bold text-forest-900">No Dishes Selected Yet</h4>
@@ -72,7 +72,7 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
                 <button
                   type="button"
                   onClick={onClearAll}
-                  className="cursor-pointer font-medium text-gold-500 hover:text-gold-700"
+                  className="cursor-pointer font-medium text-gold-700 hover:text-forest-900"
                 >
                   Clear All
                 </button>
@@ -93,7 +93,7 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
                   <div className="min-w-0 flex-1">
                     <h4 className="truncate font-serif text-sm font-bold text-forest-900">{item.name}</h4>
                     <span className="mb-0.5 block truncate text-[11px] text-charcoal-500">{item.category}</span>
-                    <span className="text-xs font-bold text-gold-500">
+                    <span className="text-xs font-bold text-gold-700">
                       ₹{(item.price * quantity).toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -102,7 +102,7 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
                     <button
                       type="button"
                       onClick={() => onUpdateQuantity(item.id, -1)}
-                      className="cursor-pointer p-0.5 text-forest-900 hover:text-gold-500"
+                      className="cursor-pointer p-0.5 text-forest-900 hover:text-gold-700"
                       aria-label="Decrease quantity"
                     >
                       <Minus className="h-3 w-3" />
@@ -113,7 +113,7 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
                     <button
                       type="button"
                       onClick={() => onUpdateQuantity(item.id, 1)}
-                      className="cursor-pointer p-0.5 text-forest-900 hover:text-gold-500"
+                      className="cursor-pointer p-0.5 text-forest-900 hover:text-gold-700"
                       aria-label="Increase quantity"
                     >
                       <Plus className="h-3 w-3" />
@@ -148,7 +148,7 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
               </div>
               <div className="flex items-baseline justify-between border-t border-gold-400/20 pt-2 text-sm font-bold text-forest-900">
                 <span>Estimated Total (INR):</span>
-                <span className="font-serif text-xl text-gold-500">₹{totalEstimate.toLocaleString('en-IN')}</span>
+                <span className="font-serif text-xl text-gold-700">₹{totalEstimate.toLocaleString('en-IN')}</span>
               </div>
               <p className="text-[11px] italic text-charcoal-500/80">
                 *Taxes & service added at table. This flight links directly to your reservation.

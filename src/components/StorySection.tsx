@@ -16,7 +16,7 @@ export const StorySection: React.FC = () => {
           {/* Left Column: Narrative and Milestone Grid (6 cols) */}
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-1.5">
-              <span className="tot-font-display italic text-gold-500 text-2xl font-normal block">
+              <span className="tot-font-display italic text-gold-700 text-2xl font-normal block">
                 Our Story
               </span>
               <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 leading-tight">
@@ -42,7 +42,7 @@ export const StorySection: React.FC = () => {
                 'Zero-Waste Sustainable Ethos',
               ].map((feat, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-gold-700 flex-shrink-0" />
                   <span className="text-xs sm:text-sm font-medium text-charcoal-700">{feat}</span>
                 </div>
               ))}
@@ -62,7 +62,7 @@ export const StorySection: React.FC = () => {
                       {idx === 2 && <Award className="w-3.5 h-3.5" />}
                       {idx === 3 && <ShieldCheck className="w-3.5 h-3.5" />}
                     </div>
-                    <span className="tot-font-serif text-xl sm:text-2xl font-bold text-forest-900 group-hover:text-gold-500 transition-colors">
+                    <span className="tot-font-serif text-xl sm:text-2xl font-bold text-forest-900 group-hover:text-gold-700 transition-colors">
                       {m.number}
                     </span>
                   </div>

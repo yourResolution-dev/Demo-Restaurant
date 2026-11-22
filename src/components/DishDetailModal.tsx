@@ -72,7 +72,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
           <div className="grid grid-cols-3 gap-2 sm:gap-3 p-3 rounded-2xl bg-cream-100 border border-gold-400/30 text-center">
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center gap-1 text-[11px] sm:text-xs text-charcoal-500">
-                <Clock className="w-3.5 h-3.5 text-gold-500" /> Prep Time
+                <Clock className="w-3.5 h-3.5 text-gold-700" /> Prep Time
               </div>
               <div className="text-xs sm:text-sm font-bold text-forest-900 mt-0.5">
                 {dish.preparationTime || '15 mins'}
@@ -81,7 +81,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
 
             <div className="flex flex-col items-center justify-center border-x border-gold-400/30">
               <div className="flex items-center gap-1 text-[11px] sm:text-xs text-charcoal-500">
-                <Flame className="w-3.5 h-3.5 text-gold-500" /> Calories
+                <Flame className="w-3.5 h-3.5 text-gold-700" /> Calories
               </div>
               <div className="text-xs sm:text-sm font-bold text-forest-900 mt-0.5">
                 {dish.calories ? `${dish.calories} kcal` : 'Chef Balanced'}
@@ -90,7 +90,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
 
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center gap-1 text-[11px] sm:text-xs text-charcoal-500">
-                <Sparkles className="w-3.5 h-3.5 text-gold-500" /> Course
+                <Sparkles className="w-3.5 h-3.5 text-gold-700" /> Course
               </div>
               <div className="text-xs sm:text-sm font-bold text-forest-900 mt-0.5 truncate max-w-[120px]">
                 {dish.category}
@@ -100,7 +100,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
 
           {/* Detailed Story & Flavors */}
           <div>
-            <h4 className="text-xs uppercase tracking-widest font-bold text-gold-500 mb-1">
+            <h4 className="text-xs uppercase tracking-widest font-bold text-gold-700 mb-1">
               Flavor Architecture
             </h4>
             <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed font-light">
@@ -143,7 +143,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
           {/* Allergens warning */}
           {dish.allergens && dish.allergens.length > 0 && (
             <div className="flex items-center gap-2 text-xs text-charcoal-500">
-              <ShieldAlert className="w-4 h-4 text-gold-500 flex-shrink-0" />
+              <ShieldAlert className="w-4 h-4 text-gold-700 flex-shrink-0" />
               <span>Contains: {dish.allergens.join(', ')}. Please inform your server of any severe allergies.</span>
             </div>
           )}

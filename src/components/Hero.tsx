@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Star, ArrowRight, Calendar, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ArrowRight, Calendar, ChevronDown, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
@@ -12,6 +12,19 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [userPaused, setUserPaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Respect the visitor's reduced-motion setting: never auto-advance for them.
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(query.matches);
+    const onChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
+
+  const autoplay = !isPaused && !userPaused && !prefersReducedMotion;
 
   const heroSlides = [
     {
@@ -46,12 +59,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
   }, [heroSlides.length]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (!autoplay) return;
     const timer = setInterval(() => {
       nextSlide();
     }, 7000);
     return () => clearInterval(timer);
-  }, [isPaused, nextSlide]);
+  }, [autoplay, nextSlide]);
 
   const current = heroSlides[activeSlide];
 
@@ -169,18 +182,23 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             {heroSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveSlide(i)}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  activeSlide === i
-                    ? 'w-7 h-2 bg-gold-400 shadow-[0_0_8px_#dfb85c]'
-                    : 'w-2 h-2 bg-gold-400/30 hover:bg-gold-400/60'
-                }`}
+                className="group flex h-6 min-w-6 cursor-pointer items-center justify-center px-0.5"
                 aria-label={`Slide ${i + 1}`}
-              />
+                aria-current={activeSlide === i}
+              >
+                <span
+                  className={`block rounded-full transition-all duration-300 ${
+                    activeSlide === i
+                      ? 'h-2 w-7 bg-gold-400 shadow-[0_0_8px_var(--gold-400)]'
+                      : 'h-2 w-2 bg-gold-400/30 group-hover:bg-gold-400/60'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
@@ -191,6 +209,17 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
           >
             <ChevronRight className="w-4 h-4" />
           </button>
+
+          {!prefersReducedMotion && (
+            <button
+              onClick={() => setUserPaused((p) => !p)}
+              aria-label={userPaused ? 'Play slideshow' : 'Pause slideshow'}
+              aria-pressed={userPaused}
+              className="p-1 rounded-full text-gold-400/60 hover:text-gold-400 transition-colors cursor-pointer"
+            >
+              {userPaused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
+            </button>
+          )}
         </div>
       </div>
 

@@ -115,7 +115,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
         
         {/* Section Heading matching screenshot */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="tot-font-display italic text-gold-500 text-xl sm:text-2xl font-normal block mb-1">
+          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
             Book Your Table
           </span>
           <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
@@ -137,7 +137,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
               {/* Optional Tasting Menu Indicator */}
               {hasTastingMenuSelected && (
                 <div className="p-3 rounded-xl bg-forest-800/10 border border-gold-400/40 flex items-center gap-2.5 text-xs text-forest-900">
-                  <Utensils className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                  <Utensils className="w-4 h-4 text-gold-700 flex-shrink-0" />
                   <span>
                     <strong>Tasting Flight Linked:</strong> Your selected courses will be forwarded to {CHEF_INFO.shortName}'s kitchen.
                   </span>
@@ -354,7 +354,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
               </p>
               <a
                 href={`tel:${RESTAURANT_INFO.phone.replace(/[^+\d]/g, '')}`}
-                className="inline-flex items-center gap-1.5 text-xs text-gold-400 font-semibold hover:underline"
+                className="inline-flex items-center gap-1.5 py-1 text-xs text-gold-400 font-semibold hover:underline"
               >
                 Direct Concierge Desk: {RESTAURANT_INFO.phoneDisplay}
               </a>

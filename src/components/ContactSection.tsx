@@ -10,7 +10,7 @@ export const ContactSection: React.FC = () => {
         
         {/* Section Heading matching reference mockup */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="tot-font-display italic text-gold-500 text-xl sm:text-2xl font-normal block mb-1">
+          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
             Connect With Us
           </span>
           <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
@@ -72,7 +72,7 @@ export const ContactSection: React.FC = () => {
                   href={RESTAURANT_INFO.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-gold-500 hover:text-gold-700 font-semibold"
+                  className="inline-flex items-center gap-1 py-1 text-xs text-gold-700 hover:text-forest-900 font-semibold"
                 >
                   <span>Open in Google Maps</span>
                   <ExternalLink className="w-3 h-3" />
@@ -94,7 +94,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <a
                   href={`tel:${RESTAURANT_INFO.phone}`}
-                  className="text-xs text-gold-500 hover:text-gold-700 font-semibold block"
+                  className="text-xs text-gold-700 hover:text-forest-900 font-semibold block py-1"
                 >
                   {RESTAURANT_INFO.phoneDisplay}
                 </a>
@@ -115,7 +115,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <a
                   href={`mailto:${RESTAURANT_INFO.email}`}
-                  className="text-xs text-gold-500 hover:text-gold-700 font-semibold block"
+                  className="text-xs text-gold-700 hover:text-forest-900 font-semibold block py-1"
                 >
                   {RESTAURANT_INFO.email}
                 </a>
@@ -145,7 +145,7 @@ export const ContactSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <span className="text-[11px] text-gold-500 font-medium pt-2 block">
+                <span className="text-[11px] text-gold-700 font-medium pt-2 block">
                   {RESTAURANT_INFO.hours.cocktailLounge}
                 </span>
               </div>
@@ -154,7 +154,7 @@ export const ContactSection: React.FC = () => {
             {/* Valet & Dress Code Banner */}
             <div className="p-4 rounded-2xl bg-cream-150 border border-gold-400/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs shadow-sm">
               <div className="flex items-center gap-2 text-forest-900">
-                <Car className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                <Car className="w-4 h-4 text-gold-700 flex-shrink-0" />
                 <span className="font-medium">Complimentary Valet Parking available at main courtyard entry.</span>
               </div>
               <span className="text-charcoal-500 whitespace-nowrap bg-white/70 px-2.5 py-1 rounded-full border border-gold-400/20">

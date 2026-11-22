@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dialog as SheetPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
+import { useReturnFocus } from '@/lib/use-return-focus';
 
 const Sheet = SheetPrimitive.Root;
 const SheetTrigger = SheetPrimitive.Trigger;
@@ -11,8 +12,11 @@ const SheetClose = SheetPrimitive.Close;
 const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Content>, React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>>(({
   className,
   children,
+  onOpenAutoFocus,
+  onCloseAutoFocus,
   ...props
 }, ref) => {
+  const focus = useReturnFocus();
   return (
     <SheetPrimitive.Portal>
       <SheetPrimitive.Overlay
@@ -26,6 +30,14 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
           'fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-md flex-col border-l border-gold-400/40 bg-cream-50 shadow-2xl outline-none duration-300 data-[state=open]:animate-in data-[state=open]:slide-in-from-right data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right',
           className
         )}
+        onOpenAutoFocus={(e) => {
+          focus.onOpenAutoFocus();
+          onOpenAutoFocus?.(e);
+        }}
+        onCloseAutoFocus={(e) => {
+          onCloseAutoFocus?.(e);
+          if (!e.defaultPrevented) focus.onCloseAutoFocus(e);
+        }}
         {...props}
       >
         {children}

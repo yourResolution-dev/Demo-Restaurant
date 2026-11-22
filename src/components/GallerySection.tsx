@@ -27,7 +27,7 @@ export const GallerySection: React.FC = () => {
         
         {/* Section Heading matching screenshot: "Our Gallery" */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="tot-font-display italic text-gold-500 text-xl sm:text-2xl font-normal block mb-1">
+          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
             Atmosphere & Moments
           </span>
           <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
