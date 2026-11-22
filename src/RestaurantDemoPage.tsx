@@ -9,20 +9,26 @@ import { MenuItem, SelectedItem, ReservationConfirmation } from './types/restaur
 import { ResolutionDemoBanner } from './components/ResolutionDemoBanner';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-const DishDetailModal = lazy(() =>
-  import('./components/DishDetailModal').then((m) => ({ default: m.DishDetailModal }))
-);
-const TastingDrawer = lazy(() =>
-  import('./components/TastingDrawer').then((m) => ({ default: m.TastingDrawer }))
-);
-const ReservationSuccessModal = lazy(() =>
-  import('./components/ReservationSuccessModal').then((m) => ({
-    default: m.ReservationSuccessModal,
-  }))
-);
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { BackToTop } from './components/BackToTop';
+
+// Modals load when first opened. They are also fetched on the first interaction, so the
+// first open is instant and keyboard focus is not left behind while a chunk downloads.
+const modalImports = {
+  dish: () => import('./components/DishDetailModal'),
+  drawer: () => import('./components/TastingDrawer'),
+  success: () => import('./components/ReservationSuccessModal'),
+  inquiry: () => import('./components/InquiryModal'),
+};
+const DishDetailModal = lazy(() =>
+  modalImports.dish().then((m) => ({ default: m.DishDetailModal }))
+);
+const TastingDrawer = lazy(() => modalImports.drawer().then((m) => ({ default: m.TastingDrawer })));
+const ReservationSuccessModal = lazy(() =>
+  modalImports.success().then((m) => ({ default: m.ReservationSuccessModal }))
+);
+const InquiryModal = lazy(() => modalImports.inquiry().then((m) => ({ default: m.InquiryModal })));
 
 // Below-the-fold sections load on demand. The same import functions let navigation
 // clicks download everything before scrolling.
@@ -49,9 +55,6 @@ const ReservationSection = lazy(() =>
 );
 const ContactSection = lazy(() =>
   sectionImports.contact().then((m) => ({ default: m.ContactSection }))
-);
-const InquiryModal = lazy(() =>
-  import('./components/InquiryModal').then((m) => ({ default: m.InquiryModal }))
 );
 
 export const RestaurantDemoPage: React.FC = () => {
@@ -125,6 +128,21 @@ export const RestaurantDemoPage: React.FC = () => {
       setMountAllSections(true);
       await Promise.all(Object.values(sectionImports).map((load) => load()));
     });
+  }, []);
+
+  // Fetch the modal chunks on the visitor's first interaction, so the first open is
+  // instant but the initial page load is untouched. Pressing Tab counts, so keyboard
+  // users get the chunks well before they reach a button.
+  useEffect(() => {
+    const events = ['pointerdown', 'pointermove', 'keydown', 'touchstart', 'scroll'] as const;
+    const prefetch = () => {
+      events.forEach((name) => window.removeEventListener(name, prefetch));
+      Object.values(modalImports).forEach((load) => void load());
+    };
+    events.forEach((name) =>
+      window.addEventListener(name, prefetch, { passive: true, once: true })
+    );
+    return () => events.forEach((name) => window.removeEventListener(name, prefetch));
   }, []);
 
   const handleProceedToBooking = () => {

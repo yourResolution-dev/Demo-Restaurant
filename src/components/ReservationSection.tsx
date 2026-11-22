@@ -154,7 +154,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
 
               {/* Row 1: Full Name and Phone Number */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field id="res-fullName" label="Full Name *" error={errors.fullName}>
+                <Field id="res-fullName" label="Full Name *" required error={errors.fullName}>
                   {(c) => (
                     <Input
                       {...c}
@@ -166,7 +166,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                   )}
                 </Field>
 
-                <Field id="res-phone" label="Phone Number *" error={errors.phone}>
+                <Field id="res-phone" label="Phone Number *" required error={errors.phone}>
                   {(c) => (
                     <Input
                       {...c}
@@ -181,7 +181,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
 
               {/* Row 2: Email and Guests */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field id="res-email" label="Email Address *" error={errors.email}>
+                <Field id="res-email" label="Email Address *" required error={errors.email}>
                   {(c) => (
                     <Input
                       {...c}
@@ -193,7 +193,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                   )}
                 </Field>
 
-                <Field id="res-guests" label="Number of Guests *" error={errors.guests}>
+                <Field id="res-guests" label="Number of Guests *" required error={errors.guests}>
                   {(c) => (
                     <Select
                       value={String(formData.guests)}
@@ -216,7 +216,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
 
               {/* Row 3: Date and Time Slot */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field id="res-date" label="Reservation Date *" error={errors.date}>
+                <Field id="res-date" label="Reservation Date *" required error={errors.date}>
                   {(c) => (
                     <Input
                       {...c}
@@ -229,7 +229,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                   )}
                 </Field>
 
-                <Field id="res-time" label="Preferred Time Slot *">
+                <Field id="res-time" label="Preferred Time Slot *" required>
                   {(c) => (
                     <Select
                       value={formData.timeSlot}

@@ -9,6 +9,8 @@ interface FieldProps {
   /** Rendered as the control's id; also wires label and error for a11y. */
   id: string;
   error?: string;
+  /** Announces the control as required to screen readers (the label shows the asterisk). */
+  required?: boolean;
   className?: string;
   labelClassName?: string;
   /** Receives the props the control must spread to stay accessible. */
@@ -16,11 +18,12 @@ interface FieldProps {
     id: string;
     'aria-invalid': boolean | undefined;
     'aria-describedby': string | undefined;
+    'aria-required': boolean | undefined;
   }) => React.ReactNode;
 }
 
 /** Label + control + error message with correct aria wiring. */
-function Field({ label, id, error, className, labelClassName, children }: FieldProps) {
+function Field({ label, id, error, required, className, labelClassName, children }: FieldProps) {
   const errorId = `${id}-error`;
   return (
     <div data-slot="field" className={className}>
@@ -31,6 +34,7 @@ function Field({ label, id, error, className, labelClassName, children }: FieldP
         id,
         'aria-invalid': error ? true : undefined,
         'aria-describedby': error ? errorId : undefined,
+        'aria-required': required ? true : undefined,
       })}
       {error && (
         <span
