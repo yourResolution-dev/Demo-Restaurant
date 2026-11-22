@@ -4,6 +4,7 @@ import { MenuItem } from '../types/restaurant.types';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 interface DishDetailModalProps {
   dish: MenuItem | null;
@@ -25,7 +26,8 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
           <>
         {/* Header Image */}
         <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden flex-shrink-0">
-          <img
+          <ResponsiveImage
+ sizes="(min-width:768px) 42rem, 100vw"
             src={dish.image}
             alt={dish.name}
             className="w-full h-full object-cover object-center"

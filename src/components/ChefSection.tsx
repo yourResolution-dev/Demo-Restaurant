@@ -1,6 +1,7 @@
 import React from 'react';
 import { Award, Quote, Sparkles } from 'lucide-react';
 import { CHEF_INFO, RESTAURANT_INFO } from '@/config';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 export const ChefSection: React.FC = () => {
   return (
@@ -32,7 +33,8 @@ export const ChefSection: React.FC = () => {
 
               {/* Portrait Card */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-gold-400/40 bg-forest-800">
-                <img
+                <ResponsiveImage
+ sizes="(min-width:1024px) 40vw, 100vw"
                   src={CHEF_INFO.image}
                   alt={CHEF_INFO.name}
                   className="w-full h-[360px] sm:h-[450px] lg:h-[500px] object-cover object-top hover:scale-105 transition-transform duration-700 filter brightness-95"

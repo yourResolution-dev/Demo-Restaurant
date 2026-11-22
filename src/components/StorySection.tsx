@@ -1,6 +1,7 @@
 import React from 'react';
 import { Award, Users, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { RESTAURANT_INFO, FALLBACK_AMBIANCE_IMAGE, FALLBACK_FOOD_IMAGE } from '@/config';
+import { RESTAURANT_INFO } from '@/config';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 export const StorySection: React.FC = () => {
   return (
@@ -94,13 +95,10 @@ export const StorySection: React.FC = () => {
 
               {/* Main Primary Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                <img
-                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                <ResponsiveImage
+ sizes="(min-width:1024px) 50vw, 100vw"
+                  src="/images/photo-1517248135467-4c7edcad34c4-960.webp"
                   alt={`${RESTAURANT_INFO.brandName} Dining Experience`}
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = FALLBACK_AMBIANCE_IMAGE;
-                  }}
                   className="w-full h-[320px] sm:h-[420px] object-cover object-center hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-900/75 via-transparent to-transparent" />
@@ -112,13 +110,10 @@ export const StorySection: React.FC = () => {
 
               {/* Secondary Floating Image */}
               <div className="hidden sm:block absolute -bottom-5 right-4 w-40 h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                <img
-                  src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+                <ResponsiveImage
+ sizes="160px"
+                  src="/images/photo-1544025162-d76694265947-960.webp"
                   alt="Artisanal Kitchen Craft"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = FALLBACK_FOOD_IMAGE;
-                  }}
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />
               </div>

@@ -1,6 +1,4 @@
 // Restaurant identity, contact details and chef profile. Edit this file to re-skin the site.
-export const FALLBACK_FOOD_IMAGE = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80';
-export const FALLBACK_AMBIANCE_IMAGE = 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80';
 
 export const RESTAURANT_INFO = {
   name: 'THE OLIVE TABLE',
@@ -47,7 +45,7 @@ export const CHEF_INFO = {
   accolades: '2 Michelin Star Heritage • 22 Years Gastronomic Mastery',
   quote: 'Cooking is not merely chemistry; it is poetry served on porcelain. Every plate at The Olive Table is an intimate invitation to pause, breathe, and cherish life’s sublime moments.',
   bio: 'Born in the hills outside Florence and trained across the culinary capitals of Lyon, San Sebastián, and Milan, Chef Marco Valenti has spent over two decades redefining Mediterranean gastronomy. Since founding The Olive Table in 2014, Chef Marco has championed estate cold-pressed olive oils, zero-waste kitchen philosophies, and heirloom grain revivals.',
-  image: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80',
+  image: '/images/photo-1577219491135-ce391730fb2c-960.webp',
   signatureDish: 'House-Extruded 30-Yolk Black Truffle Tagliolini',
   awards: [
     { year: '2024', title: 'World’s 50 Best Discovery' },

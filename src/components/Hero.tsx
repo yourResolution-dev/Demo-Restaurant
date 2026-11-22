@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Star, ArrowRight, Calendar, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import { RESTAURANT_INFO, FALLBACK_AMBIANCE_IMAGE } from '@/config';
+import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 interface HeroProps {
   onExploreMenu: () => void;
@@ -18,21 +19,21 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
       kicker: 'Savor the Moment',
       subtitle: 'Where culinary mastery unfolds with every bite. Experience an exquisite symphony of taste, tradition, and timeless atmosphere.',
       badge: 'MICHELIN RECOMMENDED 2026',
-      image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1920&q=85',
+      image: '/images/photo-1550966871-3ed3cdb5ed0c-1600.webp',
     },
     {
       title: 'Artisanal Mediterranean Terroir.',
       kicker: 'Heritage & Craft',
       subtitle: 'Cold-pressed estate olive oils, line-caught sustainable seafood, and heirloom produce orchestrated into poetic fine dining.',
       badge: 'ESTATE GROWN & CHEF CRAFTED',
-      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=85',
+      image: '/images/photo-1517248135467-4c7edcad34c4-1600.webp',
     },
     {
       title: 'Intimate Candlelit Elegance.',
       kicker: 'Atmosphere & Moments',
       subtitle: 'A sanctuary of slow dining where each course is paired with curated vintage wines under ambient amber glow.',
       badge: 'PRIVATE SALON & WINE CELLAR',
-      image: 'https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1920&q=85',
+      image: '/images/photo-1543007630-9710e4a00a20-1600.webp',
     },
   ];
 
@@ -70,13 +71,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
               activeSlide === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           >
-            <img
+            <ResponsiveImage
+ sizes="100vw" priority={idx === 0}
               src={slide.image}
               alt={slide.title}
-              onError={(e) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = FALLBACK_AMBIANCE_IMAGE;
-              }}
               className="w-full h-full object-cover object-center filter brightness-[0.34] contrast-[1.1] transform scale-105"
             />
           </div>

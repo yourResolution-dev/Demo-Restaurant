@@ -1,10 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Plus, Check, Eye, Sparkles, Filter, ChefHat, X } from 'lucide-react';
-import { MENU_ITEMS, FALLBACK_FOOD_IMAGE, CHEF_INFO } from '@/config';
+import { MENU_ITEMS, CHEF_INFO } from '@/config';
 import { MenuItem, MenuCategory, DietaryTag } from '../types/restaurant.types';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 interface MenuSectionProps {
   onSelectDish: (item: MenuItem) => void;
@@ -190,13 +191,10 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                     className="relative h-52 sm:h-56 overflow-hidden cursor-pointer flex-shrink-0"
                     onClick={() => onSelectDish(dish)}
                   >
-                    <img
+                    <ResponsiveImage
+ sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                       src={dish.image}
                       alt={dish.name}
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = FALLBACK_FOOD_IMAGE;
-                      }}
                       className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-forest-900/70 via-transparent to-transparent opacity-85 group-hover:opacity-65 transition-opacity" />

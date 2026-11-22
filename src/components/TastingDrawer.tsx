@@ -3,6 +3,7 @@ import { Trash2, Plus, Minus, Calendar, ShoppingBag, ArrowRight, X } from 'lucid
 import { SelectedItem } from '../types/restaurant.types';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 interface TastingDrawerProps {
   isOpen: boolean;
@@ -82,10 +83,10 @@ export const TastingDrawer: React.FC<TastingDrawerProps> = ({
                   key={item.id}
                   className="group flex items-center gap-3 rounded-2xl border border-gold-400/25 bg-white p-3 shadow-sm"
                 >
-                  <img
+                  <ResponsiveImage
+ sizes="64px"
                     src={item.image}
                     alt={item.name}
-                    loading="lazy"
                     className="h-15 w-15 flex-shrink-0 rounded-xl object-cover sm:h-16 sm:w-16"
                   />
 

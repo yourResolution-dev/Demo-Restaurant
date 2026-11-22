@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Maximize2 } from 'lucide-react';
 import { GALLERY_ITEMS, RESTAURANT_INFO } from '@/config';
 import { GalleryLightbox } from './GalleryLightbox';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 export const GallerySection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -71,7 +72,8 @@ export const GallerySection: React.FC = () => {
                     : 'h-64 sm:h-72 lg:h-80'
                 }`}
               >
-                <img
+                <ResponsiveImage
+ sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   src={item.imageUrl}
                   alt={item.title}
                   className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"

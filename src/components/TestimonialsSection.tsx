@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote, Heart, CheckCircle2 } from 'lucide-react';
 import { TESTIMONIALS } from '@/config';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 export const TestimonialsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -77,7 +78,8 @@ export const TestimonialsSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-8">
               {/* Diner Avatar */}
               <div className="relative flex-shrink-0">
-                <img
+                <ResponsiveImage
+ sizes="96px" widths={[160, 320]}
                   src={current.avatar}
                   alt={current.name}
                   className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-2 border-gold-400 shadow-lg"
@@ -152,7 +154,8 @@ export const TestimonialsSection: React.FC = () => {
                   }`}
                   aria-label={`View review by ${t.name}`}
                 >
-                  <img
+                  <ResponsiveImage
+ sizes="24px" widths={[160, 320]}
                     src={t.avatar}
                     alt={t.name}
                     className="w-6 h-6 rounded-full object-cover"

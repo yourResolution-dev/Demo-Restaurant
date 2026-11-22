@@ -4,6 +4,7 @@ import { GalleryItem } from '../types/restaurant.types';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 interface GalleryLightboxProps {
   items: GalleryItem[];
@@ -79,7 +80,8 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
               className="z-10 mx-auto flex max-h-[80vh] max-w-5xl flex-col items-center justify-center px-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <ResponsiveImage
+ sizes="(min-width:1024px) 64rem, 100vw"
                 src={currentItem.imageUrl}
                 alt={currentItem.title}
                 className="max-h-[68vh] w-auto max-w-full rounded-2xl border border-gold-400/30 object-contain shadow-2xl"
@@ -121,7 +123,8 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
                       : 'border-transparent opacity-50 hover:opacity-100'
                   )}
                 >
-                  <img src={item.imageUrl} alt="" className="h-full w-full object-cover" />
+                  <ResponsiveImage
+ sizes="48px" src={item.imageUrl} alt="" className="h-full w-full object-cover" />
                 </button>
               ))}
             </div>

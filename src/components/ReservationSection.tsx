@@ -6,6 +6,7 @@ import { Field } from '@/components/ui/field';
 import { Input, Textarea } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { RESTAURANT_INFO, CHEF_INFO } from '@/config';
+import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 interface ReservationSectionProps {
   onSuccess: (confirmation: ReservationConfirmation) => void;
@@ -331,8 +332,9 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
 
           {/* Right Column: Tall Candlelit Ambiance Photo (5 cols) matching screenshot */}
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-2xl min-h-[420px] lg:min-h-full border border-gold-400/35 flex flex-col justify-end">
-            <img
-              src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=80"
+            <ResponsiveImage
+ sizes="(min-width:1024px) 40vw, 100vw"
+              src="/images/photo-1550966871-3ed3cdb5ed0c-960.webp"
               alt={`${RESTAURANT_INFO.brandName} Candlelit Dining`}
               className="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 hover:scale-105 transition-transform duration-700"
             />

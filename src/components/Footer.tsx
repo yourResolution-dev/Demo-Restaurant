@@ -246,6 +246,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
             <span>© 2026 {RESTAURANT_INFO.name}. All rights reserved.</span>
             <span className="hidden sm:inline">•</span>
             <span className="text-gold-400">ReSolution Luxury Restaurant Demo</span>
+            <span className="hidden sm:inline">•</span>
+            <span>
+              Photography via{' '}
+              <a
+                href="https://unsplash.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-gold-400"
+              >
+                Unsplash
+              </a>
+            </span>
           </div>
 
           <div className="flex items-center gap-3">
