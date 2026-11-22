@@ -11,8 +11,11 @@ const sources = JSON.parse(
   await readFile(path.join(root, 'scripts', 'image-sources.json'), 'utf8')
 );
 
+const widthsSource = await readFile(path.join(root, 'src', 'config', 'images.ts'), 'utf8');
+const photoWidths = JSON.parse(widthsSource.match(/IMAGE_WIDTHS = (\[[^\]]*\])/)[1]);
+
 const jobs = [
-  ...sources.photos.flatMap((id) => [480, 960, 1600].map((w) => ({ id, w }))),
+  ...sources.photos.flatMap((id) => photoWidths.map((w) => ({ id, w }))),
   ...sources.avatars.flatMap((id) => [160, 320].map((w) => ({ id, w }))),
 ];
 
@@ -28,7 +31,7 @@ for (const { id, w } of jobs) {
   } catch {
     // not downloaded yet
   }
-  const url = `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=78&fm=webp`;
+  const url = `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=60&fm=webp`;
   const res = await fetch(url);
   if (!res.ok) {
     console.error(`FAIL ${res.status} ${id} @${w}`);

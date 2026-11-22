@@ -24,6 +24,9 @@
     "vite.config.ts",
     "scripts/seo-plugin.ts",
     "src/config/restaurant.ts",
-    "src/config/seo.ts"
+    "src/config/seo.ts",
+    "src/config/hero.ts",
+    "src/config/images.ts",
+    "src/config/fonts.ts"
   ]
 }

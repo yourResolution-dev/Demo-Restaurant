@@ -358,7 +358,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-2xl min-h-[420px] lg:min-h-full border border-gold-400/35 flex flex-col justify-end">
             <ResponsiveImage
               sizes="(min-width:1024px) 40vw, 100vw"
-              src="/images/photo-1550966871-3ed3cdb5ed0c-960.webp"
+              src="/images/photo-1550966871-3ed3cdb5ed0c-1200.webp"
               alt={`${RESTAURANT_INFO.brandName} Candlelit Dining`}
               className="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 hover:scale-105 transition-transform duration-700"
             />

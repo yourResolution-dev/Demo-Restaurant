@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { IMAGE_WIDTHS } from '@/config/images';
 
-const DEFAULT_WIDTHS = [480, 960, 1600];
+const DEFAULT_WIDTHS = IMAGE_WIDTHS;
 
 interface ResponsiveImageProps extends Omit<
   React.ComponentPropsWithoutRef<'img'>,
   'srcSet' | 'loading'
 > {
-  /** Path to any one size of a local image, e.g. `/images/photo-123-960.webp`. */
+  /** Path to any one size of a local image, e.g. `/images/photo-123-1200.webp`. */
   src: string;
   /** Tells the browser how wide the image renders so it can pick a file. */
   sizes: string;

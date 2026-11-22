@@ -9,10 +9,60 @@ import {
   Pause,
   Play,
 } from 'lucide-react';
-import { RESTAURANT_INFO } from '@/config';
+import { RESTAURANT_INFO, HERO_SLIDES } from '@/config';
 import { Button } from '@/components/ui/button';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
 import { usePrefersReducedMotion } from '@/lib/use-prefers-reduced-motion';
+
+type HeroSlide = (typeof HERO_SLIDES)[number];
+
+/**
+ * One slide's text. Every slide is rendered in the same grid cell and only the
+ * active one is visible, so the block always keeps the height of the tallest
+ * slide and the page never jumps when the slideshow advances.
+ */
+function SlideCopy({ slide, active }: { slide: HeroSlide; active: boolean }) {
+  const Heading = active ? 'h1' : 'div';
+  return (
+    <div
+      className={`col-start-1 row-start-1 flex flex-col items-center ${active ? '' : 'invisible'}`}
+      aria-hidden={active ? undefined : true}
+    >
+      {/* Top Gold Michelin Badge */}
+      <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-forest-800/90 border border-gold-400/40 text-gold-400 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-3 sm:mb-5 shadow-[0_0_20px_rgba(223,184,92,0.15)] backdrop-blur-md">
+        <div className="flex items-center gap-0.5 text-gold-400">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-3 h-3 fill-gold-400 text-gold-400" />
+          ))}
+        </div>
+        <span className="text-mist-400">•</span>
+        <span>{slide.badge}</span>
+      </div>
+
+      {/* Script Kicker */}
+      <span className="tot-font-display italic text-gold-400 text-xl sm:text-2xl lg:text-3xl font-normal mb-1.5 block tracking-wide">
+        {slide.kicker}
+      </span>
+
+      {/* Headline */}
+      <Heading className="tot-font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-cream-100 mb-4 sm:mb-5 leading-[1.15] max-w-4xl">
+        {slide.title.includes('Remembering.') ? (
+          <>
+            A Taste Worth{' '}
+            <span className="tot-gold-gradient-text italic font-normal">Remembering.</span>
+          </>
+        ) : (
+          slide.title
+        )}
+      </Heading>
+
+      {/* Description */}
+      <p className="tot-font-sans text-xs sm:text-base md:text-lg text-sand-200/90 max-w-2xl mx-auto mb-7 sm:mb-9 leading-relaxed font-light">
+        {slide.subtitle}
+      </p>
+    </div>
+  );
+}
 
 interface HeroProps {
   onExploreMenu: () => void;
@@ -21,38 +71,17 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
   const [activeSlide, setActiveSlide] = useState(0);
+  // Slides whose image has been mounted. Only the first loads up front; the next
+  // one is added shortly after each change so crossfades stay smooth without
+  // downloading every slide during the initial load.
+  const [mountedSlides, setMountedSlides] = useState<number[]>([0]);
   const [isPaused, setIsPaused] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const autoplay = !isPaused && !userPaused && !prefersReducedMotion;
 
-  const heroSlides = [
-    {
-      title: 'A Taste Worth Remembering.',
-      kicker: 'Savor the Moment',
-      subtitle:
-        'Where culinary mastery unfolds with every bite. Experience an exquisite symphony of taste, tradition, and timeless atmosphere.',
-      badge: 'MICHELIN RECOMMENDED 2026',
-      image: '/images/photo-1550966871-3ed3cdb5ed0c-1600.webp',
-    },
-    {
-      title: 'Artisanal Mediterranean Terroir.',
-      kicker: 'Heritage & Craft',
-      subtitle:
-        'Cold-pressed estate olive oils, line-caught sustainable seafood, and heirloom produce orchestrated into poetic fine dining.',
-      badge: 'ESTATE GROWN & CHEF CRAFTED',
-      image: '/images/photo-1517248135467-4c7edcad34c4-1600.webp',
-    },
-    {
-      title: 'Intimate Candlelit Elegance.',
-      kicker: 'Atmosphere & Moments',
-      subtitle:
-        'A sanctuary of slow dining where each course is paired with curated vintage wines under ambient amber glow.',
-      badge: 'PRIVATE SALON & WINE CELLAR',
-      image: '/images/photo-1543007630-9710e4a00a20-1600.webp',
-    },
-  ];
+  const heroSlides = HERO_SLIDES;
 
   const nextSlide = useCallback(() => {
     setActiveSlide((prev) => (prev + 1) % heroSlides.length);
@@ -70,7 +99,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
     return () => clearInterval(timer);
   }, [autoplay, nextSlide]);
 
-  const current = heroSlides[activeSlide];
+  useEffect(() => {
+    const next = (activeSlide + 1) % heroSlides.length;
+    const timer = setTimeout(() => {
+      setMountedSlides((prev) => Array.from(new Set([...prev, activeSlide, next])));
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [activeSlide, heroSlides.length]);
 
   return (
     <section
@@ -88,13 +123,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
               activeSlide === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           >
-            <ResponsiveImage
-              sizes="100vw"
-              priority={idx === 0}
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover object-center filter brightness-[0.34] contrast-[1.1] transform scale-105"
-            />
+            {(idx === activeSlide || mountedSlides.includes(idx)) && (
+              <ResponsiveImage
+                sizes="100vw"
+                priority={idx === 0}
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover object-center filter brightness-[0.34] contrast-[1.1] transform scale-105"
+              />
+            )}
           </div>
         ))}
         {/* Dark Emerald Vignette & Radial Glow */}
@@ -103,38 +140,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
       </div>
 
       <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center flex flex-col items-center">
-        {/* Top Gold Michelin Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-forest-800/90 border border-gold-400/40 text-gold-400 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-3 sm:mb-5 shadow-[0_0_20px_rgba(223,184,92,0.15)] backdrop-blur-md">
-          <div className="flex items-center gap-0.5 text-gold-400">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-3 h-3 fill-gold-400 text-gold-400" />
-            ))}
-          </div>
-          <span className="text-mist-400">•</span>
-          <span>{current.badge}</span>
+        <div className="grid justify-items-center">
+          {heroSlides.map((slide, i) => (
+            <SlideCopy key={i} slide={slide} active={i === activeSlide} />
+          ))}
         </div>
-
-        {/* Script Kicker */}
-        <span className="tot-font-display italic text-gold-400 text-xl sm:text-2xl lg:text-3xl font-normal mb-1.5 block tracking-wide">
-          {current.kicker}
-        </span>
-
-        {/* Headline */}
-        <h1 className="tot-font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-cream-100 mb-4 sm:mb-5 leading-[1.15] max-w-4xl">
-          {current.title.includes('Remembering.') ? (
-            <>
-              A Taste Worth{' '}
-              <span className="tot-gold-gradient-text italic font-normal">Remembering.</span>
-            </>
-          ) : (
-            current.title
-          )}
-        </h1>
-
-        {/* Description */}
-        <p className="tot-font-sans text-xs sm:text-base md:text-lg text-sand-200/90 max-w-2xl mx-auto mb-7 sm:mb-9 leading-relaxed font-light">
-          {current.subtitle}
-        </p>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-12">

@@ -32,7 +32,7 @@ export const ContactSection: React.FC = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white h-[400px] sm:h-[460px] lg:h-full min-h-[400px]">
               <ResponsiveImage
                 sizes="(min-width:1024px) 40vw, 100vw"
-                src="/images/photo-1581299894007-aaa50297cf16-960.webp"
+                src="/images/photo-1581299894007-aaa50297cf16-1200.webp"
                 alt={`${RESTAURANT_INFO.brandName} Front Desk Concierge`}
                 className="w-full h-full object-cover object-center filter brightness-95 hover:scale-105 transition-transform duration-700"
               />

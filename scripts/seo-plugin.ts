@@ -1,6 +1,9 @@
 import type { Plugin } from 'vite';
 import { RESTAURANT_INFO } from '../src/config/restaurant';
 import { SEO } from '../src/config/seo';
+import { HERO_SLIDES } from '../src/config/hero';
+import { IMAGE_WIDTHS } from '../src/config/images';
+import { PRELOAD_FONTS } from '../src/config/fonts';
 
 const escapeHtml = (value: string) =>
   value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -46,7 +49,20 @@ export function seoPlugin(): Plugin {
           .map(([k, v]) => `${k}="${escapeHtml(v)}"`)
           .join(' ')} />`;
 
+      // Preload the first hero image so the browser fetches it before the JS runs.
+      const heroMatch = HERO_SLIDES[0]?.image.match(/^(.*)-\d+\.webp$/);
+      const heroPreload =
+        heroMatch &&
+        `    <link rel="preload" as="image" fetchpriority="high" imagesizes="100vw" imagesrcset="${IMAGE_WIDTHS.map((w) => `${heroMatch[1]}-${w}.webp ${w}w`).join(', ')}" />`;
+
+      const fontPreloads = PRELOAD_FONTS.map(
+        (href) =>
+          `    <link rel="preload" as="font" type="font/woff2" href="${escapeHtml(href)}" crossorigin />`
+      );
+
       const tags = [
+        ...fontPreloads,
+        heroPreload,
         meta({ name: 'theme-color', content: SEO.themeColor }),
         siteUrl && `    <link rel="canonical" href="${escapeHtml(siteUrl + '/')}" />`,
         meta({ property: 'og:type', content: 'restaurant.restaurant' }),

@@ -104,7 +104,7 @@ export const StorySection: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <ResponsiveImage
                   sizes="(min-width:1024px) 50vw, 100vw"
-                  src="/images/photo-1517248135467-4c7edcad34c4-960.webp"
+                  src="/images/photo-1517248135467-4c7edcad34c4-1200.webp"
                   alt={`${RESTAURANT_INFO.brandName} Dining Experience`}
                   className="w-full h-[320px] sm:h-[420px] object-cover object-center hover:scale-105 transition-transform duration-700"
                 />
@@ -123,7 +123,7 @@ export const StorySection: React.FC = () => {
               <div className="hidden sm:block absolute -bottom-5 right-4 w-40 h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <ResponsiveImage
                   sizes="160px"
-                  src="/images/photo-1544025162-d76694265947-960.webp"
+                  src="/images/photo-1544025162-d76694265947-1200.webp"
                   alt="Artisanal Kitchen Craft"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                 />

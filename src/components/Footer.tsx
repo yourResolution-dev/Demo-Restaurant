@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-full bg-forest-800 border border-gold-400/30 text-gold-400 hover:bg-gold-400 hover:text-forest-900 flex items-center justify-center transition-all cursor-pointer"
-                aria-label="TripAdvisor"
+                aria-label="TA - TripAdvisor"
               >
                 <span className="font-serif font-bold text-xs">TA</span>
               </a>

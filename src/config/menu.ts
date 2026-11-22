@@ -10,7 +10,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Creamy burrata heart, confit heirloom tomatoes, 25-year aged Modena balsamic, micro basil, toasted sourdough crisp.',
     longDescription:
       'Sourced weekly from artisanal dairies in Puglia, this burrata is encased in a delicate mozzarella shell with a rich, silky stracciatella heart. Served over slow-roasted sun-kissed heirloom cherry tomatoes, infused with black truffle oil from Umbria, and finished with crystalline Maldon sea salt flakes.',
-    image: '/images/photo-1546069901-ba9599a7e63c-960.webp',
+    image: '/images/photo-1546069901-ba9599a7e63c-1200.webp',
     tags: ['Vegetarian', 'Signature', 'Chef Special'],
     calories: 420,
     preparationTime: '12 mins',
@@ -29,7 +29,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Wood-fired tender octopus, smoked paprika Yukon gold mousseline, caper berries, pickled pearl onions, cold-pressed olive drizzle.',
     longDescription:
       'Wild Spanish octopus slowly braised with cork and fresh aromatics for four hours before receiving a high-heat woodfire kiss. Plated over velvet smoked paprika potato purée and finished with crispy caper berries and extra virgin olive oil pressed from our private estate.',
-    image: '/images/photo-1544025162-d76694265947-960.webp',
+    image: '/images/photo-1544025162-d76694265947-1200.webp',
     tags: ['Seafood', 'Gluten Free', 'Signature'],
     calories: 380,
     preparationTime: '18 mins',
@@ -48,7 +48,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Roman-style crisp baby artichokes, preserved Meyer lemon emulsion, wild mint dust, smoked chili oil.',
     longDescription:
       'A classic Roman Jewish heritage delicacy. Young Italian artichokes gently flattened and double flash-fried in golden olive oil until each petal becomes paper-crisp. Complemented with a velvety house-made preserved lemon emulsion and fragrant dried mint.',
-    image: '/images/photo-1540420773420-3366772f4999-960.webp',
+    image: '/images/photo-1540420773420-3366772f4999-1200.webp',
     tags: ['Vegetarian', 'Gluten Free'],
     calories: 290,
     preparationTime: '15 mins',
@@ -67,7 +67,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Thinly sliced A5 Wagyu, shaved black summer truffles, organic cured quail yolk, caper emulsion, parmigiano reggiano crisps.',
     longDescription:
       'Tender paper-thin sheets of melt-in-your-mouth Wagyu tenderloin dressed with cold-pressed olive oil, fresh lemon juice, micro arugula, cured quail egg yolk, and generous ribbons of aged 36-month Parmigiano Reggiano.',
-    image: '/images/photo-1541544741938-0af808871cc0-960.webp',
+    image: '/images/photo-1541544741938-0af808871cc0-1200.webp',
     tags: ['Chef Special', 'Gluten Free'],
     calories: 410,
     preparationTime: '10 mins',
@@ -86,7 +86,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Wild sea bass fillet, saffron bouillabaisse glaze, Romanesco florets, butter-poached asparagus, sturgeon caviar pearls.',
     longDescription:
       'Sustainably sourced Chilean Sea Bass seared to golden perfection with crisp skin while retaining its glistening, flaky core. Accompanied by charred Romanesco broccoli, glazed baby carrots, saffron beurre blanc, and Royal Ossetra caviar pearls.',
-    image: '/images/photo-1519708227418-c8fd9a32b7a2-960.webp',
+    image: '/images/photo-1519708227418-c8fd9a32b7a2-1200.webp',
     tags: ['Seafood', 'Gluten Free', 'Signature', 'Chef Special'],
     calories: 620,
     preparationTime: '24 mins',
@@ -105,7 +105,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'New Zealand lamb shank braised in Chianti Classico, creamy saffron polenta, roasted cipollini onions, rosemary gremolata.',
     longDescription:
       'Prime pasture-fed lamb shank gently braised overnight in Tuscan Chianti wine with mirepoix, wild thyme, and toasted coriander seeds. Served over creamy stoneground polenta enriched with Parmigiano, crowned with citrusy gremolata.',
-    image: '/images/photo-1544025162-d76694265947-960.webp',
+    image: '/images/photo-1544025162-d76694265947-1200.webp',
     tags: ['Chef Special'],
     calories: 840,
     preparationTime: '20 mins',
@@ -124,7 +124,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Pan-rendered duck breast, spiced blackberry thyme gastrique, parsnip velvet, caramelized Turkish figs, pistachio crumble.',
     longDescription:
       'Free-range duck breast cooked sous-vide to a flawless medium rare, then flash-crisped on its scored skin. Served alongside sweet parsnip mousseline, mission figs poached in port wine, and an aromatic blackberry reduction.',
-    image: '/images/photo-1555939594-58d7cb561ad1-960.webp',
+    image: '/images/photo-1555939594-58d7cb561ad1-1200.webp',
     tags: ['Gluten Free', 'Chef Special'],
     calories: 680,
     preparationTime: '22 mins',
@@ -143,7 +143,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'House-extruded 30-yolk pasta, winter black truffle emulsion, 36-month Vacche Rosse Parmigiano, fresh truffle shavings.',
     longDescription:
       'Crafted daily in our glass pasta laboratory using Italian stone-ground Tipo 00 flour and 30 egg yolks per kilo. Tossed in French cultured butter with mountain pasture parmesan broth, finished tableside with generous shavings of fresh black truffle.',
-    image: '/images/photo-1563379091339-03b21ab4a4f8-960.webp',
+    image: '/images/photo-1563379091339-03b21ab4a4f8-1200.webp',
     tags: ['Vegetarian', 'Signature', 'Chef Special'],
     calories: 590,
     preparationTime: '15 mins',
@@ -162,7 +162,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Hand-pinched ravioli, butter-poached Maine lobster claw, blue crab stuffing, bisque reduction, chive blossom oil.',
     longDescription:
       'Handmade saffron-infused pasta pillows filled with shredded Atlantic blue crab, ricotta, and tarragon. Rested in a reduced lobster cognac bisque and crowned with a golden butter-poached lobster medallion.',
-    image: '/images/photo-1551183053-bf91a1d81141-960.webp',
+    image: '/images/photo-1551183053-bf91a1d81141-1200.webp',
     tags: ['Seafood', 'Signature'],
     calories: 610,
     preparationTime: '18 mins',
@@ -181,7 +181,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Acquerello aged carnaroli rice, foraged wild mushrooms, aged taleggio fonduta, roasted garlic thyme froth, parmesan tuile.',
     longDescription:
       'Aged 1-year Acquerello carnaroli rice slow-stirred with double mushroom broth, butter-glazed porcini, black chanterelles, and golden morels. Finished with creamy Lombardy taleggio and a delicate crispy parmesan lace.',
-    image: '/images/photo-1633964913295-ceb43826e7c9-960.webp',
+    image: '/images/photo-1633964913295-ceb43826e7c9-1200.webp',
     tags: ['Vegetarian', 'Gluten Free'],
     calories: 540,
     preparationTime: '20 mins',
@@ -200,7 +200,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Smoked 70% Guanaja chocolate dome, warm spiced espresso caramel pour-over, hazelnut feuilletine, Fior di Latte gelato.',
     longDescription:
       'An interactive sensory finale. A thin dark chocolate sphere filled with molten dark mousse and hazelnut praline crunch. Melted tableside with a warm espresso spiced caramel stream, revealing artisanal vanilla bean gelato.',
-    image: '/images/photo-1579372786545-d24232daf58c-960.webp',
+    image: '/images/photo-1579372786545-d24232daf58c-1200.webp',
     tags: ['Vegetarian', 'Signature', 'Chef Special'],
     calories: 510,
     preparationTime: '10 mins',
@@ -219,7 +219,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Cold-pressed olive oil sponge, Amalfi lemon curd, torched Italian meringue, candied rosemary, wild raspberry coulis.',
     longDescription:
       'Moist and airy olive oil cake featuring cold-pressed extra virgin oil, paired with tart Amalfi lemon custard, lightly torched Swiss meringue peaks, and macerated mountain raspberries.',
-    image: '/images/photo-1509440159596-0249088772ff-960.webp',
+    image: '/images/photo-1509440159596-0249088772ff-1200.webp',
     tags: ['Vegetarian'],
     calories: 390,
     preparationTime: '8 mins',
@@ -238,7 +238,7 @@ export const MENU_ITEMS: MenuItem[] = [
       '12-year Kentucky bourbon, house demerara reduction, angostura & orange bitters, charred rosemary cloche smoke.',
     longDescription:
       'Crafted with premium small-batch bourbon, stirred over a single hand-carved ice sphere with house-spiced orange bitters, and presented under a glass cloche filled with aromatic woodfire rosemary smoke.',
-    image: '/images/photo-1514362545857-3bc16c4c7d1b-960.webp',
+    image: '/images/photo-1514362545857-3bc16c4c7d1b-1200.webp',
     tags: ['Signature'],
     calories: 190,
     preparationTime: '5 mins',
@@ -256,7 +256,7 @@ export const MENU_ITEMS: MenuItem[] = [
       'Mediterranean botanical gin, Italicus bergamot liqueur, sparkling prosecco, wild thyme, castelvetrano olive pick.',
     longDescription:
       'An invigorating golden hour aperitivo featuring herbal botanical gin, fragrant Italian bergamot, crisp elderflower tonic, and dry Prosecco. Garnished with a salted green Castelvetrano olive.',
-    image: '/images/photo-1556679343-c7306c1976bc-960.webp',
+    image: '/images/photo-1556679343-c7306c1976bc-1200.webp',
     tags: ['Signature'],
     calories: 160,
     preparationTime: '4 mins',

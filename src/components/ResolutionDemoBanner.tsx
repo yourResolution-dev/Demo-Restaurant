@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Sparkles, ArrowLeft, MessageSquare } from 'lucide-react';
 import { RESTAURANT_INFO } from '@/config';
 
@@ -8,12 +7,6 @@ interface ResolutionDemoBannerProps {
 }
 
 export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOpenInquiry }) => {
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate('/');
-  };
-
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
       `Hi ReSolution Team! I explored "${RESTAURANT_INFO.brandName}" restaurant demo and I am interested in building a luxury website for my business.`
@@ -29,13 +22,13 @@ export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOp
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
         {/* Left: Back Link & Showcase Tag */}
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start">
-          <button
-            onClick={handleBack}
+          <a
+            href="/"
             className="inline-flex items-center gap-1.5 py-1 text-gold-400 hover:text-gold-100 font-medium transition-colors group cursor-pointer text-xs"
           >
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
             <span>Back to ReSolution</span>
-          </button>
+          </a>
           <span className="hidden sm:inline-block text-charcoal-500">|</span>
           <span className="inline-flex items-center gap-1.5 text-sand-200 font-light text-xs">
             <span className="relative flex h-2 w-2">

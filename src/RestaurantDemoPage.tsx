@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { lazy, useState, useMemo, useEffect } from 'react';
+import { LoadOnFirstUse } from '@/lib/load-on-first-use';
 import './styles/restaurant.css';
 import { MENU_ITEMS } from '@/config';
 import { loadTasting, saveTasting } from '@/lib/tasting-storage';
@@ -9,18 +10,28 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { StorySection } from './components/StorySection';
 import { MenuSection } from './components/MenuSection';
-import { DishDetailModal } from './components/DishDetailModal';
-import { TastingDrawer } from './components/TastingDrawer';
+const DishDetailModal = lazy(() =>
+  import('./components/DishDetailModal').then((m) => ({ default: m.DishDetailModal }))
+);
+const TastingDrawer = lazy(() =>
+  import('./components/TastingDrawer').then((m) => ({ default: m.TastingDrawer }))
+);
 import { ChefSection } from './components/ChefSection';
 import { GallerySection } from './components/GallerySection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { ReservationSection } from './components/ReservationSection';
-import { ReservationSuccessModal } from './components/ReservationSuccessModal';
+const ReservationSuccessModal = lazy(() =>
+  import('./components/ReservationSuccessModal').then((m) => ({
+    default: m.ReservationSuccessModal,
+  }))
+);
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { BackToTop } from './components/BackToTop';
-import { InquiryModal } from './components/InquiryModal';
+const InquiryModal = lazy(() =>
+  import('./components/InquiryModal').then((m) => ({ default: m.InquiryModal }))
+);
 
 export const RestaurantDemoPage: React.FC = () => {
   // Selected dish for details modal
@@ -165,29 +176,37 @@ export const RestaurantDemoPage: React.FC = () => {
       <BackToTop />
 
       {/* 13. Interactive Modals */}
-      <DishDetailModal
-        dish={selectedDish}
-        onClose={() => setSelectedDish(null)}
-        onToggleTasting={handleToggleTasting}
-        isSelected={selectedDish ? selectedDishIds.has(selectedDish.id) : false}
-      />
+      <LoadOnFirstUse when={!!selectedDish}>
+        <DishDetailModal
+          dish={selectedDish}
+          onClose={() => setSelectedDish(null)}
+          onToggleTasting={handleToggleTasting}
+          isSelected={selectedDish ? selectedDishIds.has(selectedDish.id) : false}
+        />
+      </LoadOnFirstUse>
 
-      <TastingDrawer
-        isOpen={isTastingDrawerOpen}
-        onClose={() => setIsTastingDrawerOpen(false)}
-        items={tastingItems}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveItem}
-        onClearAll={handleClearAll}
-        onProceedToBooking={handleProceedToBooking}
-      />
+      <LoadOnFirstUse when={isTastingDrawerOpen}>
+        <TastingDrawer
+          isOpen={isTastingDrawerOpen}
+          onClose={() => setIsTastingDrawerOpen(false)}
+          items={tastingItems}
+          onUpdateQuantity={handleUpdateQuantity}
+          onRemoveItem={handleRemoveItem}
+          onClearAll={handleClearAll}
+          onProceedToBooking={handleProceedToBooking}
+        />
+      </LoadOnFirstUse>
 
-      <ReservationSuccessModal
-        confirmation={reservationConfirmation}
-        onClose={() => setReservationConfirmation(null)}
-      />
+      <LoadOnFirstUse when={!!reservationConfirmation}>
+        <ReservationSuccessModal
+          confirmation={reservationConfirmation}
+          onClose={() => setReservationConfirmation(null)}
+        />
+      </LoadOnFirstUse>
 
-      <InquiryModal isOpen={isInquiryModalOpen} onClose={() => setIsInquiryModalOpen(false)} />
+      <LoadOnFirstUse when={isInquiryModalOpen}>
+        <InquiryModal isOpen={isInquiryModalOpen} onClose={() => setIsInquiryModalOpen(false)} />
+      </LoadOnFirstUse>
     </div>
   );
 };

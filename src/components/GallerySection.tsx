@@ -1,7 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { lazy, useState, useMemo } from 'react';
 import { Maximize2 } from 'lucide-react';
 import { GALLERY_ITEMS, RESTAURANT_INFO } from '@/config';
-import { GalleryLightbox } from './GalleryLightbox';
+import { LoadOnFirstUse } from '@/lib/load-on-first-use';
+
+const GalleryLightbox = lazy(() =>
+  import('./GalleryLightbox').then((m) => ({ default: m.GalleryLightbox }))
+);
 import { ResponsiveImage } from '@/components/ui/responsive-image';
 
 export const GallerySection: React.FC = () => {
@@ -65,7 +69,6 @@ export const GallerySection: React.FC = () => {
                 key={item.id}
                 role="button"
                 tabIndex={0}
-                aria-label={`View ${item.title}`}
                 onClick={() => setLightboxIndex(index)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -115,12 +118,14 @@ export const GallerySection: React.FC = () => {
       </div>
 
       {/* Lightbox Modal */}
-      <GalleryLightbox
-        items={filteredItems}
-        currentIndex={lightboxIndex}
-        onClose={() => setLightboxIndex(null)}
-        onNavigate={(newIdx) => setLightboxIndex(newIdx)}
-      />
+      <LoadOnFirstUse when={lightboxIndex !== null}>
+        <GalleryLightbox
+          items={filteredItems}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={(newIdx) => setLightboxIndex(newIdx)}
+        />
+      </LoadOnFirstUse>
     </section>
   );
 };

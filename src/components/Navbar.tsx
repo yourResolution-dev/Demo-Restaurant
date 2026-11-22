@@ -84,7 +84,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => scrollTo('home')}
             className="flex items-center gap-2.5 sm:gap-3 text-left group cursor-pointer focus:outline-none"
-            aria-label={`${RESTAURANT_INFO.brandName} - Back to Home`}
           >
             {/* Olive Leaf Stylized Icon */}
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gold-400/60 flex items-center justify-center bg-forest-800 group-hover:border-gold-400 transition-all shadow-[0_0_15px_rgba(223,184,92,0.15)] flex-shrink-0">
