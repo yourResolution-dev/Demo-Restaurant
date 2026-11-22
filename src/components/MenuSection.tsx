@@ -190,6 +190,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                 >
                   {/* Food Image Container */}
                   <div
+                    role="presentation"
                     className="relative h-52 sm:h-56 overflow-hidden cursor-pointer flex-shrink-0"
                     onClick={() => onSelectDish(dish)}
                   >
@@ -232,11 +233,14 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                   {/* Dish Details */}
                   <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3
-                        onClick={() => onSelectDish(dish)}
-                        className="tot-font-serif text-base sm:text-lg font-bold text-forest-900 hover:text-gold-700 transition-colors cursor-pointer leading-snug mb-2 line-clamp-1"
-                      >
-                        {dish.name}
+                      <h3 className="tot-font-serif text-base sm:text-lg font-bold leading-snug mb-2 line-clamp-1">
+                        <button
+                          type="button"
+                          onClick={() => onSelectDish(dish)}
+                          className="text-left text-forest-900 hover:text-gold-700 transition-colors cursor-pointer"
+                        >
+                          {dish.name}
+                        </button>
                       </h3>
                       <p className="text-xs text-charcoal-500 line-clamp-2 leading-relaxed">
                         {dish.description}

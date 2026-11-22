@@ -3,6 +3,7 @@ import { Star, ArrowRight, Calendar, ChevronDown, ChevronLeft, ChevronRight, Pau
 import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
+import { usePrefersReducedMotion } from '@/lib/use-prefers-reduced-motion';
 
 interface HeroProps {
   onExploreMenu: () => void;
@@ -13,16 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  // Respect the visitor's reduced-motion setting: never auto-advance for them.
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(query.matches);
-    const onChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    query.addEventListener('change', onChange);
-    return () => query.removeEventListener('change', onChange);
-  }, []);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const autoplay = !isPaused && !userPaused && !prefersReducedMotion;
 

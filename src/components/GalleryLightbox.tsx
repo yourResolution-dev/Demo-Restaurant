@@ -77,6 +77,7 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
 
             {/* Main Image Stage */}
             <div
+              role="presentation"
               className="z-10 mx-auto flex max-h-[80vh] max-w-5xl flex-col items-center justify-center px-4"
               onClick={(e) => e.stopPropagation()}
             >

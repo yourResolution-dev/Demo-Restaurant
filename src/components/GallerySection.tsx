@@ -65,7 +65,16 @@ export const GallerySection: React.FC = () => {
             return (
               <div
                 key={item.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`View ${item.title}`}
                 onClick={() => setLightboxIndex(index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setLightboxIndex(index);
+                  }
+                }}
                 className={`relative rounded-2xl overflow-hidden shadow-md group cursor-pointer border border-gold-400/25 hover:border-gold-400 transition-all duration-300 ${
                   isFeatured
                     ? 'sm:col-span-2 h-64 sm:h-72 lg:h-80'
