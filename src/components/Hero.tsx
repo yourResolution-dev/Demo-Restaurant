@@ -176,10 +176,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
               <div className="tot-font-serif text-2xl sm:text-3xl font-bold text-gold-400 mb-0.5">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-cream-100 mb-0.5 truncate">
+              <div className="text-xs sm:text-sm font-semibold text-cream-100 mb-0.5 leading-tight">
                 {stat.label}
               </div>
-              <div className="text-[10px] sm:text-[11px] text-mist-400 font-light truncate">
+              <div className="text-[10px] sm:text-[11px] text-mist-400 font-light leading-tight">
                 {stat.subtext}
               </div>
             </div>
@@ -243,7 +243,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onBookTable }) => {
         aria-label="Scroll down to restaurant story and menu"
         className="hidden md:flex absolute bottom-3 left-1/2 -translate-x-1/2 text-gold-400/70 hover:text-gold-400 transition-colors flex-col items-center gap-0.5 cursor-pointer z-20"
       >
-        <span className="text-[9px] tracking-widest uppercase font-light">Scroll</span>
+        <span className="text-[10px] tracking-widest uppercase font-light">Scroll</span>
         <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
       </button>
     </section>

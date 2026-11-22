@@ -265,7 +265,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
             <div className="flex items-center gap-3">
               <button
                 onClick={onOpenInquiry}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-forest-800 border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-forest-900 transition-colors cursor-pointer font-medium shadow-sm text-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-forest-800 border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-forest-900 transition-colors cursor-pointer font-medium shadow-sm text-xs"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Want a Website Like This? Inquire</span>

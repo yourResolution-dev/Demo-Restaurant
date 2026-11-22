@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="tot-font-serif text-base sm:text-lg lg:text-xl font-bold tracking-wider text-cream-100 block group-hover:text-gold-400 transition-colors leading-tight truncate">
                 {RESTAURANT_INFO.name}
               </span>
-              <span className="text-[9px] sm:text-[10px] tracking-[0.22em] text-gold-400 uppercase font-light block">
+              <span className="text-[10px] tracking-[0.22em] text-gold-400 uppercase font-light block">
                 Est. 2014 • Fine Dining
               </span>
             </div>
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium transition-all cursor-pointer relative ${
+                  className={`px-2 xl:px-3 py-1.5 rounded-full text-xs xl:text-sm font-medium whitespace-nowrap transition-all cursor-pointer relative ${
                     isActive ? 'text-gold-400 font-semibold' : 'text-sand-200 hover:text-gold-400'
                   }`}
                 >
@@ -137,7 +137,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="View Tasting Selections"
             >
               <ShoppingBag className="w-4 h-4 text-gold-400" />
-              <span className="hidden sm:inline text-xs font-medium">Tasting List</span>
+              <span className="hidden sm:inline lg:hidden xl:inline text-xs font-medium">
+                Tasting List
+              </span>
               {tastingCount > 0 ? (
                 <span className="w-5 h-5 rounded-full bg-gold-400 text-forest-900 font-bold text-[11px] flex items-center justify-center animate-bounce">
                   {tastingCount}

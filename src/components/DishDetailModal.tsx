@@ -72,7 +72,7 @@ export const DishDetailModal: React.FC<DishDetailModalProps> = ({
                 </div>
 
                 <div className="text-right flex-shrink-0">
-                  <span className="text-[9px] uppercase tracking-widest text-gold-400 block font-medium">
+                  <span className="text-[10px] uppercase tracking-widest text-gold-400 block font-medium">
                     Price
                   </span>
                   <span className="tot-font-serif text-xl sm:text-2xl md:text-3xl font-bold text-gold-400">

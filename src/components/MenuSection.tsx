@@ -248,7 +248,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                   {/* Dish Details */}
                   <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="tot-font-serif text-base sm:text-lg font-bold leading-snug mb-2 line-clamp-1">
+                      <h3 className="tot-font-serif text-base sm:text-lg font-bold leading-6 sm:leading-7 mb-2 line-clamp-1">
                         <button
                           type="button"
                           onClick={() => onSelectDish(dish)}

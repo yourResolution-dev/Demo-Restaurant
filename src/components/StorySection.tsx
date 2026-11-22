@@ -79,16 +79,16 @@ export const StorySection: React.FC = () => {
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               {/* Circular Gold 10-Year Celebration Badge (Overlapping top-left corner) */}
               <div className="absolute -top-3 left-2 sm:-top-5 sm:-left-3 w-22 h-22 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-gold-400 via-gold-500 to-gold-700 text-forest-900 shadow-2xl flex flex-col items-center justify-center p-2 border-4 border-cream-50 tot-animate-pulse-gold z-20 select-none">
-                <span className="text-[8px] sm:text-[9px] tracking-widest font-black uppercase text-forest-900">
+                <span className="text-[10px] tracking-widest font-black uppercase text-forest-900">
                   Celebration
                 </span>
                 <span className="tot-font-serif text-2xl sm:text-3xl font-extrabold leading-none text-forest-900">
                   10
                 </span>
-                <span className="text-[9px] sm:text-[10px] tracking-wider uppercase font-bold text-forest-900">
+                <span className="text-[10px] tracking-wider uppercase font-bold text-forest-900">
                   Years
                 </span>
-                <span className="text-[7px] sm:text-[8px] tracking-tight font-medium text-forest-800">
+                <span className="text-[10px] tracking-tight font-medium text-forest-800">
                   2014 – 2024
                 </span>
               </div>
