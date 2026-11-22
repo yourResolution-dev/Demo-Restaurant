@@ -1,24 +1,128 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* ------------------------------------------------------------------
+   Design tokens — single source of truth for The Olive Table.
+   Palette values live here; shadcn semantic variables map onto them.
+   ------------------------------------------------------------------ */
+:root {
+  /* Brand palette */
+  --forest-950: #050d0a;
+  --forest-900: #081510;
+  --forest-850: #0b1c15;
+  --forest-800: #10261d;
+  --forest-700: #163428;
+  --forest-600: #1d4334;
+  --forest-500: #295744;
+
+  --gold-100: #fbf5e6;
+  --gold-200: #f4e5bf;
+  --gold-300: #ebd08d;
+  --gold-400: #dfb85c;
+  --gold-500: #cfa138;
+  --gold-600: #ad8125;
+  --gold-700: #88621a;
+
+  --cream-50: #fbf9f5;
+  --cream-100: #f7f3ea;
+  --cream-200: #efe7d7;
+  --cream-300: #e2d6bf;
+  --sand-200: #eadecc;
+  --sand-300: #ede3d1;
+  --cream-150: #f4ede4;
+
+  --charcoal-900: #141c18;
+  --charcoal-700: #2c3a32;
+  --charcoal-500: #58685e;
+  --mist-400: #a0b0a6;
+
+  /* shadcn semantic tokens */
+  --radius: 0.75rem;
+  --background: var(--cream-50);
+  --foreground: var(--charcoal-900);
+  --card: #ffffff;
+  --card-foreground: var(--forest-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--forest-900);
+  --primary: var(--gold-500);
+  --primary-foreground: var(--forest-900);
+  --secondary: var(--forest-800);
+  --secondary-foreground: var(--gold-400);
+  --muted: var(--cream-100);
+  --muted-foreground: var(--charcoal-500);
+  --accent: var(--gold-400);
+  --accent-foreground: var(--forest-900);
+  --destructive: #dc2626;
+  --border: color-mix(in srgb, var(--gold-400) 40%, transparent);
+  --input: color-mix(in srgb, var(--gold-400) 40%, transparent);
+  --ring: var(--gold-500);
 }
 
-html,
-body,
-#root {
-  min-height: 100%;
-  width: 100%;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-forest-950: var(--forest-950);
+  --color-forest-900: var(--forest-900);
+  --color-forest-850: var(--forest-850);
+  --color-forest-800: var(--forest-800);
+  --color-forest-700: var(--forest-700);
+  --color-forest-600: var(--forest-600);
+  --color-forest-500: var(--forest-500);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-sand-200: var(--sand-200);
+  --color-sand-300: var(--sand-300);
+  --color-cream-150: var(--cream-150);
+  --color-charcoal-900: var(--charcoal-900);
+  --color-charcoal-700: var(--charcoal-700);
+  --color-charcoal-500: var(--charcoal-500);
+  --color-mist-400: var(--mist-400);
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Alex Brush', 'Cormorant Garamond', cursive, Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
-body {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  background-color: #fbf9f5;
-  color: #141c18;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    width: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
 }
