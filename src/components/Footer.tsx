@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Mail, ArrowRight, Instagram, Facebook, Sparkles, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { RESTAURANT_INFO } from '@/config';
+import { AGENCY, RESTAURANT_INFO } from '@/config';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
-  onOpenInquiry: () => void;
+  onOpenInquiry?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => {
@@ -238,11 +238,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
         </div>
 
         {/* Bottom Banner: ReSolution Agency Showcase Attribution */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-mist-400">
+        <div className="pt-8 pb-16 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-mist-400">
           <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
             <span>© 2026 {RESTAURANT_INFO.name}. All rights reserved.</span>
-            <span className="hidden sm:inline">•</span>
-            <span className="text-gold-400">ReSolution Luxury Restaurant Demo</span>
+            {AGENCY.enabled && (
+              <>
+                <span className="hidden sm:inline">•</span>
+                <span className="text-gold-400">{AGENCY.demoLabel}</span>
+              </>
+            )}
             <span className="hidden sm:inline">•</span>
             <span>
               Photography via{' '}
@@ -257,15 +261,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={onOpenInquiry}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-forest-800 border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-forest-900 transition-colors cursor-pointer font-medium shadow-sm text-xs"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Want a Website Like This? Inquire</span>
-            </button>
-          </div>
+          {AGENCY.enabled && (
+            <div className="flex items-center gap-3">
+              <button
+                onClick={onOpenInquiry}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-forest-800 border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-forest-900 transition-colors cursor-pointer font-medium shadow-sm text-xs"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Want a Website Like This? Inquire</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </footer>

@@ -24,17 +24,25 @@ Node 20 or newer is required (Tailwind CSS 4).
 
 Everything a restaurant owner would change lives in `src/config/`:
 
-| File              | What it controls                                                   |
-| ----------------- | ------------------------------------------------------------------ |
-| `restaurant.ts`   | Name, tagline, address, phone, email, WhatsApp number, hours, chef |
-| `menu.ts`         | Dishes, prices, descriptions, tags, photos                         |
-| `gallery.ts`      | Gallery photos and captions                                        |
-| `testimonials.ts` | Guest reviews                                                      |
-| `hero.ts`         | Hero slideshow copy and images (the first image is preloaded)      |
-| `seo.ts`          | Page title, description, social image, address for search engines  |
-| `theme.css`       | Colour palette and fonts, as CSS variables mapped to Tailwind      |
-| `images.ts`       | Image widths generated for every photo                             |
-| `fonts.ts`        | Fonts preloaded on first load                                      |
+| File              | What it controls                                                      |
+| ----------------- | --------------------------------------------------------------------- |
+| `restaurant.ts`   | Name, tagline, address, phone, email, WhatsApp number, hours, chef    |
+| `menu.ts`         | Dishes, prices, descriptions, tags, photos                            |
+| `gallery.ts`      | Gallery photos and captions                                           |
+| `testimonials.ts` | Guest reviews                                                         |
+| `hero.ts`         | Hero slideshow copy and images (the first image is preloaded)         |
+| `seo.ts`          | Page title, description, social image, address for search engines     |
+| `theme.css`       | Colour palette and fonts, as CSS variables mapped to Tailwind         |
+| `agency.ts`       | Agency showcase layer on/off: banner, inquiry modal, demo footer line |
+| `images.ts`       | Image widths generated for every photo                                |
+| `fonts.ts`        | Fonts preloaded on first load                                         |
+
+### Delivering to a real restaurant
+
+Set `enabled: false` in `src/config/agency.ts`. The ReSolution banner, inquiry modal and demo line in
+the footer disappear, the search description drops "Showcase Demo", and the floating WhatsApp button
+messages the restaurant instead of the agency. While it is on, set `AGENCY.whatsappNumber` to the
+agency's own WhatsApp number (it currently matches the restaurant's).
 
 Page prose in the section components (story, section headings) is still written in the
 components themselves; edit those files for deeper copy changes.

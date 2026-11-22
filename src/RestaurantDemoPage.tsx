@@ -2,7 +2,7 @@ import React, { lazy, useState, useMemo, useEffect } from 'react';
 import { LoadOnFirstUse } from '@/lib/load-on-first-use';
 import { LazySection, registerSectionLoader, scrollToSection } from '@/lib/lazy-section';
 import './styles/restaurant.css';
-import { MENU_ITEMS } from '@/config';
+import { AGENCY, MENU_ITEMS } from '@/config';
 import { loadTasting, saveTasting } from '@/lib/tasting-storage';
 
 import { MenuItem, SelectedItem, ReservationConfirmation } from './types/restaurant.types';
@@ -281,7 +281,7 @@ export const RestaurantDemoPage: React.FC = () => {
         />
       </LoadOnFirstUse>
 
-      <LoadOnFirstUse when={isInquiryModalOpen}>
+      <LoadOnFirstUse when={AGENCY.enabled && isInquiryModalOpen}>
         <InquiryModal isOpen={isInquiryModalOpen} onClose={() => setIsInquiryModalOpen(false)} />
       </LoadOnFirstUse>
     </div>

@@ -27,6 +27,7 @@
     "src/config/seo.ts",
     "src/config/hero.ts",
     "src/config/images.ts",
-    "src/config/fonts.ts"
+    "src/config/fonts.ts",
+    "src/config/agency.ts"
   ]
 }

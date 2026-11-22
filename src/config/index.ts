@@ -5,3 +5,4 @@ export * from './testimonials';
 export * from './seo';
 export * from './hero';
 export * from './images';
+export * from './agency';

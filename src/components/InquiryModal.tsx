@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, MessageSquare, CheckCircle2, Send } from 'lucide-react';
-import { RESTAURANT_INFO } from '@/config';
+import { AGENCY, RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Field } from '@/components/ui/field';
@@ -29,9 +29,9 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hello ReSolution! My name is ${form.name || 'a visitor'} and I want a website like "${RESTAURANT_INFO.brandName}" for ${form.businessName || 'my business'}.`
+      `Hello ${AGENCY.name}! My name is ${form.name || 'a visitor'} and I want a website like "${RESTAURANT_INFO.brandName}" for ${form.businessName || 'my business'}.`
     );
-    window.open(`https://wa.me/${RESTAURANT_INFO.whatsappNumber}?text=${text}`, '_blank');
+    window.open(`https://wa.me/${AGENCY.whatsappNumber}?text=${text}`, '_blank');
   };
 
   const update =
@@ -49,7 +49,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
             <Sparkles className="h-6 w-6" />
           </div>
           <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-gold-400">
-            Built by ReSolution
+            Built by {AGENCY.name}
           </span>
           <DialogTitle className="text-cream-100">Want a Website Like This?</DialogTitle>
           <DialogDescription className="mx-auto mt-1 max-w-sm font-light">
@@ -67,7 +67,8 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
               </div>
               <h4 className="font-serif text-xl font-bold text-forest-900">Inquiry Received!</h4>
               <p className="mx-auto max-w-sm text-xs leading-relaxed text-charcoal-500">
-                Thank you, <strong className="text-forest-900">{form.name}</strong>. The ReSolution
+                Thank you, <strong className="text-forest-900">{form.name}</strong>. The{' '}
+                {AGENCY.name}
                 team will connect with you on WhatsApp / Phone within 2 hours.
               </p>
               <Button variant="whatsapp" onClick={handleWhatsApp}>

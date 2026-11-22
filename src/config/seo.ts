@@ -1,3 +1,4 @@
+import { AGENCY } from './agency';
 import { RESTAURANT_INFO } from './restaurant';
 
 // Search and social-sharing metadata. The Vite plugin in scripts/seo-plugin.ts
@@ -5,7 +6,8 @@ import { RESTAURANT_INFO } from './restaurant';
 export const SEO = {
   title: `${RESTAURANT_INFO.name} | ${RESTAURANT_INFO.tagline}`,
   description:
-    'A Taste Worth Remembering. Experience an exquisite symphony of taste, tradition, and timeless atmosphere at The Olive Table. ReSolution Showcase Demo.',
+    'A Taste Worth Remembering. Experience an exquisite symphony of taste, tradition, and timeless atmosphere at The Olive Table.' +
+    (AGENCY.enabled ? ` ${AGENCY.name} Showcase Demo.` : ''),
   /** Served from /public. 1200x630 is the size social networks expect. */
   ogImage: '/og-image.jpg',
   locale: 'en_IN',

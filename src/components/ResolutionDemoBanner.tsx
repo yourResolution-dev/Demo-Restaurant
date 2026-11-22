@@ -1,17 +1,19 @@
 import React from 'react';
 import { Sparkles, ArrowLeft, MessageSquare } from 'lucide-react';
-import { RESTAURANT_INFO } from '@/config';
+import { AGENCY, RESTAURANT_INFO } from '@/config';
 
 interface ResolutionDemoBannerProps {
   onOpenInquiry?: () => void;
 }
 
 export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOpenInquiry }) => {
+  if (!AGENCY.enabled) return null;
+
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hi ReSolution Team! I explored "${RESTAURANT_INFO.brandName}" restaurant demo and I am interested in building a luxury website for my business.`
+      `Hi ${AGENCY.name} Team! I explored "${RESTAURANT_INFO.brandName}" restaurant demo and I am interested in building a luxury website for my business.`
     );
-    window.open(`https://wa.me/${RESTAURANT_INFO.whatsappNumber}?text=${text}`, '_blank');
+    window.open(`https://wa.me/${AGENCY.whatsappNumber}?text=${text}`, '_blank');
   };
 
   return (
@@ -23,11 +25,11 @@ export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOp
         {/* Left: Back Link & Showcase Tag */}
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start">
           <a
-            href="/"
+            href={AGENCY.homeUrl}
             className="inline-flex items-center gap-1.5 py-1 text-gold-400 hover:text-gold-100 font-medium transition-colors group cursor-pointer text-xs"
           >
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
-            <span>Back to ReSolution</span>
+            <span>Back to {AGENCY.name}</span>
           </a>
           <span className="hidden sm:inline-block text-charcoal-500">|</span>
           <span className="inline-flex items-center gap-1.5 text-sand-200 font-light text-xs">
@@ -35,7 +37,7 @@ export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOp
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="font-semibold text-gold-400">ReSolution Showcase:</span>
+            <span className="font-semibold text-gold-400">{AGENCY.name} Showcase:</span>
             <span className="hidden md:inline">
               {RESTAURANT_INFO.brandName} Luxury Mediterranean Dining
             </span>
