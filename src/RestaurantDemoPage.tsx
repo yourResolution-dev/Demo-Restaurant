@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './styles/restaurant.css';
+import { RESTAURANT_INFO } from '@/config';
 
 import { MenuItem, SelectedItem, ReservationConfirmation } from './types/restaurant.types';
 import { ResolutionDemoBanner } from './components/ResolutionDemoBanner';
@@ -24,7 +25,7 @@ export const RestaurantDemoPage: React.FC = () => {
   // Page title update
   useEffect(() => {
     const originalTitle = document.title;
-    document.title = 'THE OLIVE TABLE | Mediterranean Fine Dining (ReSolution Demo)';
+    document.title = `${RESTAURANT_INFO.name} | Mediterranean Fine Dining (ReSolution Demo)`;
     return () => {
       document.title = originalTitle;
     };

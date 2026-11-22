@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag, PhoneCall, Calendar } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
 
 interface NavbarProps {
@@ -75,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => scrollTo('home')}
             className="flex items-center gap-2.5 sm:gap-3 text-left group cursor-pointer focus:outline-none"
-            aria-label="The Olive Table - Back to Home"
+            aria-label={`${RESTAURANT_INFO.brandName} - Back to Home`}
           >
             {/* Olive Leaf Stylized Icon */}
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gold-400/60 flex items-center justify-center bg-forest-800 group-hover:border-gold-400 transition-all shadow-[0_0_15px_rgba(223,184,92,0.15)] flex-shrink-0">
@@ -94,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div className="min-w-0">
               <span className="tot-font-serif text-base sm:text-lg lg:text-xl font-bold tracking-wider text-cream-100 block group-hover:text-gold-400 transition-colors leading-tight truncate">
-                THE OLIVE TABLE
+                {RESTAURANT_INFO.name}
               </span>
               <span className="text-[9px] sm:text-[10px] tracking-[0.22em] text-gold-400 uppercase font-light block">
                 Est. 2014 • Fine Dining

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { MessageCircle, X } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RESTAURANT_INFO } from '@/config';
 
 export const FloatingWhatsApp: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {
     const message = encodeURIComponent(
-      'Hello ReSolution! I just viewed "The Olive Table" restaurant website demo and I would love to discuss developing a premium website for my restaurant/business.'
+      `Hello ReSolution! I just viewed "${RESTAURANT_INFO.brandName}" restaurant website demo and I would love to discuss developing a premium website for my restaurant/business.`
     );
     window.open(`https://wa.me/${RESTAURANT_INFO.whatsappNumber}?text=${message}`, '_blank');
   };

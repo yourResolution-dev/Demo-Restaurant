@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Field } from '@/components/ui/field';
 import { Input, Textarea } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { RESTAURANT_INFO, CHEF_INFO } from '@/config';
 
 interface ReservationSectionProps {
   onSuccess: (confirmation: ReservationConfirmation) => void;
@@ -137,7 +138,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                 <div className="p-3 rounded-xl bg-forest-800/10 border border-gold-400/40 flex items-center gap-2.5 text-xs text-forest-900">
                   <Utensils className="w-4 h-4 text-gold-500 flex-shrink-0" />
                   <span>
-                    <strong>Tasting Flight Linked:</strong> Your selected courses will be forwarded to Chef Marco's kitchen.
+                    <strong>Tasting Flight Linked:</strong> Your selected courses will be forwarded to {CHEF_INFO.shortName}'s kitchen.
                   </span>
                 </div>
               )}
@@ -332,7 +333,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-2xl min-h-[420px] lg:min-h-full border border-gold-400/35 flex flex-col justify-end">
             <img
               src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=80"
-              alt="The Olive Table Candlelit Dining"
+              alt={`${RESTAURANT_INFO.brandName} Candlelit Dining`}
               className="absolute inset-0 w-full h-full object-cover object-center filter brightness-90 hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-900 via-forest-900/40 to-transparent" />
@@ -350,10 +351,10 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                 For celebrations larger than 12 guests or bespoke wine cellar tastings, our Maître D' is at your service.
               </p>
               <a
-                href="tel:+919332012109"
+                href={`tel:${RESTAURANT_INFO.phone.replace(/[^+\d]/g, '')}`}
                 className="inline-flex items-center gap-1.5 text-xs text-gold-400 font-semibold hover:underline"
               >
-                Direct Concierge Desk: +91 93320 12109
+                Direct Concierge Desk: {RESTAURANT_INFO.phoneDisplay}
               </a>
             </div>
           </div>

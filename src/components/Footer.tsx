@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, ArrowRight, Instagram, Facebook, Sparkles, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RESTAURANT_INFO } from '@/config';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -55,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
               </div>
               <div>
                 <span className="tot-font-serif text-xl font-bold tracking-wider text-cream-100 block leading-tight">
-                  THE OLIVE TABLE
+                  {RESTAURANT_INFO.name}
                 </span>
                 <span className="text-[10px] tracking-[0.2em] text-gold-400 uppercase font-light block">
                   Est. 2014 • Fine Dining
@@ -243,7 +243,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenInquiry }) => 
         {/* Bottom Banner: ReSolution Agency Showcase Attribution */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-mist-400">
           <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
-            <span>© 2026 THE OLIVE TABLE. All rights reserved.</span>
+            <span>© 2026 {RESTAURANT_INFO.name}. All rights reserved.</span>
             <span className="hidden sm:inline">•</span>
             <span className="text-gold-400">ReSolution Luxury Restaurant Demo</span>
           </div>

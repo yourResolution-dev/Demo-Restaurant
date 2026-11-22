@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Sparkles, ArrowLeft, MessageSquare } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RESTAURANT_INFO } from '@/config';
 
 interface ResolutionDemoBannerProps {
   onOpenInquiry?: () => void;
@@ -16,7 +16,7 @@ export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOp
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      'Hi ReSolution Team! I explored "The Olive Table" restaurant demo and I am interested in building a luxury website for my business.'
+      `Hi ReSolution Team! I explored "${RESTAURANT_INFO.brandName}" restaurant demo and I am interested in building a luxury website for my business.`
     );
     window.open(`https://wa.me/${RESTAURANT_INFO.whatsappNumber}?text=${text}`, '_blank');
   };
@@ -43,7 +43,7 @@ export const ResolutionDemoBanner: React.FC<ResolutionDemoBannerProps> = ({ onOp
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             <span className="font-semibold text-gold-400">ReSolution Showcase:</span>
-            <span className="hidden md:inline">The Olive Table Luxury Mediterranean Dining</span>
+            <span className="hidden md:inline">{RESTAURANT_INFO.brandName} Luxury Mediterranean Dining</span>
           </span>
         </div>
 

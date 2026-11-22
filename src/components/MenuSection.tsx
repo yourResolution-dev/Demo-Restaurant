@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Plus, Check, Eye, Sparkles, Filter, ChefHat, X } from 'lucide-react';
-import { MENU_ITEMS, FALLBACK_FOOD_IMAGE } from '../data/restaurantData';
+import { MENU_ITEMS, FALLBACK_FOOD_IMAGE, CHEF_INFO } from '@/config';
 import { MenuItem, MenuCategory, DietaryTag } from '../types/restaurant.types';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -79,7 +79,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
           </h2>
           <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
           <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            Curated by Executive Chef Marco Valenti. Explore cold-pressed estate olive oils, fresh extruded pastas, and wood-fired delicacies.
+            Curated by Executive {CHEF_INFO.name}. Explore cold-pressed estate olive oils, fresh extruded pastas, and wood-fired delicacies.
           </p>
         </div>
 

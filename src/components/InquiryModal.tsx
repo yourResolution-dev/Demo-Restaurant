@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, MessageSquare, CheckCircle2, Send } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Field } from '@/components/ui/field';
@@ -29,7 +29,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose }) =
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hello ReSolution! My name is ${form.name || 'a visitor'} and I want a website like "The Olive Table" for ${form.businessName || 'my business'}.`
+      `Hello ReSolution! My name is ${form.name || 'a visitor'} and I want a website like "${RESTAURANT_INFO.brandName}" for ${form.businessName || 'my business'}.`
     );
     window.open(`https://wa.me/${RESTAURANT_INFO.whatsappNumber}?text=${text}`, '_blank');
   };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Award, Users, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { RESTAURANT_INFO, FALLBACK_AMBIANCE_IMAGE, FALLBACK_FOOD_IMAGE } from '../data/restaurantData';
+import { RESTAURANT_INFO, FALLBACK_AMBIANCE_IMAGE, FALLBACK_FOOD_IMAGE } from '@/config';
 
 export const StorySection: React.FC = () => {
   return (
@@ -25,7 +25,7 @@ export const StorySection: React.FC = () => {
             </div>
 
             <p className="tot-font-sans text-charcoal-700 text-sm sm:text-base leading-relaxed font-light">
-              Founded in 2014, <strong className="font-semibold text-forest-900">The Olive Table</strong> was born out of an uncompromising passion for authentic Mediterranean gastronomy, centuries-old olive harvest traditions, and slow-dining elegance.
+              Founded in 2014, <strong className="font-semibold text-forest-900">{RESTAURANT_INFO.brandName}</strong> was born out of an uncompromising passion for authentic Mediterranean gastronomy, centuries-old olive harvest traditions, and slow-dining elegance.
             </p>
 
             <p className="tot-font-sans text-charcoal-500 text-xs sm:text-sm leading-relaxed">
@@ -96,7 +96,7 @@ export const StorySection: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
                   src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
-                  alt="The Olive Table Dining Experience"
+                  alt={`${RESTAURANT_INFO.brandName} Dining Experience`}
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = FALLBACK_AMBIANCE_IMAGE;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Car, ExternalLink } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RESTAURANT_INFO } from '@/config';
 
 export const ContactSection: React.FC = () => {
   return (
@@ -29,7 +29,7 @@ export const ContactSection: React.FC = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white h-[400px] sm:h-[460px] lg:h-full min-h-[400px]">
               <img
                 src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=800&q=80"
-                alt="The Olive Table Front Desk Concierge"
+                alt={`${RESTAURANT_INFO.brandName} Front Desk Concierge`}
                 className="w-full h-full object-cover object-center filter brightness-95 hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest-900/90 via-forest-900/20 to-transparent" />

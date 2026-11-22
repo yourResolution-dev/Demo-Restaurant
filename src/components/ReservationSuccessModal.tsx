@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckCircle2, Calendar, Clock, Users, MapPin, Sparkles, Printer } from 'lucide-react';
 import { ReservationConfirmation } from '../types/restaurant.types';
-import { RESTAURANT_INFO } from '../data/restaurantData';
+import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 

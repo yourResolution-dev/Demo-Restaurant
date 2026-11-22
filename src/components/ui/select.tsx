@@ -8,13 +8,14 @@ import { controlClasses } from '@/components/ui/input';
 const Select = SelectPrimitive.Root;
 const SelectValue = SelectPrimitive.Value;
 
-function SelectTrigger({
+const SelectTrigger = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Trigger>, React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>>(({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger>) {
+}, ref) => {
   return (
     <SelectPrimitive.Trigger
+      ref={ref}
       data-slot="select-trigger"
       className={cn(controlClasses, 'flex cursor-pointer items-center justify-between gap-2 text-left', className)}
       {...props}
@@ -25,17 +26,19 @@ function SelectTrigger({
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
-}
+});
+SelectTrigger.displayName = 'SelectTrigger';
 
-function SelectContent({
+const SelectContent = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Content>, React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>>(({
   className,
   children,
   position = 'popper',
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content>) {
+}, ref) => {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
+      ref={ref}
         data-slot="select-content"
         position={position}
         className={cn(
@@ -49,15 +52,17 @@ function SelectContent({
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   );
-}
+});
+SelectContent.displayName = 'SelectContent';
 
-function SelectItem({
+const SelectItem = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Item>, React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>>(({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Item>) {
+}, ref) => {
   return (
     <SelectPrimitive.Item
+      ref={ref}
       data-slot="select-item"
       className={cn(
         'relative flex w-full cursor-pointer items-center rounded-lg py-2 pr-8 pl-3 text-sm outline-none select-none data-[highlighted]:bg-gold-400/20 data-[state=checked]:font-semibold data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
@@ -73,6 +78,7 @@ function SelectItem({
       </span>
     </SelectPrimitive.Item>
   );
-}
+});
+SelectItem.displayName = 'SelectItem';
 
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue };

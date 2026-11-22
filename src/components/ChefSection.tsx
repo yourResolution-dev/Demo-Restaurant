@@ -1,6 +1,6 @@
 import React from 'react';
 import { Award, Quote, Sparkles } from 'lucide-react';
-import { CHEF_INFO } from '../data/restaurantData';
+import { CHEF_INFO, RESTAURANT_INFO } from '@/config';
 
 export const ChefSection: React.FC = () => {
   return (
@@ -69,7 +69,7 @@ export const ChefSection: React.FC = () => {
               <div className="flex items-center gap-3">
                 <div className="w-10 h-0.5 bg-gold-400" />
                 <span className="tot-font-serif text-xs sm:text-sm tracking-wider uppercase text-gold-400 font-semibold">
-                  Chef Marco Valenti
+                  {CHEF_INFO.name}
                 </span>
               </div>
             </div>
@@ -78,7 +78,7 @@ export const ChefSection: React.FC = () => {
             <div className="space-y-3.5 text-sm sm:text-base text-sand-200/90 font-light leading-relaxed">
               <p>{CHEF_INFO.bio}</p>
               <p>
-                Under Chef Marco's vision, every dinner at The Olive Table is designed as an intimate theatrical experience: from the tableside aroma of charred wild rosemary to the crisp crackle of handmade sea salt on melt-in-your-mouth seafood.
+                Under {CHEF_INFO.shortName}'s vision, every dinner at {RESTAURANT_INFO.brandName} is designed as an intimate theatrical experience: from the tableside aroma of charred wild rosemary to the crisp crackle of handmade sea salt on melt-in-your-mouth seafood.
               </p>
             </div>
 

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Maximize2 } from 'lucide-react';
-import { GALLERY_ITEMS } from '../data/restaurantData';
+import { GALLERY_ITEMS, RESTAURANT_INFO } from '@/config';
 import { GalleryLightbox } from './GalleryLightbox';
 
 export const GallerySection: React.FC = () => {
@@ -34,7 +34,7 @@ export const GallerySection: React.FC = () => {
           </h2>
           <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
           <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            A glimpse into the sensory atmosphere of The Olive Table. Where centuries-old architectural charm, vintage cellars, open woodfire, and culinary art converge.
+            A glimpse into the sensory atmosphere of {RESTAURANT_INFO.brandName}. Where centuries-old architectural charm, vintage cellars, open woodfire, and culinary art converge.
           </p>
         </div>
 

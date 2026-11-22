@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Star, ArrowRight, Calendar, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import { RESTAURANT_INFO, FALLBACK_AMBIANCE_IMAGE } from '../data/restaurantData';
+import { RESTAURANT_INFO, FALLBACK_AMBIANCE_IMAGE } from '@/config';
 import { Button } from '@/components/ui/button';
 
 interface HeroProps {
