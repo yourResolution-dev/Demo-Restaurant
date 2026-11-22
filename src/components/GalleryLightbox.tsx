@@ -117,7 +117,7 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
             </Button>
 
             {/* Bottom Thumbnail Strip */}
-            <div className="absolute inset-x-0 bottom-4 z-20 flex items-center justify-center gap-2 overflow-x-auto px-4">
+            <div className="absolute inset-x-0 bottom-4 z-20 flex items-center justify-center-safe gap-2 overflow-x-auto px-4">
               {items.map((item, idx) => (
                 <button
                   key={item.id}
