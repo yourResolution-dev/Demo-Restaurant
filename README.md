@@ -18,7 +18,7 @@ npm run lint       # ESLint (TypeScript, React Hooks, jsx-a11y)
 npm run format     # Prettier
 ```
 
-Node 20 or newer is required (Tailwind CSS 4).
+Node 20.19 or newer (or 22.12+) is required (Vite 7, Tailwind CSS 4).
 
 ## Re-skin for another restaurant
 

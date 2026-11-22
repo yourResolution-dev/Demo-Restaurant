@@ -26,6 +26,11 @@ const ResponsiveImage = React.forwardRef<HTMLImageElement, ResponsiveImageProps>
     const match = src.match(/^(.*)-\d+\.webp$/);
     const srcSet = match ? widths.map((w) => `${match[1]}-${w}.webp ${w}w`).join(', ') : undefined;
 
+    // React 18 only knows the lowercase HTML attribute (React 19 added `fetchPriority`).
+    const priorityHint = priority
+      ? ({ fetchpriority: 'high' } as Record<string, string>)
+      : undefined;
+
     return (
       <img
         ref={ref}
@@ -34,7 +39,7 @@ const ResponsiveImage = React.forwardRef<HTMLImageElement, ResponsiveImageProps>
         sizes={srcSet ? sizes : undefined}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : undefined}
+        {...priorityHint}
         decoding="async"
         {...props}
       />
