@@ -46,7 +46,8 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
         const matchesName = item.name.toLowerCase().includes(query);
         const matchesDesc = item.description.toLowerCase().includes(query);
         const matchesCategory = item.category.toLowerCase().includes(query);
-        if (!matchesName && !matchesDesc && !matchesCategory) return false;
+        const matchesDetails = item.longDescription.toLowerCase().includes(query);
+        if (!matchesName && !matchesDesc && !matchesCategory && !matchesDetails) return false;
       }
       return true;
     });

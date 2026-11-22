@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './styles/restaurant.css';
-import { RESTAURANT_INFO } from '@/config';
+import { RESTAURANT_INFO, MENU_ITEMS } from '@/config';
+import { loadTasting, saveTasting } from '@/lib/tasting-storage';
 
 import { MenuItem, SelectedItem, ReservationConfirmation } from './types/restaurant.types';
 import { ResolutionDemoBanner } from './components/ResolutionDemoBanner';
@@ -35,7 +36,12 @@ export const RestaurantDemoPage: React.FC = () => {
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
 
   // Tasting flight list
-  const [tastingItems, setTastingItems] = useState<SelectedItem[]>([]);
+  const [tastingItems, setTastingItems] = useState<SelectedItem[]>(() => loadTasting(MENU_ITEMS));
+
+  // Keep the tasting list across reloads
+  useEffect(() => {
+    saveTasting(tastingItems);
+  }, [tastingItems]);
   const [isTastingDrawerOpen, setIsTastingDrawerOpen] = useState(false);
 
   // Reservation confirmation state
