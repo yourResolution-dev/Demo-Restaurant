@@ -1,8 +1,9 @@
 import React from 'react';
-import { CheckCircle2, Calendar, Clock, Users, MapPin, Sparkles, Printer } from 'lucide-react';
+import { CheckCircle2, Calendar, Clock, Users, MapPin, Sparkles, Printer, MessageCircle } from 'lucide-react';
 import { ReservationConfirmation } from '../types/restaurant.types';
 import { RESTAURANT_INFO } from '@/config';
 import { Button } from '@/components/ui/button';
+import { bookingWhatsAppUrl } from '@/lib/whatsapp';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 
 interface ReservationSuccessModalProps {
@@ -102,6 +103,22 @@ export const ReservationSuccessModal: React.FC<ReservationSuccessModalProps> = (
             <div>{RESTAURANT_INFO.address}</div>
             <div className="text-gold-700">Smart Casual Dress Code • Complimentary Valet Parking</div>
           </div>
+
+          {/* Send the booking to the restaurant on WhatsApp */}
+          <Button asChild variant="whatsapp" size="lg" className="w-full">
+            <a
+              href={bookingWhatsAppUrl(confirmation, {
+                name: RESTAURANT_INFO.brandName,
+                whatsappNumber: RESTAURANT_INFO.whatsappNumber,
+              })}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle className="h-4 w-4" />
+              <span>Send booking to WhatsApp</span>
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </Button>
         </div>
 
             {/* Footer Actions */}

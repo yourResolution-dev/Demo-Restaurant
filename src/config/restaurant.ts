@@ -11,7 +11,7 @@ export const RESTAURANT_INFO = {
   email: 'reservations@theolivetable.luxury',
   address: '42 Olive Courtyard, High Street, Bandra West, Mumbai, Maharashtra 400050',
   city: 'Mumbai, India',
-  whatsappNumber: '9193320121093',
+  whatsappNumber: '919332012109',
   googleMapsUrl: 'https://maps.google.com/?q=Bandra+West+Mumbai',
   hours: {
     lunch: '12:00 PM – 03:30 PM',
