@@ -2,6 +2,7 @@ import React from 'react';
 import { Award, Users, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { RESTAURANT_INFO } from '@/config';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 export const StorySection: React.FC = () => {
   return (
@@ -17,15 +18,7 @@ export const StorySection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Narrative and Milestone Grid (6 cols) */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-1.5">
-              <span className="tot-font-display italic text-gold-700 text-2xl font-normal block">
-                Our Story
-              </span>
-              <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 leading-tight">
-                About Us
-              </h2>
-              <div className="w-16 h-0.5 bg-gold-500 mt-2.5" />
-            </div>
+            <SectionHeading align="left" kicker="Our Story" title="About Us" />
 
             <p className="tot-font-sans text-charcoal-700 text-sm sm:text-base leading-relaxed font-light">
               Founded in 2014,{' '}

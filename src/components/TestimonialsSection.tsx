@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote, Heart, CheckCircle2 } from 'lucide-react';
 import { TESTIMONIALS } from '@/config';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 export const TestimonialsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,15 +45,12 @@ export const TestimonialsSection: React.FC = () => {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="tot-font-display italic text-gold-400 text-xl sm:text-2xl font-normal block mb-1">
-            Cherished Impressions
-          </span>
-          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-cream-100 tracking-tight mb-3">
-            Voices of Our Guests
-          </h2>
-          <div className="w-20 h-0.5 bg-gold-400 mx-auto mb-4" />
-
+        <SectionHeading
+          tone="dark"
+          kicker="Cherished Impressions"
+          title="Voices of Our Guests"
+          className="max-w-3xl mb-12 sm:mb-16"
+        >
           <div className="flex items-center justify-center gap-1.5 text-gold-400 mt-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-4 h-4 fill-gold-400 text-gold-400" />
@@ -61,7 +59,7 @@ export const TestimonialsSection: React.FC = () => {
               4.9 / 5 Rating across 1,840+ verified diner reviews
             </span>
           </div>
-        </div>
+        </SectionHeading>
 
         {/* Carousel Card Stage */}
         <div

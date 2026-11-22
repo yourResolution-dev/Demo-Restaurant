@@ -2,6 +2,7 @@ import React, { lazy, useState, useMemo } from 'react';
 import { Maximize2 } from 'lucide-react';
 import { GALLERY_ITEMS, RESTAURANT_INFO } from '@/config';
 import { LoadOnFirstUse } from '@/lib/load-on-first-use';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 const GalleryLightbox = lazy(() =>
   import('./GalleryLightbox').then((m) => ({ default: m.GalleryLightbox }))
@@ -26,20 +27,18 @@ export const GallerySection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading matching screenshot: "Our Gallery" */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
-            Atmosphere & Moments
-          </span>
-          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
-            Our Gallery
-          </h2>
-          <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
-          <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            A glimpse into the sensory atmosphere of {RESTAURANT_INFO.brandName}. Where
-            centuries-old architectural charm, vintage cellars, open woodfire, and culinary art
-            converge.
-          </p>
-        </div>
+        <SectionHeading
+          kicker="Atmosphere & Moments"
+          title="Our Gallery"
+          className="max-w-3xl mb-10 sm:mb-14"
+          description={
+            <>
+              A glimpse into the sensory atmosphere of {RESTAURANT_INFO.brandName}. Where
+              centuries-old architectural charm, vintage cellars, open woodfire, and culinary art
+              converge.
+            </>
+          }
+        />
 
         {/* Filter Category Pills */}
         <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 mb-8 sm:mb-10 tot-custom-scroll px-1">

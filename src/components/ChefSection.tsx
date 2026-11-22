@@ -2,6 +2,7 @@ import React from 'react';
 import { Award, Quote, Sparkles } from 'lucide-react';
 import { CHEF_INFO, RESTAURANT_INFO } from '@/config';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 export const ChefSection: React.FC = () => {
   return (
@@ -14,15 +15,12 @@ export const ChefSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="tot-font-display italic text-gold-400 text-xl sm:text-2xl font-normal block mb-1">
-            Culinary Virtuoso
-          </span>
-          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-cream-100 tracking-tight mb-3">
-            Meet Our Executive Chef
-          </h2>
-          <div className="w-20 h-0.5 bg-gold-400 mx-auto" />
-        </div>
+        <SectionHeading
+          tone="dark"
+          kicker="Culinary Virtuoso"
+          title="Meet Our Executive Chef"
+          className="max-w-3xl mb-12 sm:mb-16"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Chef Image Column (5 cols) */}

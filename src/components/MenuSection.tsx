@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 interface MenuSectionProps {
   onSelectDish: (item: MenuItem) => void;
@@ -75,19 +76,17 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
     <section id="menu" className="py-16 sm:py-20 lg:py-28 bg-cream-100 text-charcoal-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading matching reference mockup */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
-            Taste Our Delights
-          </span>
-          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
-            Our Signature Menu
-          </h2>
-          <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
-          <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            Curated by Executive {CHEF_INFO.name}. Explore cold-pressed estate olive oils, fresh
-            extruded pastas, and wood-fired delicacies.
-          </p>
-        </div>
+        <SectionHeading
+          kicker="Taste Our Delights"
+          title="Our Signature Menu"
+          className="max-w-2xl mb-8 sm:mb-12"
+          description={
+            <>
+              Curated by Executive {CHEF_INFO.name}. Explore cold-pressed estate olive oils, fresh
+              extruded pastas, and wood-fired delicacies.
+            </>
+          }
+        />
 
         {/* Primary Category Tabs */}
         <div className="mb-6 overflow-x-auto pb-2 tot-custom-scroll">

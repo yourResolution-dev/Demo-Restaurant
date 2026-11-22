@@ -217,7 +217,7 @@ export const RestaurantDemoPage: React.FC = () => {
         {/* 8. Verified Diner Testimonials Carousel */}
         <LazySection
           id="reviews"
-          placeholderClass="min-h-[1000px] md:min-h-[800px]"
+          placeholderClass="min-h-[1000px] md:min-h-[765px]"
           force={mountAllSections}
         >
           <TestimonialsSection />

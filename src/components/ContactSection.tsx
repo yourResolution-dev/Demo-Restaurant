@@ -2,6 +2,7 @@ import React from 'react';
 import { MapPin, Phone, Mail, Clock, Car, ExternalLink } from 'lucide-react';
 import { RESTAURANT_INFO } from '@/config';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 export const ContactSection: React.FC = () => {
   return (
@@ -11,19 +12,12 @@ export const ContactSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading matching reference mockup */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
-            Connect With Us
-          </span>
-          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
-            We'd Love to Hear From You
-          </h2>
-          <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
-          <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            Whether inquiring about private salon bookings, custom tasting flights, or culinary
-            collaborations, our hospitality team is here to assist.
-          </p>
-        </div>
+        <SectionHeading
+          kicker="Connect With Us"
+          title="We'd Love to Hear From You"
+          className="max-w-3xl mb-10 sm:mb-14"
+          description="Whether inquiring about private salon bookings, custom tasting flights, or culinary collaborations, our hospitality team is here to assist."
+        />
 
         {/* 2-Column Layout matching screenshot */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">

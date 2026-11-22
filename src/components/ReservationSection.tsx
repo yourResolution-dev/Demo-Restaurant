@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/select';
 import { RESTAURANT_INFO, CHEF_INFO } from '@/config';
 import { ResponsiveImage } from '@/components/ui/responsive-image';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 interface ReservationSectionProps {
   onSuccess: (confirmation: ReservationConfirmation) => void;
@@ -122,19 +123,12 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading matching screenshot */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="tot-font-display italic text-gold-700 text-xl sm:text-2xl font-normal block mb-1">
-            Book Your Table
-          </span>
-          <h2 className="tot-font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 tracking-tight mb-3">
-            Make a Reservation
-          </h2>
-          <div className="w-16 h-0.5 bg-gold-500 mx-auto mb-3" />
-          <p className="text-xs sm:text-sm text-charcoal-500 font-light leading-relaxed">
-            Reserve your table for an evening of sensory indulgence. We recommend booking at least
-            24 hours in advance for prime weekend dinner slots.
-          </p>
-        </div>
+        <SectionHeading
+          kicker="Book Your Table"
+          title="Make a Reservation"
+          className="max-w-3xl mb-10 sm:mb-14"
+          description="Reserve your table for an evening of sensory indulgence. We recommend booking at least 24 hours in advance for prime weekend dinner slots."
+        />
 
         {/* 2-Column Desktop / Stacked Mobile Layout matching reference screenshot */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
