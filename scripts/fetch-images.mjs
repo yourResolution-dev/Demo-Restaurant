@@ -38,5 +38,25 @@ for (const { id, w } of jobs) {
   bytes += buf.length;
 }
 
+// Social-sharing image: 1200x630 JPEG at the site root (WebP is not supported everywhere).
+for (const id of sources.og ?? []) {
+  const file = path.join(root, 'public', 'og-image.jpg');
+  try {
+    await access(file);
+    continue;
+  } catch {
+    // not downloaded yet
+  }
+  const res = await fetch(`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&h=630&q=80&fm=jpg`);
+  if (!res.ok) {
+    console.error(`FAIL ${res.status} og image ${id}`);
+    failed++;
+    continue;
+  }
+  const buf = Buffer.from(await res.arrayBuffer());
+  await writeFile(file, buf);
+  bytes += buf.length;
+}
+
 console.log(`done: ${jobs.length - failed}/${jobs.length} files, ${(bytes / 1024 / 1024).toFixed(1)} MB downloaded`);
 if (failed) process.exit(1);

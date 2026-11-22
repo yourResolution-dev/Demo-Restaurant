@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './styles/restaurant.css';
-import { RESTAURANT_INFO, MENU_ITEMS } from '@/config';
+import { MENU_ITEMS } from '@/config';
 import { loadTasting, saveTasting } from '@/lib/tasting-storage';
 
 import { MenuItem, SelectedItem, ReservationConfirmation } from './types/restaurant.types';
@@ -23,15 +23,6 @@ import { BackToTop } from './components/BackToTop';
 import { InquiryModal } from './components/InquiryModal';
 
 export const RestaurantDemoPage: React.FC = () => {
-  // Page title update
-  useEffect(() => {
-    const originalTitle = document.title;
-    document.title = `${RESTAURANT_INFO.name} | Mediterranean Fine Dining (ReSolution Demo)`;
-    return () => {
-      document.title = originalTitle;
-    };
-  }, []);
-
   // Selected dish for details modal
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
 
